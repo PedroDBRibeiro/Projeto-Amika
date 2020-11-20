@@ -1,7 +1,10 @@
 
+body{
+    background-color: #f3f3f3;
+}
 
 header{
-    background-color: #FFFF00;
+    background-color:#fedc32;
     width: 100%;
 }
 
@@ -29,6 +32,10 @@ header{
    
 }
 
+.IconHeader:hover {
+    opacity: 0.8;
+}
+
 .perfil{
     margin-left: 19px;
     text-align: center;
@@ -41,4 +48,32 @@ header{
 .Icon{
     margin-top: 50px;
     width: 55%;
+}
+
+.Icon:hover{
+    opacity: 0.8;
+}
+
+
+/*informações */
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+  *{
+    margin: 0;
+    padding: 0;
+}
+
+.header  {
+margin: 0;
+overflow: hidden;
+background-color: #ffff00;
+padding: 15px 20px;
+background: linear-gradient(#ffff00,#ffd769);
+
 }
