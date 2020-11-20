@@ -7,7 +7,7 @@ if ( !isset($_POST['username'], $_POST['password']) ) {
 	// Could not get the data that should have been sent.
 	header('Location: Homepage.php?erro=true');
 }
-
+ 
 // SQL Injection
 if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
 	$stmt->bind_param('s', $_POST['username']);

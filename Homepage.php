@@ -134,7 +134,7 @@ if ('true' === $_GET['erro']) {
                             <p class="hyperlink">INFORMAÇÕES</p> 
                         </a>
                     </th>
-
+ 
                     <th>
                         <a  href="" style="text-decoration:none;">
                             <img src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
