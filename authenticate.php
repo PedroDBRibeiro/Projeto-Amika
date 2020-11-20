@@ -14,7 +14,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 	$stmt->execute();
 	// Armazena resultados para ver se ja existem na database
 	$stmt->store_result();
-
+ 
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $password);
         $stmt->fetch();

@@ -87,7 +87,7 @@ if ('true' === $_GET['erro']) {
                     </a>
                 </th>
 
-                <th>
+                <th> 
                         <a  href="" style="text-decoration:none;">
                             <img src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
                             <p class="hyperlink">FORUM</p> 

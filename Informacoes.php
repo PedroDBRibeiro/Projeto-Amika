@@ -12,7 +12,7 @@
 
     <table class="tabelaHeader" >
 
-      <tr>
+      <tr> 
           <th >
               
               <a  href="Profile.php" style="text-decoration:none;"> 
