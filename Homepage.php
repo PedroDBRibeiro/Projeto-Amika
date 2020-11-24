@@ -6,6 +6,9 @@ if ('true' === $_GET['erro']) {
             echo '<script>alert("Login Incorreto")</script>'; 
             }
         }
+
+
+        
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@ if ('true' === $_GET['erro']) {
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+            <script src ="tempo.js"></script>
 
             
 
@@ -75,7 +78,76 @@ if ('true' === $_GET['erro']) {
             </table>
 
         </header>
+<!-- API TEMPO -->
 
+<?php
+
+$weatherData = json_decode(file_get_contents("http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json"),true);
+$weatherTypes = json_decode(file_get_contents("https://api.ipma.pt/open-data/weather-type-classe.json"),true);
+
+for ($i = 0; $i < count($weatherData);$i++){
+     
+    $data[$i]=$weatherData['data'][$i]['forecastDate'];
+    $tMax[$i]=$weatherData['data'][$i]['tMax'];
+    $tMin[$i]=$weatherData['data'][$i]['tMin'];
+    $idWeatherType[$i]=$weatherData['data'][$i]['idWeatherType'];
+   
+   }
+   for ($i = 1; $i < 29;$i++){
+   $weatherType[$i]=$weatherTypes['data'][$i]['descIdWeatherTypePT'];
+   }
+
+?>
+
+<!--CARTÃO TEMPO-->
+
+    <div class="padding" style="width:1000px;">        
+            <div class="col-lg-8 grid-margin stretch-card">
+                <div class="card card-weather">
+                    <div class="card-body">
+                        <div class="weather-date-location">
+                            <h3  id="hoje">
+                                </h3>
+                            <p class="text-gray"> <span class="weather-date"><?php echo $data[0] ?>,</span> <span class="weather-location">Faro, Portugal</span> </p>
+                        </div>
+                        <div class="weather-data d-flex">
+                            <div class="mr-auto">
+                                <h4 class="display-4"><?php echo $tMax[0]?> <span class="symbol">°</span>C</h4>
+                                <h4 class="display-4" style="opacity: 0.6;"><?php echo $tMin[0]?> <span class="symbol">°</span>C</h4>
+                                <p> <?php echo $weatherType[$idWeatherType[0] + 1] ?> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex weakly-weather">
+                            <div class="weakly-weather-item">
+                                <p class="mb-0" id="amanhã" ></p> <i class="mdi mdi-weather-cloudy"></i>
+                                <p class="mb-0"> <?php echo $tMax[1]?>º</p>
+                                <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[1]?>º </p>
+                            </div>
+                            <div class="weakly-weather-item">
+                                <p class="mb-1" id=DPSamanha> </p> <i class="mdi mdi-weather-hail"></i>
+                                <p class="mb-0"> <?php echo $tMax[2]?>º</p>
+                                <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[2]?>º </p>
+                            </div>
+                            <div class="weakly-weather-item">
+                                <p class="mb-1"id=DPSamanha2>  </p> <i class="mdi mdi-weather-partlycloudy"></i>
+                                <p class="mb-0"> <?php echo $tMax[3]?>º</p>
+                                <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[3]?>º </p>
+                            </div>
+                            <div class="weakly-weather-item">
+                                <p class="mb-1"id=DPSamanha3>  </p> <i class="mdi mdi-weather-pouring"></i>
+                                <p class="mb-0"> <?php echo $tMax[4]?>º</p>
+                                <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[4]?>º </p>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+
+<!--FIM CARTÃO TEMPO-->
+  
         <table class="tabelaBody">
             <tr>
                 
