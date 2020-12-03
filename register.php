@@ -49,7 +49,7 @@ if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE E
 		echo 'O email que forneceu já está registado!';
     }   else  {
         
-if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (NOME, PASSWORD, EMAIL) VALUES (?,?,?)')) {
+        if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (NOME, PASSWORD, EMAIL, IDADE, REGIAO, DEFICIENCIA, JADI, STATUS) VALUES (?,?,?,?,?,?,?,?)')) {
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         exit('Email inváido');
     }
@@ -63,7 +63,7 @@ if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (NOME, PASSWORD, EMAIL) V
     }
 
 	$password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
-	$stmt->bind_param('sss', $_POST['nome'], $password, $_POST['email']);
+	$stmt->bind_param('ssssssss', $_POST['nome'], $password, $_POST['email'],$_POST['idade'],$_POST['regiao'],$textoDescritivo,$tipoUser,$value);
 	$stmt->execute();
     echo 'Registo Bem Sucedido.';
     header('Location: homepage.php');
