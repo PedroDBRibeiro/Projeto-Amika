@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST["title"]))
-{
+{ 
 
 $connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
 
@@ -11,7 +11,7 @@ $query = "INSERT INTO atividades
         (ID_USER, VOL_ID_USER, ID_CATEGORIA, CATEGORIA, DATA_INICIO, DATA_FIM)
         VALUES (1,1,1,:title, :start_event, :end_event);" ;
 
-$statement = $connect->prepare($query);
+$statement = $connect->prepare($query); 
 $statement->execute(
   array(
    ':title'  => $_POST['title'],

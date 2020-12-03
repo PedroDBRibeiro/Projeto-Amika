@@ -23,7 +23,7 @@ if (is_null($_POST['deficiencia'])){
 if ($_POST['tipoUser'] == 'voluntario') {
     $tipoUser = 0;
 }
-else {
+else { 
      $tipoUser = 1;
     }
 

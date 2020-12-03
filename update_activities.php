@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST["id"]))
+if(isset($_POST["id"])) 
 {
 
 $connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');

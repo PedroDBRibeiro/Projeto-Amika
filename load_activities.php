@@ -12,7 +12,7 @@ $statement = $connect->prepare($query);
 
 $statement->execute();
 
-$result = $statement->fetchAll();
+$result = $statement->fetchAll(); 
 
 foreach($result as $row) 
 {
