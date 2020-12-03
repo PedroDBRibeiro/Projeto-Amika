@@ -15,7 +15,7 @@ $statement = $connect->prepare($query);
 $statement->execute(
   array(
    ':title'  => $_POST['title'],
-   ':start_event' => $_POST['start'],
+   ':start_event' => $_POST['start'], 
    ':end_event' => $_POST['end']
   )
  );

@@ -17,7 +17,7 @@ $connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
    ':title'  => $_POST['title'],
    ':start_event' => $_POST['start'],
    ':end_event' => $_POST['end'],
-   ':id'   => $_POST['id']
+   ':id'   => $_POST['id'] 
   )
  );
 

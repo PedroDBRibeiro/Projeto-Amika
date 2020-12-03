@@ -14,7 +14,7 @@ $statement->execute();
 
 $result = $statement->fetchAll();
 
-foreach($result as $row)
+foreach($result as $row) 
 {
  $data[] = array(
   'id'   => $row["ID_ATIVIDADE"],

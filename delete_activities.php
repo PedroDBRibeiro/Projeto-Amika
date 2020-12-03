@@ -10,7 +10,7 @@ if(isset($_POST["id"]))
  $statement = $connect->prepare($query);
  $statement->execute(
   array(
-   ':id' => $_POST['id']
+   ':id' => $_POST['id'] 
   )
  );
 }
