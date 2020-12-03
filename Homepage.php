@@ -6,8 +6,6 @@ if ('true' === $_GET['erro']) {
             echo '<script>alert("Login Incorreto")</script>'; 
             }
         }
-
-
         
 ?>
 
@@ -251,7 +249,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                                     <label>
                                         <input type="checkbox" checked="checked" name="remember"> Lembrar-me
                                     </label>
-                                    <a style="text-decoration:underline;" href="signup.php"><br>Inscrever-me</a>
+                                    <a style="text-decoration:underline;" href="PaginaRegisto.php"><br>Inscrever-me</a>
                                     
                                 </div>
                         </form> 
@@ -263,8 +261,6 @@ for ($i = 0; $i < count($weatherData);$i++){
             </div>
         </div>
         
-
-
 
     </body>
 </html>
