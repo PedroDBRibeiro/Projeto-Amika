@@ -151,7 +151,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                 
 
                 <th>
-                    <a  href="" style="text-decoration:none;">
+                    <a  href="calendar.php" style="text-decoration:none;">
                         <img src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
                         <p class="hyperlink">AGENDA</p> 
                     </a>
