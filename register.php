@@ -36,6 +36,7 @@ if (empty($_POST['nome']) || empty($_POST['psw']) || empty($_POST['email'])) {
     exit('Por Favor Complete o Registo!');
 }
 
+
 if( $_POST['psw'] !== $_POST['pswConfirm']){
     exit('Passwords nao correspondem');
 }
@@ -77,6 +78,5 @@ if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE E
 	echo 'Could not prepare statement!';
 }
 
-$mysqli->close();
-
+$mysqli->close(); 
 ?>

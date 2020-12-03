@@ -53,7 +53,7 @@
         </table>
     </header>
 
-        <form action="register.php" method="POST" autocomplete="off">
+        <form action="register.php" method="POST" autocomplete="on">
 
             <div>
                 <label for="nome">Nome</label>
