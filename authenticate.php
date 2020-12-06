@@ -3,29 +3,29 @@ session_start();
 include "config.php";
 
 // Confirmar Login
-if ( !isset($_POST['username'], $_POST['password']) ) {
+if ( !isset($_POST['emailLogin'], $_POST['pswLogin']) ) {
 	// Could not get the data that should have been sent.
 	header('Location: Homepage.php?erro=true');
 }
  
 // SQL Injection
-if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
-	$stmt->bind_param('s', $_POST['username']);
+if ($stmt = $mysqli->prepare('SELECT id_user, password FROM utilizadores WHERE email = ?')) {
+	$stmt->bind_param('s', $_POST['emailLogin']);
 	$stmt->execute();
 	// Armazena resultados para ver se ja existem na database
 	$stmt->store_result();
  
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $password);
+        $stmt->bind_result($id_user, $password);
         $stmt->fetch();
         // A conta existe agora ver password
-        if (password_verify($_POST['password'], $password)) { 
+        if (password_verify($_POST['pswLogin'], $password)) { 
             // Login bem sucedido
             // Create sessions so we know the user is logged in, they basically act like cookies but remember the data on the server.
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
-            $_SESSION['name'] = $_POST['username'];
-            $_SESSION['id'] = $id;
+            $_SESSION['email'] = $_POST['emailLogin'];
+            $_SESSION['id'] = $id_user;
             header('Location: Homepage.php');
         } else {
             echo 'Incorrect password!';

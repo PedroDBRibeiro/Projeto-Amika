@@ -2,14 +2,6 @@
 
 include "config.php";
 
-echo($_POST['nome']);
-echo($_POST['psw']);
-echo($_POST['email']);
-echo($_POST['pswConfirm']);
-echo($_POST['tipoUser']);
-echo($_POST['regiao']);
-echo($_POST['idade']);
-
 $tipoUser;
 $value = 0;
 $textoDescritivo;
@@ -20,7 +12,7 @@ if (is_null($_POST['deficiencia'])){
     $textoDescritivo = $_POST['deficiencia'];
 }
 
-if ($_POST['tipoUser'] == 'voluntario') {
+if ($_POST['tipoUser'] == 'Voluntario') {
     $tipoUser = 0;
 }
 else {
@@ -41,7 +33,7 @@ if( $_POST['psw'] !== $_POST['pswConfirm']){
     exit('Passwords nao correspondem');
 }
 
-if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE EMAIL = ?')) {
+if ($stmt = $mysqli->prepare('SELECT id_user, password FROM utilizadores WHERE email = ?')) {
 	$stmt->bind_param('s', $_POST['email']);
 	$stmt->execute();
 	$stmt->store_result();
@@ -50,7 +42,7 @@ if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE E
 		echo 'O email que forneceu já está registado!';
     }   else  {
         
-        if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (NOME, PASSWORD, EMAIL, IDADE, REGIAO, DEFICIENCIA, JADI, STATUS) VALUES (?,?,?,?,?,?,?,?)')) {
+        if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (nome, password, email, idade, regiao, deficiencia, jadi, status) VALUES (?,?,?,?,?,?,?,?)')) {
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         exit('Email inváido');
     }
@@ -64,7 +56,7 @@ if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE E
     }
 
 	$password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
-	$stmt->bind_param('ssssssss', $_POST['nome'], $password, $_POST['email'],$_POST['idade'],$_POST['regiao'],$textoDescritivo,$tipoUser,$value);
+    $stmt->bind_param('ssssssss', $_POST['nome'], $password, $_POST['email'],$_POST['idade'],$_POST['regiao'],$textoDescritivo,$tipoUser,$value); 
 	$stmt->execute();
     echo 'Registo Bem Sucedido.';
     header('Location: homepage.php');
@@ -72,11 +64,13 @@ if ($stmt = $mysqli->prepare('SELECT ID_USER, PASSWORD FROM utilizadores WHERE E
 } else {
 	echo 'Could not prepare statement!';
 }
-	}
+    }
+    
 	$stmt->close();
 } else {
 	echo 'Could not prepare statement!';
 }
 
 $mysqli->close(); 
+
 ?>

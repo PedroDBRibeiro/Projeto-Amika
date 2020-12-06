@@ -28,11 +28,23 @@
             <tr>
                 <th >
                     
+                <?php 
+                   if(isset($_SESSION['loggedin'])){
+         ?>
                     <a  href="Profile.php" style="text-decoration:none;"> 
                         <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                         <p class="hyperlink">PERFIL</p> 
                     </a>
                     
+                    <?php }
+               else{ ?>
+                   
+                   
+         <?php 
+           } 
+         ?>
+
+
                 </th>
 
                 <th>
@@ -40,7 +52,7 @@
                 </th>
 
                 <th>
-                    <a  href="" style="text-decoration:none;"> 
+                    <a  href="homepage.php" style="text-decoration:none;"> 
                         <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
                         <p class="hyperlink">MENU</p> 
                     </a>
@@ -81,7 +93,7 @@
 
                 <label for="tipoUser" >Tipo De Utilizador</label>
                 <select onchange="JadiCheck(this)" name="tipoUser" id="tipoUser">
-                    <option value="Volutario">Voluntário</option>
+                    <option value="Voluntario">Voluntário</option>
                     <option value="Jadi">Jovem Adulto com Deficiência Intelectual</option>
                 </select>
 
