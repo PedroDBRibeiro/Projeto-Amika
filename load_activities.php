@@ -1,14 +1,13 @@
 <?php
 
 //load_activities.php
-
-$connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
+include ("config.php");
 
 $data = array();
 
-$query = "SELECT * FROM atividades ORDER BY ID_ATIVIDADE";
+/*$query = "SELECT * FROM atividades ORDER BY id_atividade";*/
 
-$statement = $connect->prepare($query);
+$statement = $mysqli->prepare("SELECT * FROM atividades ORDER BY id_atividade");
 
 $statement->execute();
 
@@ -17,10 +16,10 @@ $result = $statement->fetchAll();
 foreach($result as $row) 
 {
  $data[] = array(
-  'id'   => $row["ID_ATIVIDADE"],
-  'title'   => $row["CATEGORIA"],
-  'start'   => $row["DATA_INICIO"],
-  'end'   => $row["DATA_FIM"]
+  'id'   => $row["id_atividade"],
+  'title'   => $row["categoria"],
+  'start'   => $row["data_inicio"],
+  'end'   => $row["data_fim"]
  );
 }
 
