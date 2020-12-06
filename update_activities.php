@@ -11,8 +11,8 @@ if(isset($_POST["id"]))
  ;";
 */
 
- $statement = $mysqli->prepare("UPDATE atividades SET CATEGORIA=:title, DATA_INICIO=:start_event, DATA_FIM=:end_event 
-                                WHERE ID_ATIVIDADE=:id;");
+ $statement = $mysqli->prepare("UPDATE atividades SET categoria=:title, data_inicio=:start_event, data_fim=:end_event 
+                                WHERE id_atividade=:id;");
                                 
  $statement->execute(
   array(
