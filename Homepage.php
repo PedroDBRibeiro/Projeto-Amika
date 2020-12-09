@@ -1,12 +1,13 @@
 <?php
+include "config.php";
 session_start();
 
-if(isset($_GET['erro'])) {
+/*if(isset($_GET['erro'])) {
 if ('true' === $_GET['erro']) {
             echo '<script>alert("Login Incorreto")</script>'; 
             }
         }
-        
+    */
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +41,23 @@ if ('true' === $_GET['erro']) {
 
                 <tr>
                     <th >
-                        
+
+                <?php 
+                   if(isset($_SESSION['loggedin'])){
+         ?> 
                         <a  href="Profile.php" style="text-decoration:none;"> 
                             <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                             <p class="hyperlink">PERFIL</p> 
                         </a>
                         
+                        <?php }
+                    else{ ?>
+                   
+                   
+                <?php 
+                    }       
+                    ?>
+
                     </th>
 
                     <th>
@@ -53,22 +65,32 @@ if ('true' === $_GET['erro']) {
                     </th>
 
                     <th>
-                        <a  href="" style="text-decoration:none;"> 
-                            <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
-                            <p class="hyperlink">MENU</p> 
-                        </a>
+                    
+                   <!-- <a  href="homepage.php" style="text-decoration:none;"> 
+                        <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
+                        <p class="hyperlink">MENU</p> 
+                    </a>
+                    -->                     
                     </th>
 
                     <th>
+                        <?php 
+                            if(isset($_SESSION['loggedin'])){
+                        ?> 
+                                    <a  href="logout.php" style="text-decoration:none;">
+                                        <img src="imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
+                                        <p class="hyperlink">SAIR</p> 
+                                    </a>
+                        <?php }
+
+                        else{ ?>
                         <a  data-toggle="modal" data-target="#myModal" style="width:auto;" style="text-decoration:none;">
                             <img src="imagens\login.png" alt="Login Icon" class="IconHeader"></img>
                             <p class="hyperlink">ENTRAR</p> 
                         </a>
-
-                        <a  href="" style="text-decoration:none;">
-                            <img src="imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
-                            <p class="hyperlink">SAIR</p> 
-                        </a>
+                        <?php 
+                            } 
+                        ?>                      
                     </th>
 
                 </tr>
@@ -237,13 +259,13 @@ for ($i = 0; $i < count($weatherData);$i++){
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="modal-content animate" action="authenticate.php">
+                        <form class="modal-content animate" action="authenticate.php" method="POST">
                                 <div class="container">
-                                    <label for="uname"><b>Utilizador</b></label>
-                                        <input type="text" placeholder="Inserir Utilizador" name="username" required>
+                                    <label for="emailLogin"><b>Email</b></label>
+                                        <input type="text" placeholder="Inserir Email" name="emailLogin" required>
 
-                                    <label for="psw"><b>Palavra-Passe</b></label>
-                                        <input type="password" placeholder="Inserir Palavra-passe" name="psw" required>
+                                    <label for="pswLogin"><b>Palavra-Passe</b></label>
+                                        <input type="password" placeholder="Inserir Palavra-passe" name="pswLogin" required>
 
                                     <button type="submit">Entrar</button>
                                     <label>

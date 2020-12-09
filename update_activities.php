@@ -1,17 +1,19 @@
 <?php
+include("config.php");
 
 if(isset($_POST["id"])) 
 {
 
-$connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
-
- $query = "
+ /*$query = "
  UPDATE atividades 
  SET CATEGORIA=:title, DATA_INICIO=:start_event, DATA_FIM=:end_event 
  WHERE ID_ATIVIDADE=:id
  ;";
+*/
 
- $statement = $connect->prepare($query);
+ $statement = $mysqli->prepare("UPDATE atividades SET categoria=:title, data_inicio=:start_event, data_fim=:end_event 
+                                WHERE id_atividade=:id;");
+                                
  $statement->execute(
   array(
    ':title'  => $_POST['title'],
