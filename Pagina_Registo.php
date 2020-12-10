@@ -52,6 +52,10 @@
                         </div>
 
                         <div class="form-group" style=" background:white;">
+                        <input class="form-input" type="text" placeholder="Introduza a sua Idade" name="idade" id="idade" required>
+                        </div>
+
+                        <div class="form-group" style=" background:white;">
                         <input class="form-input" type="text" placeholder="Introduza a seu email" name="email" id="email" required>
                         </div>
 

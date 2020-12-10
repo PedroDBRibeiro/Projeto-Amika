@@ -91,71 +91,190 @@ if (isset($_SESSION['loggedin'])) {
 background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 ">
 
+<?php
+if(isset($_SESSION['loggedin'])) {
 
-    <div class="container" align="center" style="font-family: 'Chewy'; opacity:0.9;">
-        <div class="row justify-content-md-center" style="margin-top:50px;">
-            <div class="col-sm-2 ">
-                <a href="calendar.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">AGENDA</b><br><br>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="forum.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">FÓRUM</b> <br><br>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="chat/index.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">CHAT</b> <br><br>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="search.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
-                </a>
-            </div>
+$session_id = $_SESSION['user_id'];
+$status = "SELECT user_id from utilizadores where user_id ='$session_id' and jadi ='0' ";
+$result = mysqli_query($mysqli, $status);
 
-        </div>
-        <br>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-2">
-                <a href="" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">DICAS DE EMERGÊNCIA</b> <br><br>
-                </a>
+    /* Voluntário */
+    if(mysqli_num_rows($result)==1) { ?>   
+            <div class="container" align ="center" style="font-family: 'Chewy'; opacity:0.9;"> 
+        <div class="row justify-content-md-center" style="margin-top:50px;" >
+                <div class="col-sm-2 ">     
+                <a  href="calendar.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink" >AGENDA</b><br><br>
+                        </a>
+                </div>                     
+                <div class="col-sm-2">
+                <a  href="forum.php" style="text-decoration:none;">
+                                <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                                <br><br><b class="hyperlink">FORUM</b> <br><br>
+                            </a>
+                </div>
+                <div class="col-sm-2">
+                <a  href="chat/index.php" style="text-decoration:none;">
+                                <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
+                                <br><br><b class="hyperlink">CHAT</b> <br><br>
+                        </a>
+                </div>
+                <div class="col-sm-2">
+                <a  href="search.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
+                        </a>
+                </div>
+                
             </div>
-            <div class="col-sm-2">
-                <a href="informacoes.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
-                </a>
+                <br>
+            <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                    <a  href="" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="informacoes.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="pontosinteresse.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
+                                </a>    
+                    </div>  
+                    <div class="col-sm-2">
+                    <a  href="apoiovoluntarios.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> <br><br>
+                                </a>   
+                    </div> 
+                    
             </div>
-            <div class="col-sm-2">
-                <a href="pontosinteresse.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="apoiovoluntarios.php" style="text-decoration:none;">
-                    <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
-                    <br><br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> <br><br>
-                </a>
-            </div>
-
         </div>
     </div>
+        <?php 
+        }
+
+        /*Jadi */
+    else if (mysqli_num_rows($result)==0) { ?>   
+
+    <div class="container" align ="center" style="font-family: 'Chewy'; opacity:0.9;"> 
+        <div class="row justify-content-md-center" style="margin-top:50px;" >
+                <div class="col-sm-2 ">     
+                <a  href="calendar.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink" >AGENDA</b><br><br>
+                        </a>
+                </div>                     
+                <div class="col-sm-2">
+                <a  href="forum.php" style="text-decoration:none;">
+                                <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                                <br><br><b class="hyperlink">FORUM</b> <br><br>
+                            </a>
+                </div>
+                <div class="col-sm-2">
+                <a  href="chat/index.php" style="text-decoration:none;">
+                                <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
+                                <br><br><b class="hyperlink">CHAT</b> <br><br>
+                        </a>
+                </div>
+                <div class="col-sm-2">
+                <a  href="search.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
+                        </a>
+                </div>
+                <div class="col-sm-2">
+                <a  href="" style="text-decoration:none;">
+                                <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                                <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
+                            </a>
+                </div>
+                
+            </div>
+                <br>
+            <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                    <a  href="" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="informacoes.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="pontosinteresse.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
+                                </a>    
+                    </div>  
+
+            </div>
+        </div>
     </div>
+        <?php
+
+    } 
+} 
+    else{ 
+        ?>
+
+        <div class="container" align ="center" style="font-family: 'Chewy'; opacity:0.9;"> 
+                <div class="row justify-content-md-center" style="margin-top:50px;" >                  
+                    <div class="col-sm-2">
+                    <a  href="forum.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">FORUM</b> <br><br>
+                                </a>
+                    </div>
+
+                    <div class="col-sm-2">
+                    <a  href="" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
+                                </a>
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                    <a  href="" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="informacoes.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
+                                </a> 
+                    </div>
+                    <div class="col-sm-2">
+                    <a  href="pontosinteresse.php" style="text-decoration:none;">
+                                    <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                                    <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
+                                </a>    
+                    </div>  
+                    
+                </div>
+            </div>
+        </div>
+
+<?php
+
+    }
+?>
 
 
     <!-- API TEMPO -->
