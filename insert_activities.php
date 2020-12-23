@@ -1,29 +1,29 @@
 <?php
-include("config.php");
-
-if(isset($_POST["title"]))
-{ 
-
-// esta a inserir o user_id, vol_user_id e id_categoria à bruta
-// ainda ha muita coisa a alterar. mas o calendario funciona
-
-/*$query = "INSERT INTO atividades
-        (user_id, VOL_user_id, ID_CATEGORIA, CATEGORIA, DATA_INICIO, DATA_FIM)
-        VALUES (1,1,1,:title, :start_event, :end_event);" ;
-*/
-        
-$statement = $mysqli->prepare("INSERT INTO atividades (user_id, vol_user_id, id_categoria, categoria, data_inicio, data_fim)
-                               VALUES (1,1,1,:title, :start_event, :end_event);"); 
-                               
-$statement->execute(
-  array(
-   ':title'  => $_POST['title'],
-   ':start_event' => $_POST['start'],
-   ':end_event' => $_POST['end']
-  )
- );
-
-}
 
 
-?>
+include "config.php";
+
+$categoria = $_GET["title"];
+$datainicio = $_GET["start"];
+$datafim = $_GET["end"];
+
+echo $datainicio;
+echo $datafim;
+
+$get_id_categoria = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE CATEGORIA = '$categoria'";
+
+
+$idcat1 = mysqli_query($mysqli, $get_id_categoria);
+$idcat2 = mysqli_fetch_assoc($idcat1);
+$idcat = $idcat2['ID_CATEGORIA'];
+
+
+$query = "INSERT INTO atividades
+        (ID_CATEGORIA, DATA_INICIO, DATA_FIM)
+        VALUES ('$idcat', '$datainicio', '$datafim');" ;
+
+
+mysqli_query($mysqli, $query);
+
+
+//}
