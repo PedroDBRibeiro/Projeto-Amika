@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include('config.php');
 session_start();
 
 /*if(isset($_GET['erro'])) {
@@ -83,8 +83,8 @@ if ('true' === $_GET['erro']) {
                                     </a>
                         <?php }
 
-                        else{ ?>
-                        <a  data-toggle="modal" data-target="#myModal" style="width:auto;" style="text-decoration:none;">
+                        else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
+                        <a   data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
                             <img src="imagens\login.png" alt="Login Icon" class="IconHeader"></img>
                             <p class="hyperlink">ENTRAR</p> 
                         </a>
@@ -187,7 +187,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </th>
 
                 <th>
-                    <a  href="" style="text-decoration:none;">
+                    <a  href="chat/index.php" style="text-decoration:none;">
                             <img src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
                             <p class="hyperlink">CHAT</p> 
                     </a>
@@ -257,17 +257,18 @@ for ($i = 0; $i < count($weatherData);$i++){
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
+                    
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="modal-content animate" action="authenticate.php" method="POST">
+                        <form class="modal-content animate" action="chat/login.php" method="POST">
                                 <div class="container">
                                     <label for="emailLogin"><b>Email</b></label>
-                                        <input type="text" placeholder="Inserir Email" name="emailLogin" required>
+                                        <input type="text" placeholder="Inserir Email" name="email" required>
 
                                     <label for="pswLogin"><b>Palavra-Passe</b></label>
-                                        <input type="password" placeholder="Inserir Palavra-passe" name="pswLogin" required>
+                                        <input type="password" placeholder="Inserir Palavra-passe" name="password" required>
 
-                                    <button type="submit">Entrar</button>
+                                    <button type="submit" name ="login" value ="Login">Entrar</button>
                                     <label>
                                         <input type="checkbox" checked="checked" name="remember"> Lembrar-me
                                     </label>

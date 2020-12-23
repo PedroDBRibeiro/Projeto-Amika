@@ -33,7 +33,7 @@ if( $_POST['psw'] !== $_POST['pswConfirm']){
     exit('Passwords nao correspondem');
 }
 
-if ($stmt = $mysqli->prepare('SELECT id_user, password FROM utilizadores WHERE email = ?')) {
+if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE email = ?')) {
 	$stmt->bind_param('s', $_POST['email']);
 	$stmt->execute();
 	$stmt->store_result();
