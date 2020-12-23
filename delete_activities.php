@@ -3,7 +3,7 @@
 
 if(isset($_POST["id"])) 
 {
- $connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
+ $connect = new PDO('mysql:host=localhost;dbname=amika', 'root', '');
  $query = "
  DELETE from atividades WHERE ID_ATIVIDADE=:id
  ";
