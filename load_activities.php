@@ -2,7 +2,7 @@
 
 //load_activities.php
 
-$connect = new PDO('mysql:host=localhost;dbname=amika', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
 
 $data = array();
 

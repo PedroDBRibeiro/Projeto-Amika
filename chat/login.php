@@ -50,13 +50,15 @@ if(isset($_POST["login"]))
       }
       else
       {
-       $message = "<label>Wrong Password</label>";
+        // POR MENSAGEM A DIZER QUE A PASS ESTA ERRADA
+       //$message = "<label>Wrong Password</label>";
       }
     }
  }
  else
  {
-  $message = "<label>Wrong Email</label>";
+  // POR MENSAGEM A DIZER QUE O MAIL ESTA ERRADA
+  //$message = "<label>Wrong Email</label>";
  }
 }
 

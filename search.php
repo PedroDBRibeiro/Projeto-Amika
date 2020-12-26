@@ -1,12 +1,14 @@
-<html>
+
 
 <?php
 
+session_start();
 include "config.php";
-include "header.php";
+include('header.php');
 
 ?>
 
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
