@@ -1,8 +1,6 @@
 <?php
 
-//load_activities.php
-
-$connect = new PDO('mysql:host=localhost;dbname=amik@', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=amika', 'root', '');
 
 $data = array();
 
