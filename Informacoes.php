@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+include('header.php');
+
+?>
+
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
@@ -8,47 +16,7 @@
 
     <body>
 
-  <header> 
-
-    <table class="tabelaHeader" >
-
-      <tr> 
-          <th >
-              
-              <a  href="Profile.php" style="text-decoration:none;"> 
-                  <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
-                  <p class="hyperlink">PERFIL</p> 
-              </a>
-              
-          </th>
-
-          <th>
-              <img src="Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
-          </th>
-
-          <th>
-              <a  href="homepage.php" style="text-decoration:none;"> 
-                  <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
-                  <p class="hyperlink">MENU</p> 
-              </a>
-          </th>
-
-          <th>
-              <a  data-toggle="modal" data-target="#myModal" style="width:auto;" style="text-decoration:none;">
-                  <img src="imagens\login.png" alt="Login Icon" class="IconHeader"></img>
-                  <p class="hyperlink">ENTRAR</p> 
-              </a>
-
-              <a  href="" style="text-decoration:none;">
-                  <img src="imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
-                  <p class="hyperlink">SAIR</p> 
-              </a>
-          </th>
-
-      </tr>
-
-    </table>
-  </header>
+  
 
 
         <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center" >

@@ -16,20 +16,94 @@ if(!isset($_SESSION['user_id']))
     <head>  
          
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>  
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="../CSS/Amik@.css">
+  
+
+    </head> 
+    
+    <header>
+
+<table class="tabelaHeader" >
+
+    <tr>
+        <th >
+
+    <?php 
+       if(isset($_SESSION['loggedin'])){
+?> 
+            <a  href="../Profile.php" style="text-decoration:none;"> 
+                <img src="../imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
+                <p class="hyperlink">PERFIL</p> 
+            </a>
+            
+            <?php }
+        else{ ?>
+       
+       
+    <?php 
+        }       
+        ?>
+
+        </th>
+
+        <th>
+            <a href="../Homepage.php">
+            <img src="../Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
+            </a>
+        </th>
+
+        <th>
+        
+       <!-- <a  href="homepage.php" style="text-decoration:none;"> 
+            <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
+            <p class="hyperlink">MENU</p> 
+        </a>
+        -->                     
+        </th>
+
+        <th>
+            <?php 
+                if(isset($_SESSION['loggedin'])){
+            ?> 
+                        <a  href="logout.php" style="text-decoration:none;">
+                            <img src="../imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
+                            <p class="hyperlink">SAIR</p> 
+                        </a>
+            <?php }
+
+            else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
+            <a   data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
+                <img src="../imagens\login.png" alt="Login Icon" class="IconHeader"></img>
+                <p class="hyperlink">ENTRAR</p> 
+            </a>
+            <?php 
+                } 
+            ?>                      
+        </th>
+
+    </tr>
+
+</table>
+
+</header>
+
     <body>  
         <div class="container">
    <br />
-   
-   <h3 align="center">Chat</a></h3><br />
+
+   <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center" >
+            <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
+                Chat
+            </h1>
+        </div>
    <br />
    
-   <div class="table-responsive">
-    <h4 align="center">Utilizadores online</h4>
-    <p align="right">Olá - <?php echo $_SESSION['nome'];  ?>!  </p>
+   <div class="table-responsive"><br>
+     <h3 align="center">Utilizadores</h3>
+    <p align="right">Olá - <?php echo $_SESSION['nome'];  ?> !  </p>
     <div id="user_details"></div>
     <div id="user_model_details"></div>
    </div>

@@ -1,5 +1,7 @@
 <?php
+
 include('config.php');
+
 session_start();
 
 /*if(isset($_GET['erro'])) {
@@ -35,12 +37,10 @@ if ('true' === $_GET['erro']) {
 
     <body onload="diaSemana()">
 
-        <header>
-
+    <header>
             <table class="tabelaHeader" >
-
                 <tr>
-                    <th >
+                    <th>
 
                 <?php 
                    if(isset($_SESSION['loggedin'])){
@@ -49,21 +49,17 @@ if ('true' === $_GET['erro']) {
                             <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                             <p class="hyperlink">PERFIL</p> 
                         </a>
-                        
                         <?php }
-                    else{ ?>
-                   
-                   
+                    else{ ?>                                  
                 <?php 
                     }       
                     ?>
-
                     </th>
-
                     <th>
+                        <a href="Homepage.php">
                         <img src="Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
+                        </a>
                     </th>
-
                     <th>
                     
                    <!-- <a  href="homepage.php" style="text-decoration:none;"> 
@@ -72,7 +68,6 @@ if ('true' === $_GET['erro']) {
                     </a>
                     -->                     
                     </th>
-
                     <th>
                         <?php 
                             if(isset($_SESSION['loggedin'])){
@@ -92,12 +87,11 @@ if ('true' === $_GET['erro']) {
                             } 
                         ?>                      
                     </th>
-
                 </tr>
-
             </table>
-
         </header>
+
+        
 <!-- API TEMPO -->
 
 <?php
@@ -194,7 +188,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </th>
                     
                 <th>
-                    <a  href="" style="text-decoration:none;">
+                    <a  href="search.php" style="text-decoration:none;">
                         <img src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
                         <p class="hyperlink">PESQUISAR</p> 
                     </a>

@@ -1,7 +1,9 @@
 <html>
 
 <?php
+
 include "config.php";
+include "header.php";
 
 ?>
 
@@ -23,49 +25,6 @@ include "config.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 </head>
-
-<header>
-
-    <table class="tabelaHeader">
-
-        <tr>
-            <th>
-
-                <a href="Profile.php" style="text-decoration:none;">
-                    <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
-                    <p class="hyperlink">PERFIL</p>
-                </a>
-
-            </th>
-
-            <th>
-                <img src="Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
-            </th>
-
-            <th>
-                <a href="" style="text-decoration:none;">
-                    <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
-                    <p class="hyperlink">MENU</p>
-                </a>
-            </th>
-
-            <th>
-                <a data-toggle="modal" data-target="#myModal" style="width:auto;" style="text-decoration:none;">
-                    <img src="imagens\login.png" alt="Login Icon" class="IconHeader"></img>
-                    <p class="hyperlink">ENTRAR</p>
-                </a>
-
-                <a href="" style="text-decoration:none;">
-                    <img src="imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
-                    <p class="hyperlink">SAIR</p>
-                </a>
-            </th>
-
-        </tr>
-
-    </table>
-
-</header>
 
 <body>
     <style>
