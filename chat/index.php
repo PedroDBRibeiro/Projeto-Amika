@@ -68,7 +68,7 @@ if(!isset($_SESSION['user_id']))
             <?php 
                 if(isset($_SESSION['loggedin'])){
             ?> 
-                        <a  href="logout.php" style="text-decoration:none;">
+                        <a  href="../logout.php" style="text-decoration:none;">
                             <img src="../imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
                             <p class="hyperlink">SAIR</p> 
                         </a>
