@@ -10,6 +10,19 @@ if ('true' === $_GET['erro']) {
             }
         }
     */
+
+    if (isset($_GET["msg"]) && $_GET["msg"] == 'failedPass') {
+        echo '<script language="javascript">';
+        echo 'alert("Wrong Password")';
+        echo '</script>';
+        }
+        
+    if (isset($_GET["msg"]) && $_GET["msg"] == 'failedEmail') {
+        echo '<script language="javascript">';
+        echo 'alert("Wrong Email")';
+        echo '</script>';
+        }
+
 ?>
 
 <!DOCTYPE html>
@@ -251,11 +264,12 @@ for ($i = 0; $i < count($weatherData);$i++){
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
+               
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="modal-content animate" action="chat/login.php" method="POST">
-                                <div class="container">
+                        <form class="modal-content animate" action ="chat/login.php" method="POST">
+                                <div class="container"> 
                                     <label for="emailLogin"><b>Email</b></label>
                                         <input type="text" placeholder="Inserir Email" name="email" required>
 
@@ -278,6 +292,10 @@ for ($i = 0; $i < count($weatherData);$i++){
             </div>
         </div>
         
+        
+
+
+
 
     </body>
 </html>
