@@ -51,14 +51,16 @@ if(isset($_POST["login"]))
       else
       {
         // POR MENSAGEM A DIZER QUE A PASS ESTA ERRADA
-       //$message = "<label>Wrong Password</label>";
+        header("location:../Homepage.php?msg=failedPass");
+       
       }
     }
  }
  else
  {
   // POR MENSAGEM A DIZER QUE O MAIL ESTA ERRADA
-  //$message = "<label>Wrong Email</label>";
+  header("location:../Homepage.php?msg=failedEmail");
+  
  }
 }
 
