@@ -56,8 +56,9 @@ include('header.php');
     <div>
         <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
             Nesta página podes encontrar outros utilizadores com quem poderás fazer atividades!
-            Para isso, introduz a tua localização e os teus hobbies favoritos.
+           <br> Para isso, introduz a tua localização e os teus hobbies favoritos.
         </p>
+        
     </div>
 
 
