@@ -19,7 +19,7 @@ $result = $statement->fetchAll();
 
 $output = '
 <table class="table table-bordered table-striped">
- <tr>
+ <tr align="center">
   <th>Nome</th>
   <th>Estado</th>
   <th>Ação</th>
@@ -34,17 +34,17 @@ foreach($result as $row)
  $user_last_activity = fetch_user_last_activity($row['user_id'], $connect);
  if($user_last_activity > $current_timestamp)
  {
-  $status = '<span class="label label-success">Online</span>';
+  $status = '<span class="badge badge-success">Online</span>';
  }
  else
  {
-  $status = '<span class="label label-danger">Offline</span>';
+  $status = '<span class="badge badge-danger">Offline</span>';
  }
  $output .= '
  <tr>
-  <td>'.$row['nome'].' '.count_unseen_message($row['user_id'], $_SESSION['user_id'], $connect).'</td>
-  <td>'.$status.'</td>
-  <td><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['user_id'].'" data-tonome="'.$row['nome'].'">Enviar mensagem</button></td>
+  <td align="center">'.$row['nome'].' <span class = "badge badge-success">'.count_unseen_message($row['user_id'], $_SESSION['user_id'], $connect).'</span></td>
+  <td align="center">'.$status.'</td>
+  <td align="center"><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['user_id'].'" data-tonome="'.$row['nome'].'">Enviar mensagem</button></td>
  </tr>
  ';
 }
