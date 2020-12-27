@@ -1,5 +1,3 @@
-
-
 <?php
 
 session_start();
@@ -9,6 +7,7 @@ include('header.php');
 ?>
 
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +29,8 @@ include('header.php');
 
 <body>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
         .center {
             display: block;
             margin-left: auto;

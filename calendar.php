@@ -12,7 +12,7 @@ include "config.php";
 <head>
     <title>Agenda</title>
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@ include "config.php";
     <link rel="stylesheet" href="CSS/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
-  
+
     <script>
         $(document).ready(function() {
             var calendar = $('#calendar').fullCalendar({
@@ -168,13 +168,21 @@ include "config.php";
 
 </head>
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+</style>
+
 <body>
-  
+
     <!-- CALENDÁRIO-->
     <br />
 
     <div class="container">
-        <h2 align="center"><a href="#">Agenda</a></h2>
+        <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
+            <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
+                Agenda
+            </h1>
+        </div>
         <br />
 
         <?php

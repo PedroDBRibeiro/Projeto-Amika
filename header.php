@@ -6,7 +6,7 @@
                 <?php 
                    if(isset($_SESSION['loggedin'])){
          ?> 
-                        <a  href="Profile.php" style="text-decoration:none;"> 
+                        <a  href="myprofile.php" style="text-decoration:none;"> 
                             <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                             <p class="hyperlink">PERFIL</p> 
                         </a>
