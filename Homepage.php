@@ -48,7 +48,7 @@ if ('true' === $_GET['erro']) {
 
     </head>
 
-    <body onload="diaSemana()">
+    <body onload="diaSemana()" >
 
     <header>
             <table class="tabelaHeader" >

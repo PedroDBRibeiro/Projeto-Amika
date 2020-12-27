@@ -3,7 +3,7 @@ include "config.php";
 
 $search_results = [];
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit1'])) {
   //only get names of checked boxes on the dropdown menus that actually have checked boxes
   if (!empty($_POST['local'])) {
     $localizacao = $_POST['local'];
@@ -22,34 +22,34 @@ if (isset($_POST['submit'])) {
 
   if (isset($localizacao)) {
     if (isset($hobbies)) {
-      $sql = "SELECT u.id_user, u.nome, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
+      $sql = "SELECT u.user_id, u.nome, u.avatar, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
               FROM utilizadores as u, hobbies as h
-              WHERE u.id_user = h.id_user
+              WHERE u.user_id = h.user_id
               AND u.REGIAO = '$localizacao'
               AND ( h.hobbie IN ('$hobbies') )
-              GROUP BY u.id_user;";
+              GROUP BY u.user_id;";
     } else {
 
-      $sql = "SELECT u.id_user, u.nome, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
+      $sql = "SELECT u.user_id, u.nome, u.avatar, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
               FROM utilizadores as u, hobbies as h
-              WHERE u.id_user = h.id_user
+              WHERE u.user_id = h.user_id
               AND u.REGIAO = '$localizacao'
-              GROUP BY u.id_user;";
+              GROUP BY u.user_id;";
     }
   } else {
     if (isset($hobbies)) {
 
-      $sql = "SELECT u.id_user, u.nome, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
+      $sql = "SELECT u.user_id, u.nome, u.avatar, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
               FROM utilizadores as u, hobbies as h
-              WHERE u.id_user = h.id_user
+              WHERE u.user_id = h.user_id
               AND ( h.hobbie IN ('$hobbies') )
-              GROUP BY u.id_user;";
+              GROUP BY u.user_id;";
     } else {
 
-      $sql = "SELECT u.id_user, u.nome, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
+      $sql = "SELECT u.user_id, u.nome, u.avatar, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
               FROM utilizadores as u, hobbies as h
-              WHERE u.id_user = h.id_user
-              GROUP BY u.id_user;";
+              WHERE u.user_id = h.user_id
+              GROUP BY u.user_id;";
     }
   } 
 
@@ -68,4 +68,6 @@ if (isset($_POST['submit'])) {
     echo "Não há ninguém com esta localização e hobbies :(";
   }
 } 
+
+ 
 
