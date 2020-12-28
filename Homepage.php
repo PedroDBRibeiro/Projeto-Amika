@@ -58,7 +58,7 @@ if ('true' === $_GET['erro']) {
                 <?php 
                    if(isset($_SESSION['loggedin'])){
          ?> 
-                        <a  href="myprofile.php" style="text-decoration:none;"> 
+                        <a href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
                             <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                             <p class="hyperlink">PERFIL</p> 
                         </a>
@@ -128,7 +128,7 @@ for ($i = 0; $i < count($weatherData);$i++){
 
 <!--CARTÃO TEMPO-->
 
-<!--FIM CARTÃO TEMPO-->
+
   
         <table class="tabelaBody">
             <tr>
@@ -205,9 +205,10 @@ for ($i = 0; $i < count($weatherData);$i++){
             </tr>
         </table>
  
-        
-    <div class="padding" style="width:1000px;" >        
-            <div class="col-lg-8 grid-margin stretch-card">
+     <!--CARTÃO TEMPO-->   
+    <div align ="center" >
+    <div class="padding" style="width:1000px;">        
+            <div class="col-lg-8 grid-margin stretch-card" style="text-align:left">
                 <div class="card card-weather">
                     <div class="card-body">
                         <div class="weather-date-location">
@@ -250,7 +251,8 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </div>
             </div>       
         </div>
-
+    </div>
+<!--FIM CARTÃO TEMPO-->
 
     
 

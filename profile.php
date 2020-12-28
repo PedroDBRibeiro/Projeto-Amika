@@ -21,6 +21,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $jadi= $row["jadi"];
     $deficiencia= $row["deficiencia"];
     $avatar = base64_encode($row['avatar']);
+    $email = $row['email'];
 }
 
 
@@ -46,6 +47,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
   <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
   <link rel="stylesheet" type="text/css" href="CSS/profile.css">
+  <link rel="stylesheet" type="text/css" href="CSS/searchCard.css">
   <link href="CSS/myprofile.css" rel="stylesheet">
 
   <style>
@@ -55,10 +57,12 @@ while ($row = mysqli_fetch_assoc($result)) {
 </head>
 
 <body>
-  <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
+    <div align ="center" style="margin-top:50px;">
+  <div style="background: linear-gradient(#ffff00,#ffd769);display: inline-block; border-radius: 25px; padding: 15px;" >
     <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
       Perfil de <?php echo $nome ?>
     </h1>
+    </div>
   </div>
 
   <br>
@@ -71,7 +75,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile" style="margin:auto;">
                             <div class="card-block text-center text-white" style="height:400px;">
-                                <div class="panel-body text-center"> <img <?php echo 'src="data:image/jpeg;base64,' .$avatar. '"' ?> class="img-circle profile-avatar" alt="User-Profile-Image"> </div>
+                                <div class="panel-body text-center"> <img  <?php echo 'src="data:image/jpeg;base64,' .$avatar. '"' ?> class="img-circle profile-avatar" alt="User-Profile-Image"> </div>
                                 <br><h4 class="f-w-600" ><?php echo $nome?></h4>
                                 <h5><?php if ($jadi == 0) echo "Voluntário"; else echo "Jadi";?></h5> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                             </div>
@@ -89,19 +93,27 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         <h5 class="text-muted f-w-400"><?php echo $regiao?></h5>
                                     </div>
                                     </div>
+                                    <br><div class="row">
                                     <?php if ($jadi == 1) { ?>
-                                        <br><div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Deficiência</h5>
                                         <h5 class="text-muted f-w-400"><?php echo $deficiencia;?></h5>
                                     </div>
                                     <?php } ?>
+                                    <?php if ($user_id == $_SESSION['user_id']) { ?>
+                                    <br>
+                                    <div class="col-sm-6">
+                                        <h5 class="m-b-10 f-w-600">Email</h5>
+                                        <h5 class="text-muted f-w-400"><?php echo $email?></h5>
+                                    </div>
+                                    </div>
+                                    <br><br><div class="row" style="float:right">
+                                    <div class="col-sm-6" >
+                                        <a href="myprofile.php" class="btn search-btn btn-rounded btn-sm my-0" style="color:white;">Editar Perfil</a>
+                                    </div>
+                                    </div>
+                                    <?php } ?>
                                 </div>
-                                <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
