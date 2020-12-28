@@ -57,27 +57,33 @@ include('header.php');
     <div>
         <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
             Nesta página podes encontrar outros utilizadores com quem poderás fazer atividades!
-            Para isso, introduz a tua localização e os teus hobbies favoritos.
+            <br> Para isso, introduz a tua localização e os teus hobbies favoritos.
         </p>
+
     </div>
 
 
     <div class="center" class="bg-primary" style="height:225px; border-radius:10px;background: linear-gradient(#e8e6e6,#dbd9d9)">
         <form id="search1" method="post" action="search.php">
             <div style="float:right;padding:10px;padding-right:80px;margin-top:40px;">
+
+                <?php
+                $query = "SELECT DISTINCT hobbie FROM hobbies;";
+                $result = mysqli_query($mysqli, $query);
+
+                while ($found = mysqli_fetch_assoc($result)) {
+                    $hobbies[] = $found;
+                }
+
+                ?>
+
                 <label class="text-primary">Hobbies</label><br>
                 <select name="hob[]" class="selectpicker" multiple="multiple" title="Escolhe 1 ou mais opções">
-                    <option value="Praia">Praia</option>
-                    <option value="Passear">Passear</option>
-                    <option value="Futebol">Futebol</option>
-                    <option value="Desporto">Desporto</option>
-                    <option value="Series/Filmes">Series/Filmes</option>
-                    <option value="Fotografia">Fotografia</option>
-                    <option value="Andar de bicicleta">Andar de bicicleta</option>
-                    <option value="Ler">Ler</option>
-                    <option value="Cozinhar">Cozinhar</option>
-                    <option value="Compras">Compras</option>
-                    <option value="Puzzles">Puzzles</option>
+                    <?php foreach ($hobbies as $hobbie) : ?>
+                        <option value="<?php echo $hobbie['hobbie'] ?>">
+                            <?php echo $hobbie['hobbie'] ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -109,11 +115,15 @@ include('header.php');
     
     if (isset($_POST['submit1'])) {?>
 
-    <div style="background: linear-gradient(#ffff00,#ffd769); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
-        <h3 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 32px; ">
-           Resultados
-        </h3>
-    </div>
+        <div style="background: linear-gradient(#ffff00,#ffd769); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
+            <h3 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 32px; ">
+                Resultados
+            </h3>
+        </div>
+
+        <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+            <?php if(isset($no_results)) echo $no_results; ?>
+        </p>
 
     <?php } include("location&hobbies.php"); ?>
     <br><br>
@@ -132,11 +142,14 @@ include('header.php');
                                             <div style="padding: 10px;"><a href="profile.php?search_result=<?php echo $search_result['user_id']; ?>" class="btn search-btn btn-rounded btn-sm my-0" style="display:block;margin:auto;color:white;">Ver Perfil</a></div>
                                     </div>
                                 </div>
-                            </td>       
-                        <?php endforeach; ?>
-                    </div>
-                </tr>
-            </table> 
+                                <div style="padding: 10px;"><a href="" class="btn btn-primary" style="display:block;margin:auto;">Ver Perfil</a></div>
+                            </div>
+                        </div>
+                    </td>
+                <?php endforeach; ?>
+            </div>
+        </tr>
+    </table>
 
             
 </body>

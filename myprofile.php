@@ -56,14 +56,27 @@ if ($resultCheck == 1) {
 </head>
 
 <body>
+  <?php
+  if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+  }
+
+  if (isset($_SESSION['msg_pass'])) {
+    echo $_SESSION['msg_pass'];
+    unset($_SESSION['msg_pass']);
+  }
+  ?>
+
   <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
     <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
       O meu perfil
     </h1>
   </div>
+
   <br />
 
-  <br>
+
   <br>
   <div class=form-box>
     <div class="container">
@@ -72,76 +85,137 @@ if ($resultCheck == 1) {
           <div class="panel panel-default">
             <br>
             <div class="panel-body text-center">
-              <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($user['avatar']) . '"' ?> class="img-circle profile-avatar" alt="User avatar">
+              <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($user['avatar']) . '"' ?> class="rounded-circle profile-avatar" alt="User avatar">
             </div>
           </div>
           <br>
-          <iframe name="content" style="display:none;"></iframe>
-          <form id="editprofile" method="post" action="myprofileaction.php" target="content">
+
+          <form id="editprofile" method="post" action="myprofileaction.php" enctype="multipart/form-data">
             <div class="panel panel-default">
               <div class="panel-body">
+
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Região</label>
-                  <div class="col-sm-10">
+                  <label class="col-sm-6 control-label">Nova foto de perfil:</label>
+                  <div class="col-sm-12">
+                    <input type="file" name="avatar">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-6 control-label">Região:</label>
+
+                  <?php
+                  $regiao = $user['regiao'];
+
+                  $regioes = array('Barlavento', 'Centro', 'Sotavento');
+                  $outras_regioes = array_diff($regioes, array($regiao));
+                  ?>
+
+                  <div class="col-sm-12">
                     <select class="form-control" name="location">
-                      <option selected="">Select country</option>
-                      <option value="Barlavento">Barlavento</option>
-                      <option value="Centro">Centro</option>
-                      <option value="Sotavento">Sotavento</option>
+                      <option selected=""><?php echo $regiao; ?></option>
+                      <?php foreach ($outras_regioes as $or) : ?>
+                        <option value="<?php echo $or ?>">
+                          <?php echo $or ?>
+                        </option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Name</label>
-                  <div class="col-sm-10">
+                  <label class="col-sm-6 control-label">Nome:</label>
+                  <div class="col-sm-12">
                     <input type="text" name="username" value=<?php echo $user['nome'] ?> class="form-control">
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Age</label>
-                  <div class="col-sm-10">
+                  <label class="col-sm-6 control-label">Idade:</label>
+                  <div class="col-sm-12">
                     <input type="number" name="age" value=<?php echo $user['idade'] ?> class="form-control">
                   </div>
                 </div>
+
                 <div class="form-group">
-                  <label class="col-sm-6 control-label">E-mail address</label>
-                  <div class="col-sm-10">
+                  <label class="col-sm-6 control-label">E-mail:</label>
+                  <div class="col-sm-12">
                     <input type="email" name="email" value=<?php echo $user['email'] ?> class="form-control">
                   </div>
                 </div>
-              </div>
-              <div class="panel-body">
+
+
+
                 <div class="form-group">
-                  <label class="col-sm-6 control-label">New password</label>
-                  <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control">
+
+                  <div class="col-sm-12">
+                    <button type="button" class="btn btn-alt-pass btn-warning">Alterar password</button>
                   </div>
                 </div>
-
-                <div class="col-sm-10 col-sm-offset-2">
-                  <button type="submit" class="btn btn-success" name="submit" onclick=success()>Submit</button>
-                  <button type="button" class="btn btn-danger" onclick=cancel()>Cancel</button>
-                </div>
               </div>
+
+              <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-success" id="submit" name="submit" form="editprofile">Guardar alterações</button>
+                <button type="button" class="btn btn-danger" onclick=cancel()>Cancelar</button>
+              </div>
+
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- POPUP MUDAR PASSWORD -->
+  <div class="modal fade" id="mudarPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title w-100">Muda a tua password aqui!</h4>
+        </div>
+        <div class="modal-body">
+          <form id="novaPass" method="POST" action="change_password.php">
+            <div class="form-row">
+              
+              <div class="form-group col-sm-10">
+                <label class="col-sm-6">Password antiga:</label>
+                <input type="password" name="pass_antiga" id="pass_antiga" class="form-control">
+              </div>
+
+              <div class="form-group col-sm-10">
+                <label class="col-sm-6">Password nova:</label>
+                <input type="password" name="pass_nova" id="pass_nova" class="form-control">
+              </div>
+
+            </div>
+            <button id="submit" name="submit" type="submit" form="novaPass" class="btn btn-success">Guardar alterações</button>
+            <button type="button" class="btn btn-danger" onclick=cancel2()>Cancelar</button>
+          </form>
+  
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function cancel() {
+      alert("Tens a certeza que queres sair?");
+      window.location.href = "Homepage.php";
+    }
+
+    function cancel2() {
+      window.location.href = "myprofile.php";
+    }
+
+    $('.btn-alt-pass').on("click", function() {
+      $('#mudarPass').modal('show');
+    });
+  </script>
+
 </body>
-
-<script>
-  function success() {
-    alert("You have successfully editted your profile! :)");
-    window.location.href = "Homepage.php";
-  }
-
-  function cancel() {
-    alert("Are you sure you want to leave?");
-    window.location.href = "Homepage.php";
-  }
-</script>
 
 </html>
