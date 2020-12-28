@@ -18,6 +18,7 @@ include('header.php');
 
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
     <link rel="stylesheet" type="text/css" href="CSS/Login.css">
+    <link rel="stylesheet" type="text/css" href="CSS/searchCard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -110,9 +111,9 @@ include('header.php');
 
     </div>
 
-    <?php include("location&hobbies.php");
-
-    if (isset($_POST['submit1'])) { ?>
+    <?php 
+    
+    if (isset($_POST['submit1'])) {?>
 
         <div style="background: linear-gradient(#ffff00,#ffd769); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
             <h3 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 32px; ">
@@ -124,19 +125,22 @@ include('header.php');
             <?php if(isset($no_results)) echo $no_results; ?>
         </p>
 
-    <?php } ?>
+    <?php } include("location&hobbies.php"); ?>
     <br><br>
     <table style=" margin:auto;">
         <tr>
             <div>
                 <?php foreach ($search_results as $search_result) : ?>
                     <td>
-                        <div class="col-sm-6 col-md-4 col-xs-12 py-2">
-                            <div class="card card-body mx-2 mb-3" style="width: 22rem; height: 28rem; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%); border-radius:10px; border: 1px #fbd72b;">
-                                <img class="card-img-top" style="width: 18rem; height: 12rem; border-radius:10px; display:block; margin:auto;" alt="Card image" <?php echo 'src="data:image/jpeg;base64,' . base64_encode($search_result['avatar']) . '"' ?>>
-                                <div class="card-body">
-                                    <h4 class="card-title"><?php echo "<b>" . $search_result['nome'] . "</b>" ?></h4>
-                                    <p class="card-text"><?php echo "<b>Hobbies em comum: </b>" . $search_result['allhobbies'] . "<br><br><b>Localização: </b>" . $search_result['REGIAO']; ?></p>
+                        <div class="col-sm-6 col-md-4 col-xs-12 py-2" >
+                                <div class="card  mx-2 mb-3" style="width: 18rem;">
+                                    <img class="card-img-top"  alt="Card image"<?php echo 'src="data:image/jpeg;base64,' . base64_encode($search_result['avatar']) . '"' ?>>
+                                        <div class="card-body">
+                                            <h4 class="card-title" ><?php echo "<b>".$search_result['nome']."</b>"?></h4>
+                                            <p class="card-text"><?php echo "<b>Hobbies em comum: </b>".$search_result['allhobbies']. "<br><br><b>Localização: </b>" . $search_result['REGIAO']; ?></p>
+                                        </div>
+                                            <div style="padding: 10px;"><a href="profile.php?search_result=<?php echo $search_result['user_id']; ?>" class="btn search-btn btn-rounded btn-sm my-0" style="display:block;margin:auto;color:white;">Ver Perfil</a></div>
+                                    </div>
                                 </div>
                                 <div style="padding: 10px;"><a href="" class="btn btn-primary" style="display:block;margin:auto;">Ver Perfil</a></div>
                             </div>
@@ -147,7 +151,7 @@ include('header.php');
         </tr>
     </table>
 
-
+            
 </body>
 
 </html>
