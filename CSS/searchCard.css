@@ -1,0 +1,30 @@
+
+    
+.search-btn {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 5px rgba(238, 238, 238, 0.747);
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
+  }            
+
+  .search-btn:hover {
+    background-position: right center;
+  }
+
+   .card{
+    box-shadow: 0 2px 20px 0 rgba(110,130,208, .18);
+  }
+
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+  

@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
 body{
-    background-color: #f3f3f3;
+    background-color: #d5fefd;
+background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
 }
 
 header{
@@ -223,6 +224,7 @@ p {
     font-size: 1.2rem;
     
 }
-    
-            
-       
+ 
+  
+  
+  

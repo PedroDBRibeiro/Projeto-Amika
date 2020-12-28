@@ -38,6 +38,7 @@ if(isset($_POST["login"]))
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['nome'] = $row['nome'];
+        $_SESSION['jadi'] = $row['jadi'];
         $sub_query = "
         INSERT INTO login_details 
         (user_id) 
