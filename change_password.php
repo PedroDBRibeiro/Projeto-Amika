@@ -8,7 +8,7 @@ include "config.php";
 
 $user_id = $_SESSION['user_id'];
 
-$user_query = "SELECT * FROM utilizadores WHERE user_id = '$user_id';";
+$user_query = "SELECT password FROM utilizadores WHERE user_id = '$user_id';";
 $result = mysqli_query($mysqli, $user_query);
 $resultCheck = mysqli_num_rows($result);
 
@@ -31,9 +31,8 @@ if (isset($_POST['submit'])) {
         $pass_hashed = password_hash($pass_nova, PASSWORD_DEFAULT);
 
         $sql = "UPDATE utilizadores
-                SET password= '$pass_hashed',
-                WHERE user_id='$user_id';";
-
+                SET `password` = '$pass_hashed'
+                WHERE `user_id` = '$user_id';";
 
         mysqli_query($mysqli, $sql);
 

@@ -121,7 +121,7 @@ include('header.php');
         </div>
 
         <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
-            <?php echo $no_results ?>
+            <?php if(isset($no_results)) echo $no_results; ?>
         </p>
 
     <?php } ?>
