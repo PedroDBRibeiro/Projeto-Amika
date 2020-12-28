@@ -147,16 +147,16 @@ if ($resultCheck == 1) {
 
 
                 <div class="form-group">
-
-                  <div class="col-sm-12">
-                    <button type="button" class="btn btn-alt-pass btn-warning">Alterar password</button>
+                  <div class="col-sm-12 text-center">
+                  <button type="submit" class="btn btn-success" id="submit" name="submit" form="editprofile">Guardar alterações</button>
+                <button type="button" class="btn btn-danger" onclick=cancel()>Cancelar</button>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm-10 col-sm-offset-2">
-                <button type="submit" class="btn btn-success" id="submit" name="submit" form="editprofile">Guardar alterações</button>
-                <button type="button" class="btn btn-danger" onclick=cancel()>Cancelar</button>
+              <div class="col-sm-12 col-sm-offset-2 text-center">
+               <br>
+                <button type="button" class="btn btn-alt-pass btn-warning">Alterar password</button>
               </div>
 
             </div>
@@ -179,7 +179,7 @@ if ($resultCheck == 1) {
         <div class="modal-body">
           <form id="novaPass" method="POST" action="change_password.php">
             <div class="form-row">
-              
+
               <div class="form-group col-sm-10">
                 <label class="col-sm-6">Password antiga:</label>
                 <input type="password" name="pass_antiga" id="pass_antiga" class="form-control">
@@ -194,7 +194,7 @@ if ($resultCheck == 1) {
             <button id="submit" name="submit" type="submit" form="novaPass" class="btn btn-success">Guardar alterações</button>
             <button type="button" class="btn btn-danger" onclick=cancel2()>Cancelar</button>
           </form>
-  
+
         </div>
 
       </div>

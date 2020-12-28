@@ -21,14 +21,7 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $age = $_POST['age'];
   $email = $_POST['email'];
-  //$password = $_POST['password'];
-
-
-  //se não houver nova password, fica a antiga
-  /*if (empty($password)) {
-    $password = $user['password'];
-    
-  }*/
+  
 
   if (!empty($_FILES["avatar"]["tmp_name"])) {
     //flag que indica se a imagem pode ser carregada ou não
@@ -45,9 +38,9 @@ if (isset($_POST['submit'])) {
     }
 
     //ver se o tamanho da imagem é suportado
-    /*if ($_FILES["avatar"]["size"] > 4294967295) {
+    if ($_FILES["avatar"]["size"] > 4294967295) {
      $uploadOk = 0;
-   }*/
+   }
 
     //se a imagem estiver ok, atualizar na bd
     if ($uploadOk == 1) {
@@ -75,7 +68,7 @@ if (isset($_POST['submit'])) {
         header("Location: myprofile.php");
       }
     } else {
-      $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>A imagem não presta!
+      $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>A imagem não é suportada.
      <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
      <span aria-hidden='true'>&times;</span></button></div>";
       header("Location: myprofile.php");
