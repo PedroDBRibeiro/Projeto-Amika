@@ -65,7 +65,7 @@ if (isset($_POST['submit1'])) {
   }
     //if not, show a message saying that no results were found
   } else {
-    echo "Não há ninguém com esta localização e hobbies :(";
+    $no_results = "Não há ninguém com esta localização e hobbies :(";
   }
 } 
 
