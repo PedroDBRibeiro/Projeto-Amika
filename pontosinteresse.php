@@ -56,7 +56,7 @@ include "header.php";
                             <option type="button" value="Albufeira">Albufeira</option>
                             <option type="button" value="Lagoa">Lagoa</option>
                             <option type="button" value="Vilamoura">Vilamoura</option>
-                            <option type="button" value="Portimao">Portim&atildeo</option>
+                            <option type="button" value="Portimao">Portimão</option>
                             <option type="button" value="Tavira">Tavira</option>
                             <option type="button" value="Monte Gordo">Monte Gordo</option>
                             <option type="button" value="Loule">Loul&eacute</option>
