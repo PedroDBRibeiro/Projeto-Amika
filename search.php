@@ -72,14 +72,14 @@ include('header.php');
                 $result = mysqli_query($mysqli, $query);
 
                 while ($found = mysqli_fetch_assoc($result)) {
-                    $hobbies[] = $found;
+                    $hobbies_selected[] = $found;
                 }
 
                 ?>
 
                 <label class="text-primary">Hobbies</label><br>
                 <select name="hob[]" class="selectpicker" multiple="multiple" title="Escolhe 1 ou mais opções">
-                    <?php foreach ($hobbies as $hobbie) : ?>
+                    <?php foreach ($hobbies_selected as $hobbie) : ?>
                         <option value="<?php echo $hobbie['hobbie'] ?>">
                             <?php echo $hobbie['hobbie'] ?>
                         </option>
@@ -142,7 +142,7 @@ include('header.php');
                                             <div style="padding: 10px;"><a href="profile.php?search_result=<?php echo $search_result['user_id']; ?>" class="btn search-btn btn-rounded btn-sm my-0" style="display:block;margin:auto;color:white;">Ver Perfil</a></div>
                                     </div>
                                 </div>
-                                <div style="padding: 10px;"><a href="" class="btn btn-primary" style="display:block;margin:auto;">Ver Perfil</a></div>
+                                
                             </div>
                         </div>
                     </td>

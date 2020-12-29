@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
                 <?php
                 if (isset($_SESSION['loggedin'])) {
                 ?>
-                    <a href="../myprofile.php" style="text-decoration:none;">
+                    <a href="../profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;">
                         <img src="../imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
                         <p class="hyperlink">PERFIL</p>
                     </a>
