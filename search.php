@@ -64,7 +64,7 @@ include('header.php');
 
 
     <div class="center" class="bg-primary" style="height:225px; border-radius:10px;background: linear-gradient(#e8e6e6,#dbd9d9)">
-        <form id="search1" method="post" action="search.php">
+        <form id="search" method="post" action="search.php">
             <div style="float:right;padding:10px;padding-right:80px;margin-top:40px;">
 
                 <?php
@@ -103,7 +103,7 @@ include('header.php');
             </div>
 
             <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <button type="submit" name="submit1" form="search1" value="Pesquisar" style="margin-top:15px;background: linear-gradient(#ffff00,#ffd769); color: #03036B">
+                <button type="submit" name="submit" form="search" value="Pesquisar" style="margin-top:15px;background: linear-gradient(#ffff00,#ffd769); color: #03036B">
                     Pesquisar</button>
             </div>
         </form>
@@ -113,7 +113,7 @@ include('header.php');
 
     <?php 
     
-    if (isset($_POST['submit1'])) {?>
+    if (isset($_POST['submit'])) {?>
 
         <div style="background: linear-gradient(#ffff00,#ffd769); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
             <h3 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 32px; ">

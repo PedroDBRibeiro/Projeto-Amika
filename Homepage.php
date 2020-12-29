@@ -207,7 +207,7 @@ for ($i = 0; $i < count($weatherData);$i++){
  
      <!--CARTÃO TEMPO-->   
     <div align ="center" >
-    <div class="padding" style="width:1000px;">        
+    <div class="padding" style="width:1500px;">        
             <div class="col-lg-8 grid-margin stretch-card" style="text-align:left">
                 <div class="card card-weather">
                     <div class="card-body">

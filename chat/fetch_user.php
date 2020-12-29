@@ -6,9 +6,12 @@ include('database_connection.php');
 
 session_start();
 
+$_SESSION['available'] = 0;
+
 $query = "
-SELECT * FROM utilizadores 
-WHERE user_id != '".$_SESSION['user_id']."' 
+SELECT u.user_id, u.nome FROM utilizadores u, matches m
+WHERE (m.id_user1 = '".$_SESSION['user_id']."' and m.id_user2 = u.user_id ) or 
+(m.id_user2 = '".$_SESSION['user_id']."' and m.id_user1 = u.user_id )  
 ";
 
 $statement = $connect->prepare($query);
@@ -16,6 +19,7 @@ $statement = $connect->prepare($query);
 $statement->execute();
 
 $result = $statement->fetchAll();
+
 
 $output = '
 <table class="table table-bordered table-striped">
@@ -51,6 +55,17 @@ foreach($result as $row)
 
 $output .= '</table>';
 
+if (sizeof($result) > 0){
+
 echo $output;
+
+$_SESSION['available'] = 1;
+
+}
+else {
+
+    echo '<h5 align="center">Oops..Ainda não tens amigos :(</h5>';
+
+}
 
 ?>
