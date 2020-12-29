@@ -2,7 +2,7 @@
 
 //database_connection.php
 
-$connect = new PDO("mysql:host=localhost;dbname=amika", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=amika;charset=utf8", "root", "");
 
 date_default_timezone_set('Europe/Lisbon');
 
