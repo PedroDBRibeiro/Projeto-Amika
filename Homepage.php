@@ -32,7 +32,7 @@ if ('true' === $_GET['erro']) {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Projeto Amik@</title>
-            <meta name="description" content="">
+            <meta name="description" content=""
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="">
 
@@ -125,15 +125,8 @@ for ($i = 0; $i < count($weatherData);$i++){
    }
 
 ?>
-
-<!--CARTÃO TEMPO-->
-
-
-  
         <table class="tabelaBody">
             <tr>
-                
-
                 <th>
                     <a  href="calendar.php" style="text-decoration:none;">
                         <img src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
@@ -206,7 +199,7 @@ for ($i = 0; $i < count($weatherData);$i++){
         </table>
  
      <!--CARTÃO TEMPO-->   
-    <div align ="center" >
+    <div class="container">
     <div class="padding" style="width:1500px;">        
             <div class="col-lg-8 grid-margin stretch-card" style="text-align:left">
                 <div class="card card-weather">

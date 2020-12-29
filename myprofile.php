@@ -68,11 +68,13 @@ if ($resultCheck == 1) {
   }
   ?>
 
-  <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
-    <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
-      O meu perfil
-    </h1>
-  </div>
+  <div align ="center" style="margin-top:50px;">
+        <div class="title-back" >
+            <h1 class = "title ">
+                O meu perfil
+            </h1>
+        </div>
+    </div>
 
   <br />
 

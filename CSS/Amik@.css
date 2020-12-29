@@ -102,6 +102,8 @@ background: linear-gradient(#ffff00,#ffd769);
     }
 }
 
+
+
 .padding {
     padding: 2rem;
     margin-left: 0.01rem;
@@ -226,6 +228,20 @@ p {
     
 }
  
-  
-  
+.title-back{
+
+    background: linear-gradient(#ffff00,#ffd769);
+    display: inline-block;
+    border-radius: 25px; 
+    padding: 15px;
+
+}
+
+.title{
+
+    font-family: 'Chewy'; 
+    text-align: center; 
+    color: #03036B; 
+    font-size: 48px;
+}
   

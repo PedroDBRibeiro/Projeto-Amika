@@ -3,8 +3,10 @@
 include "config.php";
 
 session_start();
-include('header.php');
-header('Content-Type: text/html; charset=ISO-8859-1');
+
+include "header.php";
+
+
 
 ?>
 
@@ -25,7 +27,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
     <body>
 
-       
+     
         <?php
 
 
@@ -40,6 +42,13 @@ header('Content-Type: text/html; charset=ISO-8859-1');
         $id_pontos[] = $id_ponto;
         }                               
         ?>
+        
+        <div>
+            <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+                Estes s&atildeo os s&iacutetios mais giros para visitar!
+            </p>
+        </div>
+
 
         <div class="container">
 	    <div class="row mt-5 justify-content-center">
@@ -51,7 +60,7 @@ header('Content-Type: text/html; charset=ISO-8859-1');
                         
                     <img class="card-img-top" <?php echo 'src="data:image/jpg;base64,'.base64_encode($id_ponto['imagem_path']).'"' ?>>
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $id_ponto['ponto']; ?></h5>
+                            <h5 class="card-title" style=" font-family: Arial, Helvetica, sans-serif;"><?php echo $id_ponto['ponto']; ?></h5>
                         </div>
                 </div>
             </div>

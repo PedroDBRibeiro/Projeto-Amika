@@ -62,13 +62,14 @@ include('make_friendship.php');
 </head>
 
 <body>
+
     <div align ="center" style="margin-top:50px;">
-  <div style="background: linear-gradient(#ffff00,#ffd769);display: inline-block; border-radius: 25px; padding: 15px;" >
-    <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
-      Perfil de <?php echo $nome ?>
-    </h1>
+        <div class="title-back" >
+            <h1 class = "title ">
+                Perfil de <?php echo $nome ?>
+            </h1>
+        </div>
     </div>
-  </div>
 
   <br>
   <br>
