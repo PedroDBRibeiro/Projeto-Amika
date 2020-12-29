@@ -104,8 +104,8 @@ if (!isset($_SESSION['user_id'])) {
         <br />
 
         <div class="table-responsive"><br>
-            <h3 align="center">Utilizadores</h3>
-            <p align="right">Olá - <?php echo $_SESSION['nome'];  ?> ! </p>
+            <h3 align="center"><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
+            <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
             <div id="user_details"></div>
             <div id="user_model_details"></div>
         </div>

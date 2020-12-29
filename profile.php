@@ -4,6 +4,7 @@ session_start();
 include('header.php');
 include('config.php');
 
+
 if (isset($_GET['search_result'])) {
     $user_id = $_GET['search_result'];
 
@@ -24,6 +25,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     $email = $row['email'];
 }
 
+$message = '';
+$amigos = '';
+
+include('make_friendship.php');
 
 ?>
 
@@ -112,6 +117,18 @@ while ($row = mysqli_fetch_assoc($result)) {
                                         <a href="myprofile.php" class="btn search-btn btn-rounded btn-sm my-0" style="color:white;">Editar Perfil</a>
                                     </div>
                                     </div>
+                                    <?php } else{ ?>
+                                        <br><br><div class="row" style="float:right">
+                                    <div class="col-sm-6">
+                                        <form   id="friendship" method="post">
+                                        <button type="submit" name="submit" form="friendship" value="Match" class="btn search-btn btn-rounded btn-sm my-0" style="color:white;">
+                                        <?php if($amigos == 0) echo 'Fazer amizade'; else echo 'Amigos';?> <img src="imagens/friendship.png"></button>
+                                        
+                                        <?php if (isset($_POST['submit'])){ ?>                                                                                                                       
+                                        </form>
+                                    </div>
+                                    </div>
+                                    <p style="margin-left:335px;"> <?php echo $message; }?></p>
                                     <?php } ?>
                                 </div>
                             </div>

@@ -5,7 +5,7 @@ $jadi = $_SESSION['jadi'];
 
 $search_results = [];
 
-if (isset($_POST['submit1'])) {
+if (isset($_POST['submit'])) {
   //only get names of checked boxes on the dropdown menus that actually have checked boxes
   if (!empty($_POST['local'])) {
     $localizacao = $_POST['local'];
@@ -67,7 +67,7 @@ if (isset($_POST['submit1'])) {
   }
     //if not, show a message saying that no results were found
   } else {
-    echo "<br><h5 align='center' >Não há ninguém com esta localização e hobbies :(</h5>";
+    $no_results = 'Não há ninguém com esta localização e hobbies :(';
   }
 } 
 
