@@ -142,7 +142,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </th>
 
                 <th> 
-                        <a  href="" style="text-decoration:none;">
+                        <a  href="forum.php" style="text-decoration:none;">
                             <img src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
                             <p class="hyperlink">FORUM</p> 
                         </a>
