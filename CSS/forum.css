@@ -8,12 +8,18 @@
   box-sizing: border-box;
 }
 
+.navbar{
+  
+  font-size: 16px;
+  
+  }
+
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 10px;
 }
 
-img {
+.post-img {
   width: 100%;
 }
 

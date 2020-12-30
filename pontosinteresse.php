@@ -3,7 +3,7 @@ include "config.php";
 
 session_start();
 
-include "header.php";
+include('newHeader.php');
 
 
 
@@ -65,7 +65,7 @@ include "header.php";
                     </select> 
                         </div><br>
                     <div style="width:100%;margin-left:auto;margin-right:auto;">
-                    <button type="submit" name="submit"  value="Pesquisar" style="margin-top:15px;background: linear-gradient(#ffff00,#ffd769); color: #03036B">
+                    <button type="submit" name="submit"  value="Pesquisar" style="color: #03036B;margin-top:15px; background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);">
                     Pesquisar</button>
                     </div>
                 </form>        

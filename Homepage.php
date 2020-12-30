@@ -50,59 +50,49 @@ if ('true' === $_GET['erro']) {
 
     <body onload="diaSemana()" >
 
-    <header>
-            <table class="tabelaHeader" >
-                <tr>
-                    <th>
 
-                <?php 
-                   if(isset($_SESSION['loggedin'])){
-         ?> 
-                        <a href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
-                            <img src="imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
-                            <p class="hyperlink">PERFIL</p> 
-                        </a>
-                        <?php }
-                    else{ ?>                                  
-                <?php 
-                    }       
-                    ?>
-                    </th>
-                    <th>
-                        <a href="Homepage.php">
-                        <img src="Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
-                        </a>
-                    </th>
-                    <th>
-                    
-                   <!-- <a  href="homepage.php" style="text-decoration:none;"> 
-                        <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
-                        <p class="hyperlink">MENU</p> 
-                    </a>
-                    -->                     
-                    </th>
-                    <th>
-                        <?php 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+<a href="Homepage.php">
+<img src="Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
+</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+      <?php 
+        if(isset($_SESSION['loggedin'])){
+                ?> 
+        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
+        <img src="imagens\profile.png" alt="Profile Icon" width="30" height="30" class="d-inline-block align-top"></img>
+        Perfil   
+        </a>
+
+        <?php } ?>
+      </li>
+      <li class="nav-item ">
+                    <?php 
                             if(isset($_SESSION['loggedin'])){
                         ?> 
-                                    <a  href="logout.php" style="text-decoration:none;">
-                                        <img src="imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
-                                        <p class="hyperlink">SAIR</p> 
+                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;">
+                                      <img src="imagens\Logout.png" alt="Logout Icon" width="30" height="30" class="d-inline-block align-top"></img>
+                                        Sair
                                     </a>
                         <?php }
 
                         else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
-                        <a   data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
-                            <img src="imagens\login.png" alt="Login Icon" class="IconHeader"></img>
-                            <p class="hyperlink">ENTRAR</p> 
+                        <a   class="nav-link" data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
+                            <img src="imagens\login.png" alt="Login Icon" width="30" height="30" class="d-inline-block align-top"></img>
+                            Entrar
                         </a>
                         <?php 
                             } 
-                        ?>                      
-                    </th>
-                </tr>
-            </table>
-        </header>
+                        ?>  
+      </li>
+    </ul>
+  </div>
+</nav>
+
 
         
 <!-- API TEMPO -->
@@ -125,85 +115,13 @@ for ($i = 0; $i < count($weatherData);$i++){
    }
 
 ?>
-        <table class="tabelaBody">
-            <tr>
-                <th>
-                    <a  href="calendar.php" style="text-decoration:none;">
-                        <img src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
-                        <p class="hyperlink">AGENDA</p> 
-                    </a>
-                </th>
 
-                <th> 
-                        <a  href="forum.php" style="text-decoration:none;">
-                            <img src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                            <p class="hyperlink">FORUM</p> 
-                        </a>
-                </th>
-
-                <th>
-                    <a  href="chat/index.php" style="text-decoration:none;">
-                            <img src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
-                            <p class="hyperlink">CHAT</p> 
-                    </a>
-                </th>
-                    
-                <th>
-                    <a  href="search.php" style="text-decoration:none;">
-                        <img src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
-                        <p class="hyperlink">PESQUISAR</p> 
-                    </a>
-                </th>
-                    
-                    <th>
-                        <a  href="" style="text-decoration:none;">
-                            <img src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                            <p class="hyperlink">EXERCICIOS</p> 
-                        </a>
-                    </th>
-                
-            </tr>
-
-            <tr>
-                    <th>
-                    </th>
-
-                    <th>
-                        <a  href="" style="text-decoration:none;">
-                            <img src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
-                            <p class="hyperlink">DICAS EMERGÊNCIA</p> 
-                        </a>
-                    </th>
-
-                    <th>
-                        <a  href="informacoes.php" style="text-decoration:none;">
-                            <img src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
-                            <p class="hyperlink">INFORMAÇÕES</p> 
-                        </a>
-                    </th>
- 
-                    <th>
-                        <a  href="pontosinteresse.php" style="text-decoration:none;">
-                            <img src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
-                            <p class="hyperlink">PONTOS DE INTERESSE</p> 
-                        </a>
-                    </th>
-
-                    <th>
-                        <a  href="apoiovoluntarios.php" style="text-decoration:none;">
-                            <img src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
-                            <p class="hyperlink">APOIO A VOLUNTÁRIOS</p> 
-                        </a>
-                    </th>
-            </tr>
-        </table>
- 
-     <!--CARTÃO TEMPO-->   
-    <div class="container">
+  <!--CARTÃO TEMPO-->   
+  <div class="container ">
     <div class="padding" >        
             <div class="col-lg-8 grid-margin stretch-card" >
                 <div class="card card-weather" style="width:1000px;">
-                    <div class="card-body">
+                    <div class="card-body" style="height:250px;">
                         <div class="weather-date-location">
                             <h3  id="hoje">
                                 </h3>
@@ -211,8 +129,8 @@ for ($i = 0; $i < count($weatherData);$i++){
                         </div>
                         <div class="weather-data d-flex">
                             <div class="mr-auto">
-                                <h4 class="display-4"><?php echo $tMax[0]?> <span class="symbol">°</span>C</h4>
-                                <h4 class="display-4" style="opacity: 0.6;"><?php echo $tMin[0]?> <span class="symbol">°</span>C</h4>
+                                <h1 class="display-5"><?php echo $tMax[0]?> <span class="symbol">°</span>C</h1>
+                                <h1 class="display-5" style="opacity: 0.6;"><?php echo $tMin[0]?> <span class="symbol">°</span>C</h1>
                                 <p> <?php echo $weatherType[$idWeatherType[0] + 1] ?> </p>
                             </div>
                         </div>
@@ -247,6 +165,73 @@ for ($i = 0; $i < count($weatherData);$i++){
     </div>
 <!--FIM CARTÃO TEMPO-->
 
+
+        <div class="container" align ="center">
+        <div class="row justify-content-md-center" >
+            <div class="col-sm-2">
+            <a  href="calendar.php" style="text-decoration:none;">
+                        <img src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
+                        <p class="hyperlink">AGENDA</p> 
+                    </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="forum.php" style="text-decoration:none;">
+                            <img src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                            <p class="hyperlink">FORUM</p> 
+                        </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="chat/index.php" style="text-decoration:none;">
+                            <img src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
+                            <p class="hyperlink">CHAT</p> 
+                    </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="search.php" style="text-decoration:none;">
+                        <img src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
+                        <p class="hyperlink">PESQUISAR</p> 
+                    </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="" style="text-decoration:none;">
+                            <img src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                            <p class="hyperlink">EXERCICIOS</p> 
+                        </a>
+            </div>
+            
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+            <a  href="" style="text-decoration:none;">
+                            <img src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                            <p class="hyperlink">DICAS EMERGÊNCIA</p> 
+                        </a> 
+            </div>
+            <div class="col-sm-2">
+            <a  href="informacoes.php" style="text-decoration:none;">
+                            <img src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                            <p class="hyperlink">INFORMAÇÕES</p> 
+                        </a> 
+            </div>
+            <div class="col-sm-2">
+            <a  href="pontosinteresse.php" style="text-decoration:none;">
+                            <img src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                            <p class="hyperlink">PONTOS DE INTERESSE</p> 
+                        </a>    
+            </div>  
+            <div class="col-sm-2">
+            <a  href="apoiovoluntarios.php" style="text-decoration:none;">
+                            <img src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
+                            <p class="hyperlink">APOIO A VOLUNTÁRIOS</p> 
+                        </a>   
+            </div> 
+             
+        </div>
+    </div>
+</div>
+
+
+   
     
 
         <div class="modal" id="myModal">

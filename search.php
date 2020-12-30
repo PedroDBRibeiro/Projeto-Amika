@@ -2,7 +2,7 @@
 
 session_start();
 include "config.php";
-include('header.php');
+include('newHeader.php');
 
 ?>
 
@@ -46,7 +46,7 @@ include('header.php');
     <div align ="center" style="margin-top:50px;">
         <div class="title-back" >
             <h1 class = "title ">
-                Pesquisa
+                Pesquisar
             </h1>
         </div>
     </div>
@@ -100,7 +100,7 @@ include('header.php');
             </div>
 
             <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <button type="submit" name="submit" form="search" value="Pesquisar" style="margin-top:15px;background: linear-gradient(#ffff00,#ffd769); color: #03036B">
+                <button type="submit" name="submit" form="search" value="Pesquisar" style="color: #03036B;margin-top:15px;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)">
                     Pesquisar</button>
             </div>
         </form>

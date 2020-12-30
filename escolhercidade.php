@@ -4,7 +4,7 @@ include "config.php";
 
 session_start();
 
-include "header.php";
+include('newHeader.php');
 
 
 

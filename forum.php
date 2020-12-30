@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('header.php');
+include('newHeader.php');
 include "config.php";
 
 $posts = [];
@@ -64,7 +64,7 @@ if ($resultCheck > 0) {
 
         <div class="blog-post">
           <div class="blog-post__img">
-            <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
+            <img class="post-img"<?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
           </div>
           <div class="blog-post__info">
             <div class="blog-post__date">

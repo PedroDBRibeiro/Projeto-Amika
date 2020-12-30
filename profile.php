@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('header.php');
+include('newHeader.php');
 include('config.php');
 
 
@@ -9,10 +9,13 @@ if (isset($_GET['search_result'])) {
     $user_id = $_GET['search_result'];
 
     $result = mysqli_query($mysqli, "SELECT * FROM utilizadores WHERE user_id=$user_id") or die(mysqli_error($mysqli));
+    $result_hobbies = mysqli_query($mysqli, "SELECT hobbie FROM hobbies where user_id=$user_id");
 } else {
     header("location:search.php");
 }
 
+
+//print_r $hobbies;
 
 while ($row = mysqli_fetch_assoc($result)) {
 
@@ -58,6 +61,8 @@ include('make_friendship.php');
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
+    
+
   </style>
 </head>
 
@@ -83,7 +88,7 @@ include('make_friendship.php');
                             <div class="card-block text-center text-white" style="height:400px;">
                                 <div class="panel-body text-center"> <img  <?php echo 'src="data:image/jpeg;base64,' .$avatar. '"' ?> class="img-circle profile-avatar" alt="User-Profile-Image"> </div>
                                 <br><h4 class="f-w-600" ><?php echo $nome?></h4>
-                                <h5><?php if ($jadi == 0) echo "Voluntário"; else echo "Jadi";?></h5> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                <h5><?php if ($jadi == 0) echo "Voluntário"; else echo "Jadi";?></h5> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>                             
                             </div>
                         </div>
                         <div class="col-sm-8">
@@ -100,6 +105,19 @@ include('make_friendship.php');
                                     </div>
                                     </div>
                                     <br><div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="m-b-10 f-w-600">Email</h5>
+                                        <h5 class="text-muted f-w-400"><?php echo $email?></h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="m-b-10 f-w-600">Hobbies</h5>
+                                        <h5 class="text-muted f-w-400"><?php 
+                                        while ($hobbies = mysqli_fetch_assoc($result_hobbies)){
+                                        foreach ($hobbies as $hobbie)
+                                        echo $hobbie.' | '; }?></h5>
+                                    </div>
+                                    </div>
+                                    <div class="row">
                                     <?php if ($jadi == 1) { ?>
                                     <div class="col-sm-6">
                                         <h5 class="m-b-10 f-w-600">Deficiência</h5>
@@ -107,19 +125,14 @@ include('make_friendship.php');
                                     </div>
                                     <?php } ?>
                                     <?php if ($user_id == $_SESSION['user_id']) { ?>
-                                    <br>
-                                    <div class="col-sm-6">
-                                        <h5 class="m-b-10 f-w-600">Email</h5>
-                                        <h5 class="text-muted f-w-400"><?php echo $email?></h5>
-                                    </div>
-                                    </div>
-                                    <br><br><div class="row" style="float:right">
+                                    <div class="row" style="float:right">                              
                                     <div class="col-sm-6" >
                                         <a href="myprofile.php" class="btn search-btn btn-rounded btn-sm my-0" style="color:white;">Editar Perfil</a>
-                                    </div>
-                                    </div>
-                                    <?php } else{ ?>
-                                        <br><br><div class="row" style="float:right">
+                                    </div> 
+                                    </div> 
+                                    </div>                                  
+                                    <?php } else{ ?>                                   
+                                    <br><br><div class="row" style="float:right">
                                     <div class="col-sm-6">
                                         <form   id="friendship" method="post">
                                         <button type="submit" name="submit" form="friendship" value="Match" class="btn search-btn btn-rounded btn-sm my-0" style="color:white;">

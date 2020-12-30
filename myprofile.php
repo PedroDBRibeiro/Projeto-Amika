@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('header.php');
+include('newHeader.php');
 include "config.php";
 
 $user_id = $_SESSION['user_id'];

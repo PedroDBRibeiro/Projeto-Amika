@@ -29,68 +29,50 @@ if (!isset($_SESSION['user_id'])) {
 
 <header>
 
-    <table class="tabelaHeader">
+    
 
-        <tr>
-            <th>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                <?php
-                if (isset($_SESSION['loggedin'])) {
-                ?>
-                    <a href="../profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;">
-                        <img src="../imagens\profile.png" alt="Profile Icon" class="IconHeader"></img>
-                        <p class="hyperlink">PERFIL</p>
-                    </a>
+<a href="Homepage.php">
+<img src="../Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
+</a>
 
-                <?php } else { ?>
-
-
-                <?php
-                }
-                ?>
-
-            </th>
-
-            <th>
-                <a href="../Homepage.php">
-                    <img src="../Imagens\LogoAmika.png" alt="Logo Amik@" class="logoAmika"></img>
-                </a>
-            </th>
-
-            <th>
-
-                <!-- <a  href="homepage.php" style="text-decoration:none;"> 
-            <img src="imagens\home.png" alt="Home Icon" class="IconHeader"></img>
-            <p class="hyperlink">MENU</p> 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+      <?php 
+        if(isset($_SESSION['loggedin'])){
+                ?> 
+        <a  class="nav-link" href="../profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
+        <img src="../imagens\profile.png" alt="Profile Icon" width="30" height="30" class="d-inline-block align-top"></img>
+        Perfil   
         </a>
-        -->                     
-        </th>
 
-        <th>
-            <?php 
-                if(isset($_SESSION['loggedin'])){
-            ?> 
-                        <a  href="../logout.php" style="text-decoration:none;">
-                            <img src="../imagens\Logout.png" alt="Logout Icon" class="IconHeader"></img>
-                            <p class="hyperlink">SAIR</p> 
+        <?php } ?>
+      </li>
+      <li class="nav-item ">
+                    <?php 
+                            if(isset($_SESSION['loggedin'])){
+                        ?> 
+                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;">
+                                      <img src="../imagens\Logout.png" alt="Logout Icon" width="30" height="30" class="d-inline-block align-top"></img>
+                                        Sair
+                                    </a>
+                        <?php }
+
+                        else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
+                        <a   class="nav-link" data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
+                            <img src="../imagens\login.png" alt="Login Icon" width="30" height="30" class="d-inline-block align-top"></img>
+                            Entrar
                         </a>
-            <?php }
+                        <?php 
+                            } 
+                        ?>  
+      </li>
+    </ul>
+  </div>
+</nav>
 
-            else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
-            <a   data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
-                <img src="../imagens\login.png" alt="Login Icon" class="IconHeader"></img>
-                <p class="hyperlink">ENTRAR</p> 
-            </a>
-            <?php 
-                } 
-            ?>                      
-        </th>
-
-    </tr>
-
-</table>
-
-</header>
 
 <body>
     <div class="container">
