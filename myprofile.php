@@ -85,7 +85,7 @@ if ($resultCheck == 1) {
           <div class="panel panel-default">
             <br>
             <div class="panel-body text-center">
-              <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($user['avatar']) . '"' ?> class="rounded-circle profile-avatar" alt="User avatar">
+              <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($user['avatar']) . '"' ?> class="profile-avatar" alt="User avatar">
             </div>
           </div>
           <br>
