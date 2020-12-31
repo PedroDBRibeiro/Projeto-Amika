@@ -56,10 +56,12 @@ include "config.php";
                     $('#verAtividade #id').val(event.id);
                     $('#verAtividade #title').text(event.title);
                     $('#verAtividade #title2').val(event.title);
+                    $('#verAtividade #amigo').text(event.nome_amigo);
                     $('#verAtividade #start').text(event.start.format('DD/MM/YYYY HH:mm:ss'));
                     $('#verAtividade #start').val(event.start.format('DD/MM/YYYY HH:mm:ss'));
                     $('#verAtividade #end').text(event.end.format('DD/MM/YYYY HH:mm:ss'));
                     $('#verAtividade #end').val(event.end.format('DD/MM/YYYY HH:mm:ss'));
+                    $('#verAtividade #desc').text(event.desc);
                     $('#verAtividade').modal('show');
 
                 },
@@ -178,13 +180,13 @@ include "config.php";
     <br />
 
     <div class="container">
-    <div align ="center" style="margin-top:50px;">
-        <div class="title-back" >
-            <h1 class = "title ">
-                Agenda
-            </h1>
+        <div align="center" style="margin-top:50px;">
+            <div class="title-back">
+                <h1 class="title ">
+                    Agenda
+                </h1>
+            </div>
         </div>
-    </div>
         <br />
 
         <?php
@@ -220,17 +222,22 @@ include "config.php";
                 <div class="modal-body">
                     <div class="visualizar">
                         <div class="dl-horizontal">
-                            <dt> ID: &nbsp; </dt>
-                            <dd id="id"></dd>
-                            <br>
+
                             <dt> Atividade: &nbsp; </dt>
                             <dd id="title"></dd>
+                            <br>
+                            <dt> Amigo: &nbsp; </dt>
+                            <dd id="amigo"></dd>
                             <br>
                             <dt> Data de início: &nbsp; </dt>
                             <dd id="start"></dd>
                             <br>
                             <dt> Data de fim: &nbsp; </dt>
                             <dd id="end"></dd>
+                            <br>
+                            <dt> Descrição: &nbsp; </dt>
+                            <dd id="desc"></dd>
+                            <br>
                         </div>
 
                         <div class="btn-group">
@@ -250,7 +257,7 @@ include "config.php";
                                 <div class="form-group col-sm-10">
 
                                     <?php
-                                    $query = "SELECT DISTINCT CATEGORIA FROM categoria;";
+                                    $query = "SELECT ID_CATEGORIA, CATEGORIA FROM categoria;";
                                     $result = mysqli_query($mysqli, $query);
 
                                     while ($found = mysqli_fetch_assoc($result)) {
@@ -263,8 +270,41 @@ include "config.php";
 
                                     <select name="categoria" id="title2" class="form-control">
                                         <?php foreach ($categorias as $categoria) : ?>
-                                            <option value="<?php echo $categoria['CATEGORIA'] ?>">
+                                            <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
                                                 <?php echo $categoria['CATEGORIA'] ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-sm-10">
+
+                                    <?php
+
+                                    $session_id = $_SESSION['user_id'];
+
+                                    $query = "SELECT u.nome, m.id
+                                    FROM (SELECT id_user1 as id
+                                        FROM matches WHERE id_user2='$session_id'
+                                        UNION SELECT id_user2 as id
+                                        FROM matches WHERE id_user1='$session_id') as m,
+                                        utilizadores as u
+                                    WHERE m.id = u.user_id;";
+
+                                    $result = mysqli_query($mysqli, $query);
+
+                                    while ($found = mysqli_fetch_assoc($result)) {
+                                        $amigos[] = $found;
+                                    }
+
+                                    ?>
+
+                                    <label>Amigo:</label>
+
+                                    <select name="amigo" id="amigo" class="form-control">
+                                        <?php foreach ($amigos as $amigo) : ?>
+                                            <option value="<?php echo $amigo['id'] ?>">
+                                                <?php echo $amigo['nome'] ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
@@ -321,8 +361,21 @@ include "config.php";
 
                                 <select name="categoria" class="form-control">
                                     <?php foreach ($categorias as $categoria) : ?>
-                                        <option value="<?php echo $categoria['CATEGORIA'] ?>">
+                                        <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
                                             <?php echo $categoria['CATEGORIA'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-10">
+
+                                <label>Amigo:</label>
+
+                                <select name="amigo" id="amigo" class="form-control">
+                                    <?php foreach ($amigos as $amigo) : ?>
+                                        <option value="<?php echo $amigo['id'] ?>">
+                                            <?php echo $amigo['nome'] ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -340,7 +393,7 @@ include "config.php";
 
                             <div class="form-group col-sm-10">
                                 <label>Descrição:</label>
-                                <textarea class="form-control" type="text" rows="4" placeholder="Notas" id="eventDescription"></textarea>
+                                <textarea class="form-control" type="text" rows="4" placeholder="Notas" id="desc" name="desc"></textarea>
                             </div>
 
                         </div>

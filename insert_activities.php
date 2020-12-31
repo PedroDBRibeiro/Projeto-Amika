@@ -6,12 +6,15 @@ include "config.php";
 
 if (isset($_POST['submit'])) {
 
-        $categoria = $_POST["categoria"];
+        $session_id = $_SESSION['user_id'];
+        $categoria_id = $_POST["categoria"];
         $start = $_POST["start"];
         $end = $_POST["end"];
+        $amigo_id = $_POST["amigo"];
+        $descricao = $_POST["desc"];
 
 
-        if (!empty($categoria) && !empty($start) && !empty($end)) {
+        if (!empty($categoria_id) && !empty($start) && !empty($end)) {
 
                 //Converte data e hora no formato da BD
                 $data = explode(' ', $start);
@@ -26,15 +29,10 @@ if (isset($_POST['submit'])) {
                 $data_sem_barra = implode("-", $data_sem_barra);
                 $datafim = $data_sem_barra . " " . $hora;
 
-                $get_id_categoria = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE CATEGORIA = '$categoria'";
-
-                $idcat1 = mysqli_query($mysqli, $get_id_categoria);
-                $idcat2 = mysqli_fetch_assoc($idcat1);
-                $idcat = $idcat2['ID_CATEGORIA'];
 
                 $query = "INSERT INTO atividades
-                        (ID_CATEGORIA, DATA_INICIO, DATA_FIM)
-                        VALUES ('$idcat', '$datainicio', '$datafim');";
+                        (ID_CATEGORIA, DATA_INICIO, DATA_FIM, ID_USER1, ID_USER2, DESCRICAO)
+                        VALUES ('$categoria_id', '$datainicio', '$datafim', '$session_id', '$amigo_id', '$descricao');";
 
                 mysqli_query($mysqli, $query);
 
