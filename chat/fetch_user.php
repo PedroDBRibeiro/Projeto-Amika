@@ -22,7 +22,7 @@ $result = $statement->fetchAll();
 
 
 $output = '
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" style="background:white;">
  <tr align="center">
   <th>Nome</th>
   <th>Estado</th>
@@ -45,7 +45,7 @@ foreach($result as $row)
   $status = '<span class="badge badge-danger">Offline</span>';
  }
  $output .= '
- <tr>
+ <tr style="background:white;">
   <td align="center">'.$row['nome'].' <span class = "badge badge-success">'.count_unseen_message($row['user_id'], $_SESSION['user_id'], $connect).'</span></td>
   <td align="center">'.$status.'</td>
   <td align="center"><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['user_id'].'" data-tonome="'.$row['nome'].'">Enviar mensagem</button></td>

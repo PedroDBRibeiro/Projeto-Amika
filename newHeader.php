@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
 <a href="Homepage.php">
 <img src="Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
@@ -42,5 +42,10 @@
   </div>
 </nav>
 
+
+                    
+               
+                    
+        
 
 

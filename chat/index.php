@@ -27,13 +27,11 @@ if (!isset($_SESSION['user_id'])) {
     @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 </style>
 
-<header>
-
     
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
-<a href="Homepage.php">
+<a href="../Homepage.php">
 <img src="../Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
 </a>
 
@@ -74,10 +72,10 @@ if (!isset($_SESSION['user_id'])) {
 </nav>
 
 
-<body>
-    <div class="container">
-        <br />
+<body style="background-image: url('../imagens/chat.jpg');">
 
+<div>
+    <div class="container" style="float:left;width:60%">
         <div align ="center" style="margin-top:50px;">
             <div class="title-back" >
                 <h1 class="title ">
@@ -85,15 +83,15 @@ if (!isset($_SESSION['user_id'])) {
                 </h1>
             </div>
         </div>
-        <br />
-
+        <br/>
         <div class="table-responsive"><br>
-            <h3 align="center"><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
+            <h3 align="center" ><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
             <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
             <div id="user_details"></div>
             <div id="user_model_details"></div>
         </div>
     </div>
+</div>
 </body>
 
 </html>

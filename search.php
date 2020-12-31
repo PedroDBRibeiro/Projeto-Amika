@@ -28,7 +28,7 @@ include('newHeader.php');
 
 </head>
 
-<body>
+<body style="background-image: url('imagens/search.jpg');">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
