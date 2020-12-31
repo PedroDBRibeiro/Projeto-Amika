@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-<a href="Homepage.php">
+<a href="../Homepage.php">
 <img src="../Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
 </a>
 
