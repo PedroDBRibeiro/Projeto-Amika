@@ -2,7 +2,7 @@
 
 session_start();
 
-include('header.php');
+include('newHeader.php');
 
 ?>
 
@@ -21,11 +21,13 @@ include('header.php');
 
 <body>
 
-  <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
-    <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
-      Informações
-    </h1>
-  </div>
+    <div align ="center" style="margin-top:50px;">
+        <div class="title-back" >
+            <h1 class = "title ">
+              Informações
+            </h1>
+        </div>
+    </div>
 
   <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
     Nesta página encontram-se disponíveis links de páginas de associações que podem ser úteis:</p>

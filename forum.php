@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include('header.php');
+include('newHeader.php');
 include "config.php";
 
 
@@ -64,11 +64,14 @@ if ($resultCheck > 0) {
   }
   ?>
 
-  <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
-    <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
-      Fórum
-    </h1>
-  </div>
+<div align ="center" style="margin-top:50px;">
+        <div class="title-back" >
+            <h1 class = "title ">
+                Fórum
+            </h1>
+        </div>
+    </div>
+
   <br>
   <br>
   <br>
@@ -77,14 +80,13 @@ if ($resultCheck > 0) {
   </div>
 
 
-
   <div class="blog-feed">
     <?php foreach ($posts as $post) : ?>
       <div class="blog-post-comment">
 
         <div class="blog-post">
           <div class="blog-post__img">
-            <img <?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
+            <img class="post-img"<?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
           </div>
           <div class="blog-post__info">
             <div class="blog-post__date">

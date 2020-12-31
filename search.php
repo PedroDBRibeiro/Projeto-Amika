@@ -2,7 +2,7 @@
 
 session_start();
 include "config.php";
-include('header.php');
+include('newHeader.php');
 
 ?>
 
@@ -13,7 +13,7 @@ include('header.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Projeto Amik@</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
 
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
@@ -42,16 +42,13 @@ include('header.php');
         }
     </style>
 
-    <script>
-        /*$('.mdb-select').materialSelect({
-});*/
-    </script>
 
-
-    <div style="background: linear-gradient(#ffff00,#ffd769); width: 25%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
-        <h1 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 48px; ">
-            Pesquisa
-        </h1>
+    <div align ="center" style="margin-top:50px;">
+        <div class="title-back" >
+            <h1 class = "title ">
+                Pesquisar
+            </h1>
+        </div>
     </div>
 
     <div>
@@ -103,7 +100,7 @@ include('header.php');
             </div>
 
             <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <button type="submit" name="submit" form="search" value="Pesquisar" style="margin-top:15px;background: linear-gradient(#ffff00,#ffd769); color: #03036B">
+                <button type="submit" name="submit" form="search" value="Pesquisar" style="color: #03036B;margin-top:15px;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)">
                     Pesquisar</button>
             </div>
         </form>
@@ -111,7 +108,7 @@ include('header.php');
 
     </div>
 
-    <?php 
+    <?php include("location&hobbies.php");
     
     if (isset($_POST['submit'])) {?>
 
@@ -125,7 +122,7 @@ include('header.php');
             <?php if(isset($no_results)) echo $no_results; ?>
         </p>
 
-    <?php } include("location&hobbies.php"); ?>
+    <?php }  ?>
     <br><br>
     <table style=" margin:auto;">
         <tr>
@@ -133,7 +130,7 @@ include('header.php');
                 <?php foreach ($search_results as $search_result) : ?>
                     <td>
                         <div class="col-sm-6 col-md-4 col-xs-12 py-2" >
-                                <div class="card  mx-2 mb-3" style="width: 18rem;">
+                                <div class="card  mx-2 mb-3" style="width: 18rem;height:25 rem;">
                                     <img class="card-img-top"  alt="Card image"<?php echo 'src="data:image/jpeg;base64,' . base64_encode($search_result['avatar']) . '"' ?>>
                                         <div class="card-body">
                                             <h4 class="card-title" ><?php echo "<b>".$search_result['nome']."</b>"?></h4>

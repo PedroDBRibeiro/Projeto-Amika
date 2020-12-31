@@ -6,10 +6,11 @@ body{
 background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
 }
 
-header{
-    background-color:#fedc32;
-    width: 100%;
-}
+.navbar{
+
+    background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)
+    
+    }
 
 .tabelaHeader{
     width: 100%;
@@ -102,8 +103,10 @@ background: linear-gradient(#ffff00,#ffd769);
     }
 }
 
+
+
 .padding {
-    padding: 2rem;
+    padding-top: 1rem;
     margin-left: 0.01rem;
 }
 
@@ -226,6 +229,20 @@ p {
     
 }
  
-  
-  
+.title-back{
+
+    background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
+    display: inline-block;
+    border-radius: 25px; 
+    padding: 15px;
+
+}
+
+.title{
+
+    font-family: 'Chewy'; 
+    text-align: center; 
+    color: #03036B; 
+    font-size: 48px;
+}
   
