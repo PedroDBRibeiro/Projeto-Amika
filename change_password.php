@@ -1,7 +1,5 @@
 <?php
 
-//NAO TA A FUNCIONAR CRL FODASE
-
 session_start();
 include('header.php');
 include "config.php";
