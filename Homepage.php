@@ -93,7 +93,8 @@ if ('true' === $_GET['erro']) {
   </div>
 </nav>
 
-<body onload="diaSemana()" style="background-image: url('imagens/homepage1.jpg');" >
+<body onload="diaSemana()" style="background-color: #bdd4e7;background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+" >
                
         <div class="container" align ="center" > 
         <div class="row justify-content-md-center" style="margin-top:50px;" >
