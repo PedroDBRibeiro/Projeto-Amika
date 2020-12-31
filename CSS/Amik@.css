@@ -3,7 +3,8 @@
 
 body{
     background-color: #d5fefd;
-background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%); 
+padding-top:70px;
 }
 
 .navbar{
@@ -246,3 +247,9 @@ p {
     font-size: 48px;
 }
   
+.col-sm-2{
+ background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+ margin:10px;
+ border-radius: 15px;
+
+}

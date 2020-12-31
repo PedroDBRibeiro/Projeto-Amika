@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include('newHeader.php');
 include('config.php');
 
 
@@ -66,7 +65,9 @@ include('make_friendship.php');
   </style>
 </head>
 
-<body>
+<?php include('newHeader.php'); ?>
+
+<body style="background-image: url('imagens/profile1.jpg');">
 
     <div align ="center" style="margin-top:50px;">
         <div class="title-back" >

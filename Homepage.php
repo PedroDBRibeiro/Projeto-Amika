@@ -48,10 +48,10 @@ if ('true' === $_GET['erro']) {
 
     </head>
 
-    <body onload="diaSemana()" >
+    
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
 <a href="Homepage.php">
 <img src="Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
@@ -93,6 +93,75 @@ if ('true' === $_GET['erro']) {
   </div>
 </nav>
 
+<body onload="diaSemana()" style="background-color: #bdd4e7;background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+" >
+               
+        <div class="container" align ="center" > 
+        <div class="row justify-content-md-center" style="margin-top:50px;" >
+            <div class="col-sm-2 ">
+            <div>       
+            <a  href="calendar.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
+                        <br><b class="hyperlink" >AGENDA</b> 
+                    </a>
+            </div>
+            </div>           
+            <div class="col-sm-2">
+            <a  href="forum.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                            <br><b class="hyperlink">FORUM</b> 
+                        </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="chat/index.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
+                            <br><b class="hyperlink">CHAT</b> 
+                    </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="search.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
+                        <br><b class="hyperlink">PESQUISAR</b> 
+                    </a>
+            </div>
+            <div class="col-sm-2">
+            <a  href="" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                            <br><b class="hyperlink">EXERCICIOS</b> 
+                        </a>
+            </div>
+            
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+            <a  href="" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                            <br><b class="hyperlink">DICAS EMERGÊNCIA</b> 
+                        </a> 
+            </div>
+            <div class="col-sm-2">
+            <a  href="informacoes.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                            <br><b class="hyperlink">INFORMAÇÕES</b> 
+                        </a> 
+            </div>
+            <div class="col-sm-2">
+            <a  href="pontosinteresse.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                            <br><b class="hyperlink">PONTOS DE INTERESSE</b> 
+                        </a>    
+            </div>  
+            <div class="col-sm-2">
+            <a  href="apoiovoluntarios.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
+                            <br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> 
+                        </a>   
+            </div> 
+             
+        </div>
+    </div>
+</div>
 
         
 <!-- API TEMPO -->
@@ -116,18 +185,18 @@ for ($i = 0; $i < count($weatherData);$i++){
 
 ?>
 
-  <!--CARTÃO TEMPO-->   
-  <div class="container ">
-    <div class="padding" >        
+<!--CARTÃO TEMPO-->   
+<div class="container" >
+    <div class="padding"  >        
             <div class="col-lg-8 grid-margin stretch-card" >
-                <div class="card card-weather" style="width:1000px;">
+                <div class="card card-weather" style="width:1100px;border-radius:20px;opacity:0.9;">
                     <div class="card-body" style="height:250px;">
-                        <div class="weather-date-location">
+                        <div class="weather-date-location" >
                             <h3  id="hoje">
                                 </h3>
                             <p class="text-gray"> <span class="weather-date"><?php echo $data[0] ?>,</span> <span class="weather-location">Faro, Portugal</span> </p>
                         </div>
-                        <div class="weather-data d-flex">
+                        <div class="weather-data d-flex" >
                             <div class="mr-auto">
                                 <h1 class="display-5"><?php echo $tMax[0]?> <span class="symbol">°</span>C</h1>
                                 <h1 class="display-5" style="opacity: 0.6;"><?php echo $tMin[0]?> <span class="symbol">°</span>C</h1>
@@ -135,25 +204,25 @@ for ($i = 0; $i < count($weatherData);$i++){
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-0">
-                        <div class="d-flex weakly-weather">
+                    <div class="card-body p-0" style="border-radius:20px;" >
+                        <div class="d-flex weakly-weather" style="border-radius:20px;">
                             <div class="weakly-weather-item">
-                                <p class="mb-0" id="amanhã" ></p> <i class="mdi mdi-weather-cloudy"></i>
+                                <p class="mb-0" id="amanhã" ></p> 
                                 <p class="mb-0"> <?php echo $tMax[1]?>º</p>
                                 <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[1]?>º </p>
                             </div>
                             <div class="weakly-weather-item">
-                                <p class="mb-1" id=DPSamanha> </p> <i class="mdi mdi-weather-hail"></i>
+                                <p class="mb-1" id=DPSamanha> </p> 
                                 <p class="mb-0"> <?php echo $tMax[2]?>º</p>
                                 <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[2]?>º </p>
                             </div>
                             <div class="weakly-weather-item">
-                                <p class="mb-1"id=DPSamanha2>  </p> <i class="mdi mdi-weather-partlycloudy"></i>
+                                <p class="mb-1"id=DPSamanha2>  </p> 
                                 <p class="mb-0"> <?php echo $tMax[3]?>º</p>
                                 <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[3]?>º </p>
                             </div>
                             <div class="weakly-weather-item">
-                                <p class="mb-1"id=DPSamanha3>  </p> <i class="mdi mdi-weather-pouring"></i>
+                                <p class="mb-1"id=DPSamanha3>  </p> 
                                 <p class="mb-0"> <?php echo $tMax[4]?>º</p>
                                 <p class="mb-0" style ="opacity: 0.7;"> <?php echo $tMin[4]?>º </p>
                             </div>    
@@ -164,72 +233,7 @@ for ($i = 0; $i < count($weatherData);$i++){
         </div>
     </div>
 <!--FIM CARTÃO TEMPO-->
-
-
-        <div class="container" align ="center">
-        <div class="row justify-content-md-center" >
-            <div class="col-sm-2">
-            <a  href="calendar.php" style="text-decoration:none;">
-                        <img src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
-                        <p class="hyperlink">AGENDA</p> 
-                    </a>
-            </div>
-            <div class="col-sm-2">
-            <a  href="forum.php" style="text-decoration:none;">
-                            <img src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                            <p class="hyperlink">FORUM</p> 
-                        </a>
-            </div>
-            <div class="col-sm-2">
-            <a  href="chat/index.php" style="text-decoration:none;">
-                            <img src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
-                            <p class="hyperlink">CHAT</p> 
-                    </a>
-            </div>
-            <div class="col-sm-2">
-            <a  href="search.php" style="text-decoration:none;">
-                        <img src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
-                        <p class="hyperlink">PESQUISAR</p> 
-                    </a>
-            </div>
-            <div class="col-sm-2">
-            <a  href="" style="text-decoration:none;">
-                            <img src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                            <p class="hyperlink">EXERCICIOS</p> 
-                        </a>
-            </div>
-            
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-2">
-            <a  href="" style="text-decoration:none;">
-                            <img src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
-                            <p class="hyperlink">DICAS EMERGÊNCIA</p> 
-                        </a> 
-            </div>
-            <div class="col-sm-2">
-            <a  href="informacoes.php" style="text-decoration:none;">
-                            <img src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
-                            <p class="hyperlink">INFORMAÇÕES</p> 
-                        </a> 
-            </div>
-            <div class="col-sm-2">
-            <a  href="pontosinteresse.php" style="text-decoration:none;">
-                            <img src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
-                            <p class="hyperlink">PONTOS DE INTERESSE</p> 
-                        </a>    
-            </div>  
-            <div class="col-sm-2">
-            <a  href="apoiovoluntarios.php" style="text-decoration:none;">
-                            <img src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
-                            <p class="hyperlink">APOIO A VOLUNTÁRIOS</p> 
-                        </a>   
-            </div> 
-             
-        </div>
-    </div>
-</div>
-
+  
 
    
     
