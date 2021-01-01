@@ -69,7 +69,7 @@ include('make_friendship.php');
 
 <body style="background-image: url('imagens/profile1.jpg');">
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Perfil de <?php echo $nome ?>

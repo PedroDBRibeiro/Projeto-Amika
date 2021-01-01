@@ -28,7 +28,7 @@ include('newHeader.php');
 
 </head>
 
-<body style="background-image: url('imagens/search.jpg');">
+<body >
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
@@ -43,7 +43,7 @@ include('newHeader.php');
     </style>
 
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Pesquisar

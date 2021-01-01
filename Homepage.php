@@ -52,9 +52,8 @@ if ('true' === $_GET['erro']) {
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-
-<a href="Homepage.php">
-<img src="Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
+<a class="navbar-brand" href="Homepage.php">
+<img src="Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
 </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,20 +62,22 @@ if ('true' === $_GET['erro']) {
       <?php 
         if(isset($_SESSION['loggedin'])){
                 ?> 
-        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
-        <img src="imagens\profile.png" alt="Profile Icon" width="30" height="30" class="d-inline-block align-top"></img>
-        Perfil   
+        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;padding-left:50px;"> 
+        <img src="imagens\profile.png" alt="Profile Icon" width="50" height="50" ></img>
+        PERFIL
         </a>
 
         <?php } ?>
       </li>
+      
+      
       <li class="nav-item ">
                     <?php 
                             if(isset($_SESSION['loggedin'])){
                         ?> 
-                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;">
-                                      <img src="imagens\Logout.png" alt="Logout Icon" width="30" height="30" class="d-inline-block align-top"></img>
-                                        Sair
+                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;padding-right:50px;">
+                                      <img src="imagens\Logout.png" alt="Logout Icon" width="50" height="50" ></img>
+                                        SAIR
                                     </a>
                         <?php }
 
@@ -93,7 +94,8 @@ if ('true' === $_GET['erro']) {
   </div>
 </nav>
 
-<body onload="diaSemana()" style="background-color: #bdd4e7;background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+<body onload="diaSemana()" style="background-color: #aecad6;
+background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 " >
                
         <div class="container" align ="center" > 

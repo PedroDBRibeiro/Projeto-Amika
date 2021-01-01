@@ -32,7 +32,7 @@ include('newHeader.php');
     <body>
 
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Pontos de Interesse
