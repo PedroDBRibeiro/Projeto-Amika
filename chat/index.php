@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id'])) {
 </style>
 
  
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="font-family: 'Chewy';">
 <a class="navbar-brand" href="../Homepage.php">
 <img src="../Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
 </a>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <br/>
         <div class="table-responsive"><br>
-            <h3 align="center" ><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
+            <h3 align="center" style="font-family: 'Chewy';"><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
             <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
             <div id="user_details"></div>
             <div id="user_model_details"></div>

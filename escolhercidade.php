@@ -45,7 +45,7 @@ include('newHeader.php');
         ?>
         
         <div>
-            <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+            <p style=" text-align: center;font-family: 'Chewy'; margin-top: 70px;font-size: 20px;">
                 Estes s&atildeo os s&iacutetios mais giros para visitar!
             </p>
         </div>

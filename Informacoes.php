@@ -28,7 +28,7 @@ include('newHeader.php');
         </div>
     </div>
 
-  <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+  <p style=" text-align: center; font-family: 'Chewy';margin-top: 20px;font-size: 20px;">
     Nesta página encontram-se disponíveis links de páginas de associações que podem ser úteis:</p>
 
   <div class="container">

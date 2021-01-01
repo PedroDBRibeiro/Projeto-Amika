@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="font-family: 'Chewy';">
 <a class="navbar-brand" href="Homepage.php">
 <img src="Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
 </a>
