@@ -45,7 +45,7 @@ include('newHeader.php');
 
   <iframe name="content" style="display:none;"></iframe>
   <form action="uploading.php" method="post" enctype="multipart/form-data" target="content">
-    <div class="container" style="position:relative; top: 20px">
+    <div class="container" style="position:relative; top: 80px;margin-bottom:200px;">
 
       <h1>Formulário de Contacto</h1>
       </br>
@@ -72,12 +72,12 @@ include('newHeader.php');
       <label for="fname" class=title2 class=picturefile>Carregar recibo:</label><br><br>
       <input type="file" name="picturefile">
 
+      <button style="float:right;" type="submit" class="btn success" name="submit" onclick=success()>Enviar</button>
+     <!-- <button type="button" class="btn danger" onclick=cancel()>Cancelar</button> -->
+    <br><br><br><br>
 
     </div>
-    <div style="position:relative; margin: 20px; ">
-      <button type="button" class="btn danger" onclick=cancel()>Cancelar</a>
-        <button type="submit" class="btn success" name="submit" onclick=success()>Enviar</button>
-    </div>
+  
   </form>
 
   <style>
@@ -127,7 +127,10 @@ include('newHeader.php');
     /* Add a background color and some padding around the form */
     .container {
       border-radius: 30px;
-      background-color: #2f74db;
+      background-color:#7c7e80;
+      
+      /* 8b979e;*/
+      
       padding: 40px 50px 30px;
       width: 800px;
       margin-right: auto;
@@ -176,6 +179,7 @@ include('newHeader.php');
       /* Add some padding */
       cursor: pointer;
       /* Add a pointer cursor on mouse-over */
+      background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
 
 
     }
