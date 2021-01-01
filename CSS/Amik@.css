@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
 body{
-    background-color: #d5fefd;
-background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%); 
+    background-color: #aecad6;
+background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 padding-top:70px;
+
 }
 
 .navbar{
@@ -253,3 +254,4 @@ p {
  border-radius: 15px;
 
 }
+

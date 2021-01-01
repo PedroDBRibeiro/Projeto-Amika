@@ -27,12 +27,10 @@ if (!isset($_SESSION['user_id'])) {
     @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 </style>
 
-    
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-
-<a href="../Homepage.php">
-<img src="../Imagens\LogoAmika.png" alt="Logo Amik@"  style="width:20%;"></img>
+ 
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="font-family: 'Chewy';">
+<a class="navbar-brand" href="../Homepage.php">
+<img src="../Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
 </a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,20 +39,22 @@ if (!isset($_SESSION['user_id'])) {
       <?php 
         if(isset($_SESSION['loggedin'])){
                 ?> 
-        <a  class="nav-link" href="../profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
-        <img src="../imagens\profile.png" alt="Profile Icon" width="30" height="30" class="d-inline-block align-top"></img>
-        Perfil   
+        <a  class="nav-link" href="../profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;padding-left:50px;"> 
+        <img src="../imagens\profile.png" alt="Profile Icon" width="50" height="50" ></img>
+        PERFIL
         </a>
 
         <?php } ?>
       </li>
+      
+  
       <li class="nav-item ">
                     <?php 
                             if(isset($_SESSION['loggedin'])){
                         ?> 
-                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;">
-                                      <img src="../imagens\Logout.png" alt="Logout Icon" width="30" height="30" class="d-inline-block align-top"></img>
-                                        Sair
+                                    <a  class="nav-link" href="../logout.php" style="text-decoration:none;padding-right:50px;">
+                                      <img src="../imagens\Logout.png" alt="Logout Icon" width="50" height="50" ></img>
+                                        SAIR
                                     </a>
                         <?php }
 
@@ -72,11 +72,11 @@ if (!isset($_SESSION['user_id'])) {
 </nav>
 
 
-<body style="background-image: url('../imagens/chat.jpg');">
+<body>
 
 <div>
-    <div class="container" style="float:left;width:60%">
-        <div align ="center" style="margin-top:50px;">
+    <div class="container" >
+        <div align ="center" style="margin-top:80px;">
             <div class="title-back" >
                 <h1 class="title ">
                     Chat
@@ -85,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <br/>
         <div class="table-responsive"><br>
-            <h3 align="center" ><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
+            <h3 align="center" style="font-family: 'Chewy';"><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
             <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
             <div id="user_details"></div>
             <div id="user_model_details"></div>

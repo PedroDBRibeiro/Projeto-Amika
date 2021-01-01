@@ -32,7 +32,7 @@ include('newHeader.php');
     <body>
 
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Pontos de Interesse
@@ -41,14 +41,14 @@ include('newHeader.php');
     </div>
 
         <div>
-            <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+            <p style=" text-align: center;font-family: 'Chewy'; margin-top: 20px;font-size: 20px;">
                 Seleciona uma cidade para veres todos os s&iacutetios mais interessantes para visitar!
             </p>
         </div>
 
         
     <div class="center" class="bg-primary" style="height:225px; border-radius:10px;background: linear-gradient(#e8e6e6,#dbd9d9)">         
-        <div align="center" style ="padding-top:30px;">                
+        <div align="center" style ="padding-top:30px;margin-top:45px;">                
             <form action='escolhercidade.php' method=post>
                     <select name="myvalue">
                         <div id="myDropdown" class="dropdown-content">
@@ -65,7 +65,7 @@ include('newHeader.php');
                     </select> 
                         </div><br>
                     <div style="width:100%;margin-left:auto;margin-right:auto;">
-                    <button type="submit" name="submit"  value="Pesquisar" style="color: #03036B;margin-top:15px; background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);">
+                    <button type="submit" name="submit"  value="Pesquisar" style="font-family: 'Chewy';color: #03036B;margin-top:15px; background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);">
                     Pesquisar</button>
                     </div>
                 </form>        
@@ -92,7 +92,7 @@ include('newHeader.php');
             select{
                 color: #05056c;
                 border: 1px solid  rgba(110,130,208, .18);
-                font-size: 30px;
+                font-size: 29px;
                 font-family: 'Chewy'; 
                 text-align: center;
                 margin-top: 20px;

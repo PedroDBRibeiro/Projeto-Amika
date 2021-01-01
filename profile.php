@@ -67,9 +67,9 @@ include('make_friendship.php');
 
 <?php include('newHeader.php'); ?>
 
-<body style="background-image: url('imagens/profile1.jpg');">
+<body >
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Perfil de <?php echo $nome ?>
@@ -118,6 +118,7 @@ include('make_friendship.php');
                                         echo $hobbie.' | '; }?></h5>
                                     </div>
                                     </div>
+                                    <br>
                                     <div class="row">
                                     <?php if ($jadi == 1) { ?>
                                     <div class="col-sm-6">

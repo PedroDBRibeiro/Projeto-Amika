@@ -85,7 +85,7 @@
                 <input type="password" placeholder="Repita a Palavra-passe" name="pswConfirm" id="pswConfirm" required>
   
                 <label for="regiao" >Região</label>
-                <select name="regiao" id="regiao">
+                <select  name="regiao" id="regiao">
                     <option value="Barlavento">Barlavento</option>
                     <option value="Centro">Centro</option>
                     <option value="Sotavento">Sotavento</option>

@@ -28,7 +28,7 @@ include('newHeader.php');
 
 </head>
 
-<body style="background-image: url('imagens/search.jpg');">
+<body >
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
@@ -43,7 +43,7 @@ include('newHeader.php');
     </style>
 
 
-    <div align ="center" style="margin-top:50px;">
+    <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
                 Pesquisar
@@ -52,7 +52,7 @@ include('newHeader.php');
     </div>
 
     <div>
-        <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
+        <p style=" text-align: center;font-family: 'Chewy'; margin-top: 20px;font-size: 20px;">
             Nesta página podes encontrar outros utilizadores com quem poderás fazer atividades!
             <br> Para isso, introduz a tua localização e os teus hobbies favoritos.
         </p>
@@ -96,11 +96,11 @@ include('newHeader.php');
                     <option value="Centro">Centro</option>
                 </select>
 
-
+                
             </div>
 
             <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <button type="submit" name="submit" form="search" value="Pesquisar" style="color: #03036B;margin-top:15px;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)">
+                <button type="submit" name="submit" form="search" value="Pesquisar" style="font-family: 'Chewy';color: #03036B;margin-top:15px;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)">
                     Pesquisar</button>
             </div>
         </form>
@@ -112,7 +112,7 @@ include('newHeader.php');
     
     if (isset($_POST['submit'])) {?>
 
-        <div style="background: linear-gradient(#ffff00,#ffd769); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
+        <div style="background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%); width: 20%; margin-top:50px; border-radius: 25px; padding: 5px;" class="center">
             <h3 style="font-family: 'Chewy'; text-align: center; color: #03036B; font-size: 32px; ">
                 Resultados
             </h3>

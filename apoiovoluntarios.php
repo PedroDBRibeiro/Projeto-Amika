@@ -37,7 +37,7 @@ include('newHeader.php');
 </head>
 
 <body>
-<br>
+  <br>
   <?php
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
@@ -46,7 +46,7 @@ include('newHeader.php');
   ?>
 
   <form id="enviarFormulario" action="insert_form.php" enctype="multipart/form-data" method="post" autocomplete="off">
-    <div class="container" style="position:relative; top: 20px">
+    <div class="container" style="position:relative; top: 80px;">
 
       <h1>Formulário de Contacto</h1>
       </br>
@@ -73,9 +73,8 @@ include('newHeader.php');
       <label class=title2>Carregar recibo:</label><br><br>
       <input type="file" name="imgrecibo">
 
-
     </div>
-    <div class="buttons" style="position:relative; margin: 20px;">
+    <div class="buttons" style="position:relative; margin: 80px;">
       <button type="submit" class="btn success" id="submit" name="submit" form="enviarFormulario">Enviar</button>
       <button type="button" class="btn danger" onclick=cancel()>Cancelar</a>
     </div>
