@@ -56,6 +56,7 @@ if ($resultCheck == 1) {
 </head>
 
 <body>
+  <br>
   <?php
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];

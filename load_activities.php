@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+$session_id = $_SESSION ['user_id'];
+
 $connect = new PDO('mysql:host=localhost;dbname=amika;charset=utf8', 'root', '');
 
 $data = array();
@@ -7,6 +11,7 @@ $data = array();
 $query = "SELECT a.*, u.nome as NOME, c.CATEGORIA FROM atividades as a, categoria as c, utilizadores as u
         WHERE a.ID_CATEGORIA = c.ID_CATEGORIA
         AND a.id_user2 = u.user_id
+        AND (a.id_user1 = $session_id OR a.id_user2 = $session_id)
         ORDER BY ID_ATIVIDADE";
 
 $statement = $connect->prepare($query);

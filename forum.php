@@ -247,7 +247,7 @@ if ($resultCheck > 0) {
     $(document).ready(function() {
       $('#datepicker1').datepicker({
         format: "dd-mm-yyyy",
-        language: "pt",
+        language: "pt_BR",
         autoclose: true
       });
 
