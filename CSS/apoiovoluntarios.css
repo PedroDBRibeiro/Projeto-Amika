@@ -44,7 +44,7 @@
     /* Add a background color and some padding around the form */
     .container {
       border-radius: 30px;
-      background-color: #2f74db;
+      background-color: rgba(3, 3, 107,1);
       padding: 40px 50px 30px;
       width: 800px;
       margin-right: auto;

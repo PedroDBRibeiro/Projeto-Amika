@@ -217,7 +217,7 @@ include "config.php";
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title w-100">Detalhes da Atividade</h4>
+                    <h4 class="modal-title w-100" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h4>
                 </div>
                 <div class="modal-body">
                     <div class="visualizar">
@@ -350,7 +350,7 @@ include "config.php";
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title w-100">Adiciona uma atividade!</h4>
+                    <h4 class="modal-title w-100" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h4>
                 </div>
                 <div class="modal-body">
                     <form id="novaAtividade" method="POST" action="insert_activities.php">

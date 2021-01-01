@@ -65,7 +65,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             <div class="col-sm-2">
             <a  href="forum.php" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">FORUM</b> <br><br>
+                            <br><br><b class="hyperlink">FÓRUM</b> <br><br>
                         </a>
             </div>
             <div class="col-sm-2">
@@ -83,7 +83,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             <div class="col-sm-2">
             <a  href="" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
+                            <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
                         </a>
             </div>
             
@@ -93,7 +93,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             <div class="col-sm-2">
             <a  href="" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
+                            <br><br><b class="hyperlink">DICAS DE EMERGÊNCIA</b> <br><br>
                         </a> 
             </div>
             <div class="col-sm-2">
