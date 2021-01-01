@@ -4,6 +4,8 @@ include('config.php');
 
 session_start();
 
+include('newHeader.php');
+
 /*if(isset($_GET['erro'])) {
 if ('true' === $_GET['erro']) {
             echo '<script>alert("Login Incorreto")</script>'; 
@@ -47,52 +49,6 @@ if ('true' === $_GET['erro']) {
             
 
     </head>
-
-    
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="font-family: 'Chewy'; ">
-<a class="navbar-brand" href="Homepage.php">
-<img src="Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
-</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-      <?php 
-        if(isset($_SESSION['loggedin'])){
-                ?> 
-        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;padding-left:50px;"> 
-        <img src="imagens\profile.png" alt="Profile Icon" width="50" height="50" ></img>
-        PERFIL
-        </a>
-
-        <?php } ?>
-      </li>
-      
-      
-      <li class="nav-item ">
-                    <?php 
-                            if(isset($_SESSION['loggedin'])){
-                        ?> 
-                                    <a  class="nav-link" href="logout.php" style="text-decoration:none;padding-right:50px;">
-                                      <img src="imagens\Logout.png" alt="Logout Icon" width="50" height="50" ></img>
-                                        SAIR
-                                    </a>
-                        <?php }
-
-                        else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
-                        <a   class="nav-link" data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
-                            <img src="imagens\login.png" alt="Login Icon" width="30" height="30" class="d-inline-block align-top"></img>
-                            Entrar
-                        </a>
-                        <?php 
-                            } 
-                        ?>  
-      </li>
-    </ul>
-  </div>
-</nav>
 
 <body onload="diaSemana()" style="background-color: #aecad6;
 background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
@@ -250,7 +206,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                     
                
                     
-                    <!-- Modal body -->
+                    <!-- Modal body 
                     <div class="modal-body">
                         <form class="modal-content animate" action ="chat/login.php" method="POST">
                                 <div class="container"> 
@@ -275,7 +231,7 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </div>
             </div>
         </div>
-        
+-->
         
 
 

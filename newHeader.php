@@ -29,9 +29,9 @@
                         <?php }
 
                         else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
-                        <a   class="nav-link" data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
-                            <img src="imagens\login.png" alt="Login Icon" width="30" height="30" class="d-inline-block align-top"></img>
-                            Entrar
+                        <a   class="nav-link" href="Pagina_login.php"  style="width:auto;" style="text-decoration:none;">
+                            <img src="imagens\login.png" alt="Login Icon" width="50" height="50" ></img>
+                            ENTRAR
                         </a>
                         <?php 
                             } 
