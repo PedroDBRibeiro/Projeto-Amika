@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
 </nav>
 
 
-<body>
+<body style="padding-top:100px;">
 
 <div>
     <div class="container" >
@@ -85,10 +85,10 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <br/>
         <div class="table-responsive"><br>
-            <h3 align="center" style="font-family: 'Chewy';"><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
+            <h3   align="center" style="font-family: 'Chewy';" ><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
             <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
-            <div id="user_details"></div>
-            <div id="user_model_details"></div>
+            <div id="user_details"  ></div>
+            <div id="user_model_details" style="padding-top:200px;"></div>
         </div>
     </div>
 </div>
