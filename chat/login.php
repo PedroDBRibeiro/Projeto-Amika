@@ -36,6 +36,7 @@ if(isset($_POST["login"]))
       if(password_verify($_POST["password"], $row["password"]))
       {
         $_SESSION['loggedin'] = TRUE;
+        $_SESSION['lembretes'] = 0;
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['jadi'] = $row['jadi'];

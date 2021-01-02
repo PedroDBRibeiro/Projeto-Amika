@@ -44,11 +44,19 @@
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content" style=" background: #03036B;">
-                    <form method="POST" action="register.php" autocomplete="on" id="signup-form" class="signup-form">
+                    <form action="register.php" method="POST"  autocomplete="on" id="signup-form" class="signup-form">
                         <h2 class="form-title" style = "color: white;font-family: 'Numans', sans-serif; ">Registo</h2>
 
                         <div class="form-group" style=" background:white;">
                         <input class="form-input" type="text" placeholder="Introduza o seu Nome" name="nome" id="nome" required>
+                        </div>
+                        
+                        <div class="form-group" style=" background:white;">
+                        <input class="form-input" type="text" placeholder="Introduza a sua Idade" name="idade" id="idade" required>
+                        </div>
+
+                        <div class="form-group" style=" background:white;">
+                        <input class="form-input" type="text" placeholder="Introduza a sua Idade" name="idade" id="idade" required>
                         </div>
 
                         <div class="form-group" style=" background:white;">

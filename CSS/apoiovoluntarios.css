@@ -1,0 +1,155 @@
+/* Style inputs with type="text", select elements and textareas */
+    input[type=text],
+    select,
+    textarea {
+      width: 100%;
+      /* Full width */
+      padding: 12px;
+      /* Some padding */
+      border: 1px solid rgb(226, 223, 223);
+      /* Gray border */
+      border-radius: 4px;
+      /* Rounded borders */
+      box-sizing: border-box;
+      /* Make sure that padding and width stays in place */
+      margin-top: 6px;
+      /* Add a top margin */
+      box-shadow: 2px 3px 4px 0 rgba(158, 155, 155, 0.2);
+      margin-bottom: 35px;
+      /* Bottom margin */
+      resize: vertical
+        /* Allow the user to vertically resize the textarea (not horizontally) */
+
+
+    }
+
+
+    input[type=file] {
+      border-color: white;
+
+    }
+
+    .radio {
+      font-size: 40px;
+    }
+
+    .logo {
+      padding: 1px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+
+
+
+    /* Add a background color and some padding around the form */
+    .container {
+      border-radius: 30px;
+      background-color: rgba(3, 3, 107,1);
+      padding: 40px 50px 30px;
+      width: 800px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: auto;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+      ;
+    }
+
+    h1 {
+      background: rgb(255, 255, 255);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .title3 {
+      text-align: center;
+      color: rgb(255, 255, 255);
+      letter-spacing: 3px;
+
+      font-weight: normal;
+      font-size: 18px;
+
+    }
+
+
+    .title2 {
+      font-size: medium;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #ffffff;
+      font-weight: bold;
+
+    }
+
+
+    .btn {
+      border: none;
+      /* Remove borders */
+      color: white;
+      /* Add a text color */
+      padding: 14px 28px;
+      /* Add some padding */
+      cursor: pointer;
+      /* Add a pointer cursor on mouse-over */
+
+
+    }
+
+    .success {
+      background-color: rgb(34, 172, 39);
+      padding: 12px 18px;
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-right: 10px;
+      box-shadow: 0 4px 8px 0 rgba(46, 45, 45, 0.2);
+    }
+
+    /* Green */
+    .success:hover {
+      background-color: #1a911e;
+    }
+
+    .danger {
+      background-color: #fd3e30;
+      padding: 12px 18px;
+      border-radius: 6px;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px 0 rgba(46, 45, 45, 0.2);
+    }
+
+    /* Red */
+    .danger:hover {
+      background: #da190b;
+    }
+
+
+    .text {
+      background-color: white;
+      color: black;
+      font-size: 10vw;
+      /* Responsive font size */
+      font-weight: bold;
+      margin: 0 auto;
+      /* Center the text container */
+      padding: 10px;
+      width: 50%;
+      text-align: center;
+      /* Center text */
+      position: absolute;
+      /* Position text */
+      top: 50%;
+      /* Position text in the middle */
+      left: 50%;
+      /* Position text in the middle */
+      transform: translate(-50%, -50%);
+      /* Position text in the middle */
+      mix-blend-mode: screen;
+      /* This makes the cutout text possible */
+    }
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}

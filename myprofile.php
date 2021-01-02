@@ -56,12 +56,16 @@ if ($resultCheck == 1) {
 </head>
 
 <body>
+  <br>
   <?php
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
   }
+  ?>
 
+<br>
+<?php
   if (isset($_SESSION['msg_pass'])) {
     echo $_SESSION['msg_pass'];
     unset($_SESSION['msg_pass']);
@@ -169,14 +173,14 @@ if ($resultCheck == 1) {
   </div>
 
   <!-- POPUP MUDAR PASSWORD -->
-  <div class="modal fade" id="mudarPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="mudarPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header text-center">
+        <div class="modal-header">
+        <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Muda a tua password aqui!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title w-100">Muda a tua password aqui!</h4>
         </div>
         <div class="modal-body">
           <form id="novaPass" method="POST" action="change_password.php">
