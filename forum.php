@@ -108,7 +108,7 @@ if ($resultCheck > 0) {
               <?php echo $post['nome']; ?>
             </p>
 
-            <a href="javascript:;" class="comentar blog-post__cta">Comentar</a>
+            <?php if(isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
 
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post">
               <div class="comment_form_wrapper" style="display: none;">
