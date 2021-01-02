@@ -188,14 +188,14 @@ if ($resultCheck > 0) {
 
   <!-- POPUP ADICIONAR POST -->
 
-  <div class="modal fade" id="adicionarPost" tabindex="-1" role="dialog" style="font-size:17px;" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="adicionarPost" tabindex="-1" role="dialog" style="font-size:17px;" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="font-size:17px;">
-        <div class="modal-header text-center">
+        <div class="modal-header">
+        <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma publicação!</h5>
           <button type="button" class="close" data-dismiss="modal" style="font-size:22px;" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title w-100" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma publicação!</h4>
         </div>
         <div class="modal-body">
           <form id="novaPublicacao" method="POST" action="new_post.php" enctype="multipart/form-data" autocomplete="off">

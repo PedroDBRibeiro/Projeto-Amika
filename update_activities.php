@@ -7,11 +7,12 @@ include "config.php";
 if (isset($_POST['submit'])) {
 
   $id = $_POST['id'];
-  $categoria = $_POST["categoria"];
+  $categoria_id = $_POST["categoria"];
   $start = $_POST["start"];
   $end = $_POST["end"];
+  $desc = $_POST["desc"];
 
-  if (!empty($id) && !empty($categoria) && !empty($start) && !empty($end)) {
+  if (!empty($id) && !empty($categoria_id) && !empty($start) && !empty($end)) {
     //Converte data e hora no formato da BD
     $data = explode(' ', $start);
     list($data, $hora) = $data;
@@ -25,15 +26,16 @@ if (isset($_POST['submit'])) {
     $data_sem_barra = implode("-", $data_sem_barra);
     $datafim = $data_sem_barra . " " . $hora;
 
-    $get_id_categoria = "SELECT ID_CATEGORIA FROM CATEGORIA WHERE CATEGORIA = '$categoria'";
 
-    $idcat1 = mysqli_query($mysqli, $get_id_categoria);
-    $idcat2 = mysqli_fetch_assoc($idcat1);
-    $idcat = $idcat2['ID_CATEGORIA'];
-
-    $query = "UPDATE atividades 
-            SET ID_CATEGORIA='$idcat', DATA_INICIO='$datainicio', DATA_FIM='$datafim'
+    if (empty($desc)) {
+      $query = "UPDATE atividades 
+            SET ID_CATEGORIA='$categoria_id', DATA_INICIO='$datainicio', DATA_FIM='$datafim'
             WHERE ID_ATIVIDADE='$id';";
+    } else {
+      $query = "UPDATE atividades 
+            SET ID_CATEGORIA='$categoria_id', DATA_INICIO='$datainicio', DATA_FIM='$datafim', DESCRICAO='$desc'
+            WHERE ID_ATIVIDADE='$id';";
+    }
 
     mysqli_query($mysqli, $query);
 

@@ -4,6 +4,8 @@ session_start();
 include('newHeader.php');
 include "config.php";
 
+$session_id = $_SESSION['user_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -210,14 +212,14 @@ include "config.php";
     </style>
 
     <!-- POPUP VER ATIVIDADE -->
-    <div class="modal fade" id="verAtividade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="verAtividade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
+                <div class="modal-header">
+                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title w-100" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h4>
                 </div>
                 <div class="modal-body">
                     <div class="visualizar">
@@ -277,38 +279,6 @@ include "config.php";
                                     </select>
                                 </div>
 
-                                <div class="form-group col-sm-10">
-
-                                    <?php
-
-                                    $session_id = $_SESSION['user_id'];
-
-                                    $query = "SELECT u.nome, m.id
-                                    FROM (SELECT id_user1 as id
-                                        FROM matches WHERE id_user2='$session_id'
-                                        UNION SELECT id_user2 as id
-                                        FROM matches WHERE id_user1='$session_id') as m,
-                                        utilizadores as u
-                                    WHERE m.id = u.user_id;";
-
-                                    $result = mysqli_query($mysqli, $query);
-
-                                    while ($found = mysqli_fetch_assoc($result)) {
-                                        $amigos[] = $found;
-                                    }
-
-                                    ?>
-
-                                    <label>Amigo:</label>
-
-                                    <select name="amigo" id="amigo" class="form-control">
-                                        <?php foreach ($amigos as $amigo) : ?>
-                                            <option value="<?php echo $amigo['id'] ?>">
-                                                <?php echo $amigo['nome'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
 
                                 <div class="form-group col-sm-10">
                                     <label>Data de início:</label>
@@ -322,7 +292,7 @@ include "config.php";
 
                                 <div class="form-group col-sm-10">
                                     <label>Descrição:</label>
-                                    <textarea class="form-control" type="text" rows="4" placeholder="Notas" id="eventDescription"></textarea>
+                                    <textarea class="form-control" type="text" rows="4" placeholder="Notas" id="desc"></textarea>
                                 </div>
 
                             </div>
@@ -343,14 +313,14 @@ include "config.php";
 
 
     <!-- POPUP ADICIONAR ATIVIDADE -->
-    <div class="modal fade" id="inserirAtividade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="inserirAtividade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
+                <div class="modal-header">
+                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title w-100" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h4>
                 </div>
                 <div class="modal-body">
                     <form id="novaAtividade" method="POST" action="insert_activities.php">
@@ -367,6 +337,24 @@ include "config.php";
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
+                            <?php
+
+                            $query = "SELECT u.nome, m.id
+                                    FROM (SELECT id_user1 as id
+                                        FROM matches WHERE id_user2=$session_id
+                                        UNION SELECT id_user2 as id
+                                        FROM matches WHERE id_user1=$session_id) as m,
+                                        utilizadores as u
+                                    WHERE m.id = u.user_id;";
+
+                            $result = mysqli_query($mysqli, $query);
+
+                            while ($found = mysqli_fetch_assoc($result)) {
+                                $amigos[] = $found;
+                            }
+
+                            ?>
 
                             <div class="form-group col-sm-10">
 
