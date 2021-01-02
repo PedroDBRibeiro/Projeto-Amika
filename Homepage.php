@@ -34,12 +34,12 @@ if ('true' === $_GET['erro']) {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Projeto Amik@</title>
-            <meta name="description" content=""
+            <meta name="description" content="">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="">
 
             <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
-            <link rel="stylesheet" type="text/css" href="CSS/Login.css">
+           
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -56,18 +56,14 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                
         <div class="container" align ="center" style="font-family: 'Chewy'; opacity:0.9;"> 
         <div class="row justify-content-md-center" style="margin-top:50px;" >
+        <?php if(isset($_SESSION['loggedin'])){
+                ?> 
             <div class="col-sm-2 ">     
             <a  href="calendar.php" style="text-decoration:none;">
                         <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
                         <br><br><b class="hyperlink" >AGENDA</b><br><br>
                     </a>
             </div>                     
-            <div class="col-sm-2">
-            <a  href="forum.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">FORUM</b> <br><br>
-                        </a>
-            </div>
             <div class="col-sm-2">
             <a  href="chat/index.php" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
@@ -80,13 +76,21 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                         <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
                     </a>
             </div>
+            <?php } ?>
             <div class="col-sm-2">
-            <a  href="" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
+            <a  href="forum.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink">FORUM</b> <br><br>
                         </a>
             </div>
-            
+
+            <div class="col-sm-2">
+            <a  href="informacoes.php" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
+                        </a> 
+            </div>
+
         </div>
         <br>
         <div class="row justify-content-md-center">
@@ -96,24 +100,30 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                             <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
                         </a> 
             </div>
+            <?php if(isset($_SESSION['loggedin']) && $_SESSION['jadi'] == 1 ){
+                ?> 
             <div class="col-sm-2">
-            <a  href="informacoes.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
-                        </a> 
+            <a  href="" style="text-decoration:none;">
+                            <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                            <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
+                        </a>
             </div>
+            <?php } ?>
             <div class="col-sm-2">
             <a  href="pontosinteresse.php" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
                             <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
                         </a>    
             </div>  
+            <?php if(isset($_SESSION['loggedin']) && $_SESSION['jadi'] == 0 ){
+                ?> 
             <div class="col-sm-2">
             <a  href="apoiovoluntarios.php" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
                             <br><br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> <br><br>
                         </a>   
             </div> 
+            <?php } ?>
              
         </div>
     </div>
@@ -142,7 +152,7 @@ for ($i = 0; $i < count($weatherData);$i++){
 ?>
 
 <!--CARTÃO TEMPO-->   
-<div class="container" style="font-family: 'Chewy'; " >
+<div class="container" style="font-family: 'Chewy';margin-bottom:100px;margin-top:50px;" >
     <div class="padding"  >        
             <div class="col-lg-8 grid-margin stretch-card" >
                 <div class="card card-weather" style="width:1100px;border-radius:20px;opacity:0.9;" >
@@ -190,52 +200,6 @@ for ($i = 0; $i < count($weatherData);$i++){
     </div>
 <!--FIM CARTÃO TEMPO-->
   
-
-   
-    
-
-        <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-            
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                    <h4 class="modal-title">ENTRAR</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    
-               
-                    
-                    <!-- Modal body 
-                    <div class="modal-body">
-                        <form class="modal-content animate" action ="chat/login.php" method="POST">
-                                <div class="container"> 
-                                    <label for="emailLogin"><b>Email</b></label>
-                                        <input type="text" placeholder="Inserir Email" name="email" required>
-
-                                    <label for="pswLogin"><b>Palavra-Passe</b></label>
-                                        <input type="password" placeholder="Inserir Palavra-passe" name="password" required>
-
-                                    <button type="submit" name ="login" value ="Login">Entrar</button>
-                                    <label>
-                                        <input type="checkbox" checked="checked" name="remember"> Lembrar-me
-                                    </label>
-                                    <a style="text-decoration:underline;" href="PaginaRegisto.php"><br>Inscrever-me</a>
-                                    
-                                </div>
-                        </form> 
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                    </div>
-                
-                
-                </div>
-            </div>
-        </div>
--->
-        
-
-
-
 
     </body>
 </html>

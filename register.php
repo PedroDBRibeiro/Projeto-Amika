@@ -20,6 +20,7 @@ else {
     }
 
 
+
 if (!isset($_POST['nome'], $_POST['psw'], $_POST['email'], $_POST['pswConfirm'])) {
 	exit('Por Favor Complete o Registo!');
 }
@@ -59,7 +60,8 @@ if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE e
     $stmt->bind_param('ssssssss', $_POST['nome'], $password, $_POST['email'],$_POST['idade'],$_POST['regiao'],$textoDescritivo,$tipoUser,$value); 
 	$stmt->execute();
     echo 'Registo Bem Sucedido.';
-    header('Location: homepage.php');
+    header('Location: Pagina_login.php');
+
 
 } else {
 	echo 'Could not prepare statement!';
@@ -70,6 +72,25 @@ if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE e
 } else {
 	echo 'Could not prepare statement!';
 }
+/*
+if (!empty($_POST['hob'])) {
+    $hob = $_POST['hob'];
+
+$trigger .= "CREATE TRIGGER_HOBBIES
+            ON utilizadores
+            AFTER insert 
+            insert into `hobbies` (`user_id`,`hobbie`) VALUES (SELECT user_id from inserted, " ;
+
+foreach ($_POST['hob'] as $hob) {
+
+$trigger = $trigger . "$hob)"; 
+
+myqli_query($mysqli,$trigger);
+
+    }
+
+} 
+*/
 
 $mysqli->close(); 
 

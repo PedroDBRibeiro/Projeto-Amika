@@ -24,7 +24,7 @@ include('newHeader.php');
 
   <style>
     body {
-      font-size: 12px;
+      
       background-image: url("images/bg-login.jpeg");
       background-repeat: no-repeat;
       background-size: cover;

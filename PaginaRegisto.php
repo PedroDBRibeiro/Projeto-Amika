@@ -97,10 +97,14 @@
                     <option value="Jadi">Jovem Adulto com Deficiência Intelectual</option>
                 </select>
 
+                
+
                 <div id="TextoJadi" style="display: none;">
                     <label for="deficiencia">Descreva a Deficiência: </label> 
                     <input type="text" id="deficiencia" name="deficiencia" />
                 </div>
+
+           
 
             </div>
             

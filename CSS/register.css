@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center {
     display: flex;
@@ -200,6 +202,7 @@ display-flex, .display-flex, .display-flex-center {
     margin-bottom: 20px; }
   
   .form-input {
+    font-family: 'Numans', sans-serif;
     width: 100%;
     border: 1px solid #ebebeb;
     border-radius: 5px;

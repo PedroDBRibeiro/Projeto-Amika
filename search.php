@@ -16,9 +16,9 @@ include('newHeader.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
 
-    <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
-    <link rel="stylesheet" type="text/css" href="CSS/Login.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Amik@.css"> 
     <link rel="stylesheet" type="text/css" href="CSS/searchCard.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,6 +27,24 @@ include('newHeader.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 </head>
+
+<style>
+
+button {
+
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+</style>
 
 <body >
     <style>
@@ -103,6 +121,8 @@ include('newHeader.php');
                 <button type="submit" name="submit" form="search" value="Pesquisar" style="font-family: 'Chewy';color: #03036B;margin-top:15px;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)">
                     Pesquisar</button>
             </div>
+
+        
         </form>
     </div>
 
