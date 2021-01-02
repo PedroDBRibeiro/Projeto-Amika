@@ -65,7 +65,7 @@ if (isset($_SESSION['loggedin'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
-    <link rel="stylesheet" type="text/css" href="CSS/Login.css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -168,6 +168,27 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         </div>
     </div>
 </div>
+
+<!-- API TEMPO -->
+
+<?php
+
+$weatherData = json_decode(file_get_contents("http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json"),true);
+$weatherTypes = json_decode(file_get_contents("https://api.ipma.pt/open-data/weather-type-classe.json"),true);
+
+for ($i = 0; $i < count($weatherData);$i++){
+     
+    $data[$i]=$weatherData['data'][$i]['forecastDate'];
+    $tMax[$i]=$weatherData['data'][$i]['tMax'];
+    $tMin[$i]=$weatherData['data'][$i]['tMin'];
+    $idWeatherType[$i]=$weatherData['data'][$i]['idWeatherType'];
+   
+   }
+   for ($i = 1; $i < 29;$i++){
+   $weatherType[$i]=$weatherTypes['data'][$i]['descIdWeatherTypePT'];
+   }
+
+?>
 
 
 <!--CARTÃO TEMPO-->   
