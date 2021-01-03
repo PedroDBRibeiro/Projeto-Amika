@@ -33,6 +33,12 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
+
+.form-group{
+    border-radius:5px;
+}
+
+
 </style>
 
 
@@ -68,21 +74,21 @@
                         </div>
 
                         <div class="form-group" style=" background:white;">
-                        <label for="avatar">Escolhe uma foto de perfil:</label>
+                        <label for="avatar" style="font-family: 'Numans', sans-serif;padding-left:10px;">Escolhe uma foto de perfil:</label>
                         <input class="form-input" type="file" name="avatar" id="avatar">
                         </div>
 
                         <select class="selectpicker" name="regiao" id="regiao" required style="font-family: 'Numans', sans-serif;">
-                    <option disabled selected value>Escolhe a tua localização</option>
-                    <option value="Barlavento">Barlavento</option>
-                    <option value="Centro">Centro</option>
-                    <option value="Sotavento">Sotavento</option>
+                    <option style="font-family: 'Numans', sans-serif;" disabled selected value>Escolhe a tua localização</option>
+                    <option style="font-family: 'Numans', sans-serif;" value="Barlavento">Barlavento</option>
+                    <option style="font-family: 'Numans', sans-serif;" value="Centro">Centro</option>
+                    <option style="font-family: 'Numans', sans-serif;" value="Sotavento">Sotavento</option>
                         </select>
 
                         <select  class="selectpicker" onchange="JadiCheck(this)" name="tipoUser" id="tipoUser" style="font-family: 'Numans', sans-serif;" required>
-                        <option disabled selected value>Tipo de utilizador</option>
-                        <option value="Voluntario">Voluntário</option>
-                    <option value="Jadi">Jovem Adulto com Deficiência Intelectual</option>
+                        <option style="font-family: 'Numans', sans-serif;" disabled selected value>Tipo de utilizador</option>
+                        <option style="font-family: 'Numans', sans-serif;" value="Voluntario">Voluntário</option>
+                    <option style="font-family: 'Numans', sans-serif;" value="Jadi">Jovem Adulto com Deficiência Intelectual</option>
                         </select>
 
                         <div class="form-group" id="TextoJadi" style="display: none;"><br>
@@ -90,18 +96,18 @@
                     <input  style="background:white;" class="form-input" type="text" id="deficiencia" name="deficiencia" />
                 </div>
 
-                <br><br>  <select name="hob[]" class="selectpicker" multiple title="Escolhe 1 ou mais hobbies">
-                <option value="Praia">Praia</option>
-                <option value="Passear">Passear</option>
-                <option value="Futebol">Futebol</option>
-                <option value="Desporto">Desporto</option>
-                <option value="Séries/Filmes">Séries/Filmes</option>
-                <option value="Fotografia">Fotografia</option>
-                <option value="Andar de bicicleta">Andar de bicicleta</option>
-                <option value="Ler">Ler</option>
-                <option value="Cozinhar">Cozinhar</option>
-                <option value="Compras">Compras</option>
-                <option value="Puzzles">Puzzles</option>
+                <br><br>  <select name="hob[]" class="selectpicker" multiple title="Escolhe 1 ou mais hobbies" style="font-family: 'Numans', sans-serif;">
+                <option style="font-family: 'Numans', sans-serif;" value="Praia">Praia</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Passear">Passear</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Futebol">Futebol</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Desporto">Desporto</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Séries/Filmes">Séries/Filmes</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Fotografia">Fotografia</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Andar de bicicleta">Andar de bicicleta</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Ler">Ler</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Cozinhar">Cozinhar</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Compras">Compras</option>
+                <option style="font-family: 'Numans', sans-serif;" value="Puzzles">Puzzles</option>
                     </select>
 
             
