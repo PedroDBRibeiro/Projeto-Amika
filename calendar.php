@@ -198,7 +198,7 @@ $session_id = $_SESSION['user_id'];
         }
         ?>
 
-        <div id="calendar"></div>
+        <div id="calendar" style="background:white;padding:10px;border-radius:15px;margin-bottom:100px;"></div>
     </div>
 
     <style>
