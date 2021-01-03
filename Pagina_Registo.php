@@ -44,7 +44,7 @@
             <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content" style=" background: #03036B;">
-                    <form action="register.php" method="POST"  autocomplete="on" id="signup-form" class="signup-form">
+                    <form action="register.php" method="POST"  autocomplete="off" id="signup-form" class="signup-form" enctype="multipart/form-data">
                         <h2 class="form-title" style = "color: white;font-family: 'Numans', sans-serif; ">Registo</h2>
 
                         <div class="form-group" style=" background:white;">
@@ -65,6 +65,11 @@
                         
                         <div class="form-group" style=" background:white;">
                         <input class="form-input" type="password" placeholder="Repita a Palavra-passe" name="pswConfirm" id="pswConfirm" required>
+                        </div>
+
+                        <div class="form-group" style=" background:white;">
+                        <label for="avatar">Escolhe uma foto de perfil:</label>
+                        <input class="form-input" type="file" name="avatar" id="avatar">
                         </div>
 
                         <select class="selectpicker" name="regiao" id="regiao" required style="font-family: 'Numans', sans-serif;">
