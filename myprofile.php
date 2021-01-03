@@ -50,7 +50,6 @@ if ($resultCheck == 1) {
       background-position: center center;
       margin-bottom: 50px;
 
-
     }
   </style>
 </head>
@@ -103,7 +102,7 @@ if ($resultCheck == 1) {
                 <div class="form-group">
                   <label class="col-sm-6 control-label">Nova foto de perfil:</label>
                   <div class="col-sm-12">
-                    <input type="file" name="avatar">
+                    <input style="color:white;" type="file" name="avatar">
                   </div>
                 </div>
 
