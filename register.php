@@ -72,25 +72,7 @@ if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE e
 } else {
 	echo 'Could not prepare statement!';
 }
-/*
-if (!empty($_POST['hob'])) {
-    $hob = $_POST['hob'];
 
-$trigger .= "CREATE TRIGGER_HOBBIES
-            ON utilizadores
-            AFTER insert 
-            insert into `hobbies` (`user_id`,`hobbie`) VALUES (SELECT user_id from inserted, " ;
-
-foreach ($_POST['hob'] as $hob) {
-
-$trigger = $trigger . "$hob)"; 
-
-myqli_query($mysqli,$trigger);
-
-    }
-
-} 
-*/
 
 $mysqli->close(); 
 
