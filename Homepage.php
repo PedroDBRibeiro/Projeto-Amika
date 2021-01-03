@@ -191,10 +191,10 @@ for ($i = 0; $i < count($weatherData);$i++){
 
 
 <!--CARTÃO TEMPO-->   
-<div class="container" style="font-family: 'Chewy';margin-bottom:100px;margin-top:50px;" >
-    <div class="padding"  >        
+<div class="container d-flex" style="font-family: 'Chewy';margin-bottom:100px;margin-top:50px;" >
+    <div class="padding" style="float:left;" >        
             <div class="col-lg-8 grid-margin stretch-card" >
-                <div class="card card-weather" style="width:1100px;border-radius:20px;opacity:0.9;" >
+                <div class="card card-weather" style="width:600px;border-radius:20px;opacity:0.9;" >
                     <div class="card-body" style="height:250px;" >
                         <div class="weather-date-location" >
                             <h3  id="hoje" style="font-family: 'Chewy'; ">
@@ -236,7 +236,13 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </div>
             </div>
         </div>
+    <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;">
+    <div class="row justify-content-md-center"> LEMBRETES </div>
+    <div class="row justify-content-md-center" style="background:white;height:70px;border-radius:20px;margin-top:20px;"> </div>
+    <div class="row justify-content-md-center" style="background:white;height:70px;margin-top:40px;border-radius:20px;"> </div>
+    <div class="row justify-content-md-center" style="background:white;height:70px;margin-top:40px;border-radius:20px;"> </div>   
     </div>
+</div>
     <!--FIM CARTÃO TEMPO-->
 
 

@@ -50,6 +50,12 @@ if ($resultCheck > 0) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 </head>
 
+<style>
+body {
+padding-top:95px;
+}
+</style>
+
 <body>
 
   <br>
@@ -60,11 +66,12 @@ if ($resultCheck > 0) {
   }
   ?>
 
-  <div align="center" style="margin-top:80px;">
-    <div class="title-back">
-      <h1 class="title ">
-        Fórum
-      </h1>
+<div align ="center" style="margin-top:50px;">
+        <div class="title-back" >
+            <h1 class = "title ">
+                Fórum
+            </h1>
+        </div>
     </div>
   </div>
 

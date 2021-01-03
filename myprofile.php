@@ -37,7 +37,7 @@ if ($resultCheck == 1) {
 
 
     body {
-      font-size: 12px;
+      padding-top:80px;
       background-repeat: no-repeat;
       background-size: cover;
       display: block;
@@ -49,7 +49,6 @@ if ($resultCheck == 1) {
       height: 100%;
       background-position: center center;
       margin-bottom: 50px;
-
 
     }
   </style>
@@ -72,7 +71,7 @@ if ($resultCheck == 1) {
   }
   ?>
 
-  <div align ="center" style="margin-top:80px;">
+  <div align ="center" style="margin-top:50px;">
         <div class="title-back" >
             <h1 class = "title ">
                 O meu perfil
@@ -80,7 +79,6 @@ if ($resultCheck == 1) {
         </div>
     </div>
 
-  <br />
 
 
   <br>
@@ -103,7 +101,7 @@ if ($resultCheck == 1) {
                 <div class="form-group">
                   <label class="col-sm-6 control-label">Nova foto de perfil:</label>
                   <div class="col-sm-12">
-                    <input type="file" name="avatar">
+                    <input style="color:white;" type="file" name="avatar">
                   </div>
                 </div>
 
@@ -171,7 +169,7 @@ if ($resultCheck == 1) {
       </div>
     </div>
   </div>
-
+<br>
   <!-- POPUP MUDAR PASSWORD -->
   <div class="modal fade" id="mudarPass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
