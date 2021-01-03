@@ -37,7 +37,7 @@ if ($resultCheck == 1) {
 
 
     body {
-      font-size: 12px;
+      padding-top:80px;
       background-repeat: no-repeat;
       background-size: cover;
       display: block;
@@ -72,7 +72,7 @@ if ($resultCheck == 1) {
   }
   ?>
 
-  <div align ="center" style="margin-top:80px;">
+  <div align ="center" style="margin-top:50px;">
         <div class="title-back" >
             <h1 class = "title ">
                 O meu perfil
