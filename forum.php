@@ -76,7 +76,7 @@ if ($resultCheck > 0) {
   <br>
   <br>
   <div class="container">
-    <button id="addpost" class="btn-grad" style="margin:auto;">+</button>
+  <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
   </div>
 
 

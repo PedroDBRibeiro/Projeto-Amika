@@ -140,15 +140,14 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                         </a> 
             </div>
 
-            <?php if(isset($_SESSION['loggedin']) && $_SESSION['jadi'] == 1 ){
-                ?> 
+        
             <div class="col-sm-2">
             <a  href="" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
                             <br><br><b class="hyperlink">EXERCICIOS</b> <br><br>
                         </a>
             </div>
-            <?php } ?>
+            
             <div class="col-sm-2">
             <a  href="pontosinteresse.php" style="text-decoration:none;">
                             <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
