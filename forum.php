@@ -52,31 +52,27 @@ if ($resultCheck > 0) {
 
 <body>
 
+  <br>
   <?php
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
   }
-
-  if (isset($_SESSION['msg_pass'])) {
-    echo $_SESSION['msg_pass'];
-    unset($_SESSION['msg_pass']);
-  }
   ?>
 
-<div align ="center" style="margin-top:80px;">
-        <div class="title-back" >
-            <h1 class = "title ">
-                Fórum
-            </h1>
-        </div>
+  <div align="center" style="margin-top:80px;">
+    <div class="title-back">
+      <h1 class="title ">
+        Fórum
+      </h1>
     </div>
+  </div>
 
   <br>
   <br>
   <br>
   <div class="container">
-  <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
+    <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
   </div>
 
 
@@ -86,7 +82,7 @@ if ($resultCheck > 0) {
 
         <div class="blog-post">
           <div class="blog-post__img">
-            <img class="post-img"<?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
+            <img class="post-img" <?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
           </div>
           <div class="blog-post__info">
             <div class="blog-post__date">
@@ -108,7 +104,7 @@ if ($resultCheck > 0) {
               <?php echo $post['nome']; ?>
             </p>
 
-            <?php if(isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
+            <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
 
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post">
               <div class="comment_form_wrapper" style="display: none;">
@@ -192,7 +188,7 @@ if ($resultCheck > 0) {
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="font-size:17px;">
         <div class="modal-header">
-        <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma publicação!</h5>
+          <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma publicação!</h5>
           <button type="button" class="close" data-dismiss="modal" style="font-size:22px;" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

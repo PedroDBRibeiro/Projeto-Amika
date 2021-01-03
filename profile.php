@@ -87,7 +87,7 @@ include('make_friendship.php');
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile" style="margin:auto;">
                             <div class="card-block text-center text-white" style="height:400px;">
-                                <div class="panel-body text-center"> <img  <?php echo 'src="data:image/jpeg;base64,' .$avatar. '"' ?> class="img-circle profile-avatar" alt="User-Profile-Image"> </div>
+                                <div class="panel-body text-center"> <img class="profile-avatar" alt="User-Profile-Image" <?php echo ' src="data:image/jpeg;base64,' .$avatar. '"' ?>> </div>
                                 <br><h4 class="f-w-600" ><?php echo $nome?></h4>
                                 <h5><?php if ($jadi == 0) echo "Voluntário"; else echo "Jadi";?></h5> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>                             
                             </div>
