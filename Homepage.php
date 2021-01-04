@@ -61,6 +61,7 @@ if (isset($_SESSION['loggedin'])) {
         join categoria as c
         on users_act.ID_CATEGORIA = c.ID_CATEGORIA
     where users_act.id <> $session_id 
+    AND users_act.DATA_INICIO >= NOW()
     ORDER BY users_act.DATA_INICIO ASC
     LIMIT 4;";
 
