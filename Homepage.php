@@ -183,7 +183,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         <!-- PRÓXIMOS 3 EVENTOS -->
         <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;margin-top:10px;">
             <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
-            <?php if (isset($_SESSION['loggedin'])) foreach ($prox_atividades2 as $prox_atividade2) : ?>
+            <?php if (isset($_SESSION['loggedin']) && !empty($prox_atividades2)) foreach ($prox_atividades2 as $prox_atividade2) : ?>
                 <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:18px;padding:18px;">
                     <i class="fas fa-exclamation-circle"></i>&nbsp;
                     <?php echo $prox_atividade2['CATEGORIA'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
@@ -195,7 +195,10 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                                                                                                                                                     echo $horas; ?>
                 </div>
             <?php endforeach;
-                if(!isset($_SESSION['loggedin'])) echo "<div class='row justify-content-md-center'>Entra na tua conta para veres as próximas atividades!</div>";
+            if (!isset($_SESSION['loggedin']))
+                echo "<div class='row justify-content-md-center'>Entra na tua conta para veres as próximas atividades!</div>";
+            if (empty($prox_atividades2))
+                echo "<div class='row justify-content-md-center'>Ainda não tens atividades marcadas :(</div>";
             ?>
 
         </div>
