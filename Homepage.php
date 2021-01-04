@@ -49,6 +49,26 @@ if (isset($_SESSION['loggedin'])) {
     while ($found = mysqli_fetch_assoc($result)) {
         $prox_atividades[] = $found;
     }
+
+    $query_lemb2 = "SELECT users_act.* , u.nome as NOME, c.CATEGORIA from (
+        select ID_ATIVIDADE, ID_CATEGORIA, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+        where a.id_user1 = $session_id OR a.id_user2 = $session_id
+        union
+        select ID_ATIVIDADE, ID_CATEGORIA, id_user1 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+        where a.id_user1 = $session_id OR a.id_user2 = $session_id) as users_act
+        join utilizadores as u 
+        on users_act.id=u.user_id
+        join categoria as c
+        on users_act.ID_CATEGORIA = c.ID_CATEGORIA
+    where users_act.id <> $session_id 
+    ORDER BY users_act.DATA_INICIO ASC
+    LIMIT 5;";
+
+    $result2 = mysqli_query($mysqli, $query_lemb2);
+
+    while ($found2 = mysqli_fetch_assoc($result2)) {
+        $prox_atividades2[] = $found2;
+    }
 }
 
 ?>
@@ -65,7 +85,7 @@ if (isset($_SESSION['loggedin'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -90,116 +110,39 @@ if (isset($_SESSION['loggedin'])) {
 
 <body onload="diaSemana()" style="background-color: #aecad6;
 background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
-" >
-               
-        <div class="container" align ="center" style="font-family: 'Chewy'; opacity:0.9;"> 
-        <div class="row justify-content-md-center" style="margin-top:50px;" >
-        <?php if(isset($_SESSION['loggedin'])){
-                ?> 
-            <div class="col-sm-2 ">     
-            <a  href="calendar.php" style="text-decoration:none;">
-                        <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
-                        <br><br><b class="hyperlink" >AGENDA</b><br><br>
-                    </a>
-            </div>                     
-            <div class="col-sm-2">
-            <a  href="chat/index.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">CHAT</b> <br><br>
-                    </a>
-            </div>
-            <div class="col-sm-2">
-            <a  href="search.php" style="text-decoration:none;">
-                        <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
-                        <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
-                    </a>
-            </div>
-            <?php } ?>
-            <div class="col-sm-2">
-            <a  href="forum.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">FÓRUM</b> <br><br>
-                        </a>
-            </div>
+">
 
-            <div class="col-sm-2">
-            <a  href="informacoes.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
-                        </a> 
-            </div>
+    <!-- API TEMPO -->
 
-            
-        </div>
-        <br>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-2">
-            <a  href="" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
-                        </a> 
-            </div>
+    <?php
 
-        
-            <div class="col-sm-2">
-            <a  href="" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
-                        </a>
-            </div>
-            
-            <div class="col-sm-2">
-            <a  href="pontosinteresse.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
-                        </a>    
-            </div>  
-            <?php if(isset($_SESSION['loggedin']) && $_SESSION['jadi'] == 0 ){
-                ?> 
-            <div class="col-sm-2">
-            <a  href="apoiovoluntarios.php" style="text-decoration:none;">
-                            <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
-                            <br><br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> <br><br>
-                        </a>   
-            </div> 
-            <?php } ?>
-             
-        </div>
-    </div>
-</div>
+    $weatherData = json_decode(file_get_contents("http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json"), true);
+    $weatherTypes = json_decode(file_get_contents("https://api.ipma.pt/open-data/weather-type-classe.json"), true);
 
-<!-- API TEMPO -->
+    for ($i = 0; $i < count($weatherData); $i++) {
 
-<?php
+        $data[$i] = $weatherData['data'][$i]['forecastDate'];
+        $tMax[$i] = $weatherData['data'][$i]['tMax'];
+        $tMin[$i] = $weatherData['data'][$i]['tMin'];
+        $idWeatherType[$i] = $weatherData['data'][$i]['idWeatherType'];
+    }
+    for ($i = 1; $i < 29; $i++) {
+        $weatherType[$i] = $weatherTypes['data'][$i]['descIdWeatherTypePT'];
+    }
 
-$weatherData = json_decode(file_get_contents("http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json"),true);
-$weatherTypes = json_decode(file_get_contents("https://api.ipma.pt/open-data/weather-type-classe.json"),true);
-
-for ($i = 0; $i < count($weatherData);$i++){
-     
-    $data[$i]=$weatherData['data'][$i]['forecastDate'];
-    $tMax[$i]=$weatherData['data'][$i]['tMax'];
-    $tMin[$i]=$weatherData['data'][$i]['tMin'];
-    $idWeatherType[$i]=$weatherData['data'][$i]['idWeatherType'];
-   
-   }
-   for ($i = 1; $i < 29;$i++){
-   $weatherType[$i]=$weatherTypes['data'][$i]['descIdWeatherTypePT'];
-   }
-
-?>
+    ?>
 
 
-<!--CARTÃO TEMPO-->   
-<div class="container d-flex" style="font-family: 'Chewy';margin-bottom:100px;margin-top:50px;" >
-    <div class="padding" style="float:left;" >        
-            <div class="col-lg-8 grid-margin stretch-card" >
-                <div class="card card-weather" style="width:600px;border-radius:20px;opacity:0.9;" >
-                    <div class="card-body" style="height:250px;" >
-                        <div class="weather-date-location" >
-                            <h3  id="hoje" style="font-family: 'Chewy'; ">
-                                </h3>
-                            <p class="text-gray" > <span class="weather-date"><?php echo $data[0] ?>,</span> <span class="weather-location">Faro, Portugal</span> </p>
+    <!--CARTÃO TEMPO-->
+    <div class="container d-flex" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
+        <div class="padding" style="float:left;">
+            <div class="col-lg-8 grid-margin stretch-card">
+                <div class="card card-weather" style="width:600px;border-radius:20px;opacity:0.9;">
+                    <div class="card-body" style="height:250px;">
+                        <div class="weather-date-location">
+                            <h3 id="hoje" style="font-family: 'Chewy'; ">
+                            </h3>
+                            <p class="text-gray"> <span class="weather-date"><?php echo $data[0] ?>,</span> <span class="weather-location">Faro, Portugal</span> </p>
                         </div>
                         <div class="weather-data d-flex">
                             <div class="mr-auto">
@@ -236,14 +179,101 @@ for ($i = 0; $i < count($weatherData);$i++){
                 </div>
             </div>
         </div>
-    <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;">
-    <div class="row justify-content-md-center"> LEMBRETES </div>
-    <div class="row justify-content-md-center" style="background:white;height:70px;border-radius:20px;margin-top:20px;"> </div>
-    <div class="row justify-content-md-center" style="background:white;height:70px;margin-top:40px;border-radius:20px;"> </div>
-    <div class="row justify-content-md-center" style="background:white;height:70px;margin-top:40px;border-radius:20px;"> </div>   
+
+        <!-- PRÓXIMOS 3 EVENTOS -->
+        <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;margin-top:20px;">
+            <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
+            <?php if (isset($_SESSION['loggedin'])) foreach ($prox_atividades2 as $prox_atividade2) : ?>
+                <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:20px;padding:18px;">
+                    <i class="fas fa-exclamation-circle"></i>&nbsp;
+                    <?php echo $prox_atividade2['CATEGORIA'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
+                                                                                                                                date_default_timezone_set('Europe/Lisbon');
+                                                                                                                                $data = utf8_encode(strftime('%d de %B', strtotime($prox_atividade2['DATA_INICIO'])));
+                                                                                                                                echo $data; ?> às <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
+                                                                                                                                                    date_default_timezone_set('Europe/Lisbon');
+                                                                                                                                                    $horas = utf8_encode(strftime('%R', strtotime($prox_atividade2['DATA_INICIO'])));
+                                                                                                                                                    echo $horas; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
     <!--FIM CARTÃO TEMPO-->
+
+    <!-- ÍCONES -->
+    <div class="container" align="center" style="font-family: 'Chewy'; opacity:0.9;">
+        <div class="row justify-content-md-center" style="margin-top:50px;">
+            <?php if (isset($_SESSION['loggedin'])) {
+            ?>
+                <div class="col-sm-2 ">
+                    <a href="calendar.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\Agenda.png" alt="Agenda Icon" class="Icon"></img>
+                        <br><br><b class="hyperlink">AGENDA</b><br><br>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="chat/index.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\Chat.png" alt="Chat Icon" class="Icon"></img>
+                        <br><br><b class="hyperlink">CHAT</b> <br><br>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <a href="search.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\Pesquisar.png" alt="Pesquisar Icon" class="Icon"></img>
+                        <br><br><b class="hyperlink">PESQUISAR</b> <br><br>
+                    </a>
+                </div>
+            <?php } ?>
+            <div class="col-sm-2">
+                <a href="forum.php" style="text-decoration:none;">
+                    <img style="margin-top:30px;" src="imagens\Forum.png" alt="Forum Icon" class="Icon"></img>
+                    <br><br><b class="hyperlink">FÓRUM</b> <br><br>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="informacoes.php" style="text-decoration:none;">
+                    <img style="margin-top:30px;" src="imagens\informacoes.png" alt="Informações Icon" class="Icon"></img>
+                    <br><br><b class="hyperlink">INFORMAÇÕES</b> <br><br>
+                </a>
+            </div>
+
+
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-2">
+                <a href="" style="text-decoration:none;">
+                    <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
+                    <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
+                </a>
+            </div>
+
+
+            <div class="col-sm-2">
+                <a href="" style="text-decoration:none;">
+                    <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
+                    <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
+                </a>
+            </div>
+
+            <div class="col-sm-2">
+                <a href="pontosinteresse.php" style="text-decoration:none;">
+                    <img style="margin-top:30px;" src="imagens\pontos_interesse.png" alt="Pontos de Interesse Icon" class="Icon"></img>
+                    <br><br><b class="hyperlink">PONTOS DE INTERESSE</b> <br><br>
+                </a>
+            </div>
+            <?php if (isset($_SESSION['loggedin']) && $_SESSION['jadi'] == 0) {
+            ?>
+                <div class="col-sm-2">
+                    <a href="apoiovoluntarios.php" style="text-decoration:none;">
+                        <img style="margin-top:30px;" src="imagens\apoio_voluntarios.png" alt="Apoio a VOluntários Icon" class="Icon"></img>
+                        <br><br><b class="hyperlink">APOIO A VOLUNTÁRIOS</b> <br><br>
+                    </a>
+                </div>
+            <?php } ?>
+
+        </div>
+    </div>
 
 
     <!-- POPUP LEMBRETES -->
