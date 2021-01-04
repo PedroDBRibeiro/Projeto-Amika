@@ -197,7 +197,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             <?php endforeach;
             if (!isset($_SESSION['loggedin']))
                 echo "<div class='row justify-content-md-center'>Entra na tua conta para veres as próximas atividades!</div>";
-            if (empty($prox_atividades2))
+            if (isset($_SESSION['loggedin']) && empty($prox_atividades2))
                 echo "<div class='row justify-content-md-center'>Ainda não tens atividades marcadas :(</div>";
             ?>
 
