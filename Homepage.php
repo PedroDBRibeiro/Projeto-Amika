@@ -62,7 +62,7 @@ if (isset($_SESSION['loggedin'])) {
         on users_act.ID_CATEGORIA = c.ID_CATEGORIA
     where users_act.id <> $session_id 
     ORDER BY users_act.DATA_INICIO ASC
-    LIMIT 5;";
+    LIMIT 4;";
 
     $result2 = mysqli_query($mysqli, $query_lemb2);
 
@@ -181,10 +181,10 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         </div>
 
         <!-- PRÓXIMOS 3 EVENTOS -->
-        <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;margin-top:20px;">
+        <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;margin-top:10px;">
             <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
             <?php if (isset($_SESSION['loggedin'])) foreach ($prox_atividades2 as $prox_atividade2) : ?>
-                <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:20px;padding:18px;">
+                <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:18px;padding:18px;">
                     <i class="fas fa-exclamation-circle"></i>&nbsp;
                     <?php echo $prox_atividade2['CATEGORIA'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
                                                                                                                                 date_default_timezone_set('Europe/Lisbon');
@@ -194,7 +194,10 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                                                                                                                                                     $horas = utf8_encode(strftime('%R', strtotime($prox_atividade2['DATA_INICIO'])));
                                                                                                                                                     echo $horas; ?>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach;
+                if(!isset($_SESSION['loggedin'])) echo "<div class='row justify-content-md-center'>Entra na tua conta para veres as próximas atividades!</div>";
+            ?>
+
         </div>
     </div>
     <!--FIM CARTÃO TEMPO-->

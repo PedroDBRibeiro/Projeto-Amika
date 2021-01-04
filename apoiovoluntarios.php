@@ -25,7 +25,7 @@ include('newHeader.php');
 
   <style>
     body {
-      
+
       background-image: url("images/bg-login.jpeg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -59,13 +59,15 @@ include('newHeader.php');
       <label class=title2>Nome:</label>
       <input type="text" id="nome" name="nome">
 
+      <label class=title2>Email:</label>
+      <input type="text" id="email" name="email">
+
       <label class=title2>Atividade:</label>
       <input type="text" id="atividade" name="atividade">
 
-
-      <input type="radio" id="orcamento" name="pedido" value="0" style="height:20px; width:20px;">
+      <input type="radio" id="orcamento" name="pedido" onclick="javascript:ReciboCheck();" value="0" style="height:20px; width:20px;">
       <label for="orcamento" class="radio-inline" style="font-size: 15px; color: white" for="orcamento">Orçamento</label><br>
-      <input type="radio" id="recibo" name="pedido" value="1" style="height:20px; width:20px;">
+      <input type="radio" id="recibo" name="pedido" onclick="javascript:ReciboCheck();" value="1" style="height:20px; width:20px;">
       <label for="recibo" class="radio-inline" for="recibo" style="font-size: 15px; color: white">Envio de recibo</label><br>
       </br>
 
@@ -73,8 +75,10 @@ include('newHeader.php');
       <textarea id="mensagem" name="mensagem" style="height:200px" class=text1></textarea>
 
 
-      <label class=title2>Carregar recibo:</label><br><br>
-      <input type="file" name="imgrecibo">
+      <div id="carregaRecibo" style="display:none;">
+        <label class=title2>Carregar recibo:</label><br><br>
+        <input type="file" name="imgrecibo">
+      </div>
 
     </div>
     <div class="buttons" style="position:relative; margin: 80px;">
@@ -89,6 +93,12 @@ include('newHeader.php');
   function cancel() {
     alert("Tens a certeza que queres sair?");
     window.location.href = "Homepage.php";
+  }
+
+  function ReciboCheck() {
+    if (document.getElementById('recibo').checked) {
+      document.getElementById('carregaRecibo').style.display = 'block';
+    } else document.getElementById('carregaRecibo').style.display = 'none';
   }
 </script>
 
