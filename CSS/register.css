@@ -199,7 +199,8 @@ display-flex, .display-flex, .display-flex-center {
   
   .form-group {
     overflow: hidden;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+     }
   
   .form-input {
     font-family: 'Numans', sans-serif;
