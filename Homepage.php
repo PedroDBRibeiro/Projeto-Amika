@@ -204,7 +204,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
     <!-- ÍCONES -->
     <div class="container" align="center" style="font-family: 'Chewy'; opacity:0.9;">
-        <div class="row justify-content-md-center" style="margin-top:50px;">
+        <div class="row justify-content-md-center" >
             <?php if (isset($_SESSION['loggedin'])) {
             ?>
                 <div class="col-sm-2 ">
@@ -277,6 +277,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
         </div>
     </div>
+    <br>
 
 
     <!-- POPUP LEMBRETES -->
