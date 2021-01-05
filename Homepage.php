@@ -253,7 +253,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
             <div class="col-sm-2">
-                <a href="" style="text-decoration:none;">
+                <a href="exercicios.php" style="text-decoration:none;">
                     <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
                     <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
                 </a>
