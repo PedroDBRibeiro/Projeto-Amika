@@ -216,7 +216,7 @@ $session_id = $_SESSION['user_id'];
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h5>
+                    <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -258,25 +258,8 @@ $session_id = $_SESSION['user_id'];
                             <div class="form-row">
                                 <div class="form-group col-sm-10">
 
-                                    <?php
-                                    $query = "SELECT ID_CATEGORIA, CATEGORIA FROM categoria;";
-                                    $result = mysqli_query($mysqli, $query);
-
-                                    while ($found = mysqli_fetch_assoc($result)) {
-                                        $categorias[] = $found;
-                                    }
-
-                                    ?>
-
-                                    <label>Tipo de Atividade:</label>
-
-                                    <select name="categoria" id="title2" class="form-control">
-                                        <?php foreach ($categorias as $categoria) : ?>
-                                            <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
-                                                <?php echo $categoria['CATEGORIA'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <label>Título da Atividade:</label>
+                                    <input type="text" class="form-control" name="title" id="title2">
                                 </div>
 
 
@@ -317,7 +300,7 @@ $session_id = $_SESSION['user_id'];
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h5>
+                    <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -327,15 +310,9 @@ $session_id = $_SESSION['user_id'];
                         <div class="form-row">
                             <div class="form-group col-sm-10">
 
-                                <label>Tipo de Atividade:</label>
+                                <label>Título da Atividade:</label>
+                                <input type="text" class="form-control" name="title" id="title">
 
-                                <select name="categoria" class="form-control">
-                                    <?php foreach ($categorias as $categoria) : ?>
-                                        <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
-                                            <?php echo $categoria['CATEGORIA'] ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
                             </div>
 
                             <?php

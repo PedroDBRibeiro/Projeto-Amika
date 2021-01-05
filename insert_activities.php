@@ -7,14 +7,14 @@ include "config.php";
 if (isset($_POST['submit'])) {
 
         $session_id = $_SESSION['user_id'];
-        $categoria_id = $_POST["categoria"];
+        $title = $_POST["title"];
         $start = $_POST["start"];
         $end = $_POST["end"];
         $amigo_id = $_POST["amigo"];
         $descricao = $_POST["desc"];
 
 
-        if (!empty($categoria_id) && !empty($start) && !empty($end)) {
+        if (!empty($title) && !empty($start) && !empty($end)) {
 
                 //Converte data e hora no formato da BD
                 $data = explode(' ', $start);
@@ -31,8 +31,8 @@ if (isset($_POST['submit'])) {
 
 
                 $query = "INSERT INTO atividades
-                        (ID_CATEGORIA, DATA_INICIO, DATA_FIM, ID_USER1, ID_USER2, DESCRICAO)
-                        VALUES ('$categoria_id', '$datainicio', '$datafim', '$session_id', '$amigo_id', '$descricao');";
+                        (TITULO, DATA_INICIO, DATA_FIM, ID_USER1, ID_USER2, DESCRICAO)
+                        VALUES ('$title', '$datainicio', '$datafim', '$session_id', '$amigo_id', '$descricao');";
 
                 mysqli_query($mysqli, $query);
 
