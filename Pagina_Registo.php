@@ -37,6 +37,10 @@
     .form-group {
         border-radius: 5px;
     }
+
+    select {
+  font-size: 50px !important;
+}
 </style>
 
 
@@ -72,7 +76,7 @@
                         </div>
 
                         <div class="form-group" style=" background:white;">
-                            <label for="avatar" style="font-family: 'Numans', sans-serif;padding-left:10px;">Escolhe uma foto de perfil:</label>
+                            <label for="avatar" style="font-family: 'Numans', sans-serif;padding-left:10px;">Escolhe uma foto de perfil (opcional) :</label>
                             <input class="form-input" type="file" name="avatar" id="avatar">
                         </div>
 

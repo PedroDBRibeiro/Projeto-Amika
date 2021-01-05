@@ -13,7 +13,7 @@ if( mysqli_num_rows($result_verify) == 0) {
 
     $amigos = 0;
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['makeFriend'])) {
  
  
     $sql = "INSERT INTO `matches`(`id_user1`, `id_user2`) VALUES ('$session_id','$user_id')";
