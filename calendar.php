@@ -60,9 +60,9 @@ $session_id = $_SESSION['user_id'];
                     $('#verAtividade #title2').val(event.title);
                     $('#verAtividade #amigo').text(event.nome_amigo);
                     $('#verAtividade #start').text(event.start.format('DD/MM/YYYY HH:mm:ss'));
-                    $('#verAtividade #start').val(event.start.format('DD/MM/YYYY HH:mm:ss'));
+                    $('#verAtividade #start').val(event.start.format('DD/MM/YYYY HH:mm'));
                     $('#verAtividade #end').text(event.end.format('DD/MM/YYYY HH:mm:ss'));
-                    $('#verAtividade #end').val(event.end.format('DD/MM/YYYY HH:mm:ss'));
+                    $('#verAtividade #end').val(event.end.format('DD/MM/YYYY HH:mm'));
                     $('#verAtividade #desc').text(event.desc);
                     $('#verAtividade').modal('show');
 
@@ -79,95 +79,27 @@ $session_id = $_SESSION['user_id'];
 
                 },
 
+            });
 
+            /*$('#start').datetimepicker({
+                format: 'D/MM/YYYY HH:mm',
+                locale: 'pt',
+                icons: {
+                    time: 'fas fa-clock',
+                    date: 'fas fa-calendar'
+                }
+            });*/
 
-                //Utilizador faz resize da atividade
-                //Atualiza na BD a data inicio e fim da atividade
-
-
-                /* eventResize: function(event) {
-                     var start = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD HH:mm:ss");
-                     var end = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD HH:mm:ss");
-                     var title = event.title;
-                     var id = event.id;
-                     $.ajax({
-                         url: "update_activities.php",
-                         type: "POST",
-                         data: {
-                             title: title,
-                             start: start,
-                             end: end,
-                             id: id
-                         },
-                         success: function() {
-                             calendar.fullCalendar('refetchEvents');
-                             alert('A hora da atividade foi atualizada!');
-                         }
-                     })
-                 },
-
-                 
-                 eventDrop: function(event) {
-                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                     var title = event.title;
-                     var id = event.id;
-                     $.ajax({
-                         url: "update_activities.php",
-                         type: "POST",
-                         data: {
-                             title: title,
-                             start: start,
-                             end: end,
-                             id: id
-                         },
-                         success: function() {
-                             calendar.fullCalendar('refetchEvents');
-                             alert("O dia da atividade foi atualizado!");
-                         }
-                     });
-                 },*/
-
-
-
+            $('.datetimepicker').datetimepicker({
+                format: 'D/MM/YYYY HH:mm',
+                locale: 'pt',
+                icons: {
+                    time: 'fas fa-clock',
+                    date: 'fas fa-calendar'
+                }
             });
 
         });
-
-        function DataHora(evento, objeto) {
-            var keypress = (window.event) ? event.keyCode : evento.which;
-            campo = eval(objeto);
-
-            if (campo.value == '00/00/0000 00:00:00') {
-                campo.value = ""
-            }
-
-            caracteres = '0123456789';
-            separacao1 = '/';
-            separacao2 = ' ';
-            separacao3 = ':';
-            conjunto1 = 2;
-            conjunto2 = 5;
-            conjunto3 = 10;
-            conjunto4 = 13;
-            conjunto5 = 16;
-
-            if ((caracteres.search(String.fromCharCode(keypress)) != -1) && campo.value.length < (19)) {
-                if (campo.value.length == conjunto1)
-                    campo.value = campo.value + separacao1;
-                else if (campo.value.length == conjunto2)
-                    campo.value = campo.value + separacao1;
-                else if (campo.value.length == conjunto3)
-                    campo.value = campo.value + separacao2;
-                else if (campo.value.length == conjunto4)
-                    campo.value = campo.value + separacao3;
-                else if (campo.value.length == conjunto5)
-                    campo.value = campo.value + separacao3;
-            } else {
-                event.returnValue = false;
-            }
-
-        }
     </script>
 
 </head>
@@ -216,7 +148,7 @@ $session_id = $_SESSION['user_id'];
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h5>
+                    <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Detalhes da Atividade</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -245,7 +177,7 @@ $session_id = $_SESSION['user_id'];
                         <div class="btn-group">
                             <button class="btn btn-canc-vis btn-warning mr-1">Editar</button>
 
-                            <form id="eliminarAtividade" method="POST" action="delete_activities.php">
+                            <form id="eliminarAtividade" method="POST" action="delete_activities.php" autocomplete="off">
                                 <input type="hidden" name="id" id="id">
                                 <button type="submit" name="submit" id="submit" form="eliminarAtividade" class="btn btn-canc-vis btn-danger">Eliminar atividade</button>
                             </form>
@@ -254,40 +186,23 @@ $session_id = $_SESSION['user_id'];
                     </div>
 
                     <div class="form">
-                        <form id="editarAtividade" method="POST" action="update_activities.php">
+                        <form id="editarAtividade" method="POST" action="update_activities.php" autocomplete="off">
                             <div class="form-row">
                                 <div class="form-group col-sm-10">
 
-                                    <?php
-                                    $query = "SELECT ID_CATEGORIA, CATEGORIA FROM categoria;";
-                                    $result = mysqli_query($mysqli, $query);
-
-                                    while ($found = mysqli_fetch_assoc($result)) {
-                                        $categorias[] = $found;
-                                    }
-
-                                    ?>
-
-                                    <label>Tipo de Atividade:</label>
-
-                                    <select name="categoria" id="title2" class="form-control">
-                                        <?php foreach ($categorias as $categoria) : ?>
-                                            <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
-                                                <?php echo $categoria['CATEGORIA'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <label>Título da Atividade:</label>
+                                    <input type="text" class="form-control" name="title" id="title2">
                                 </div>
 
 
                                 <div class="form-group col-sm-10">
                                     <label>Data de início:</label>
-                                    <input type="text" class="form-control" name="start" id="start" onKeyPress="DataHora(event, this)">
+                                    <input id="start" name="start" class="form-control datetimepicker" type="text"></input>
                                 </div>
 
                                 <div class="form-group col-sm-10">
                                     <label>Data de fim:</label>
-                                    <input type="text" class="form-control" name="end" id="end" onKeyPress="DataHora(event, this)">
+                                    <input id="end" name="end" class="form-control datetimepicker" type="text"></input>
                                 </div>
 
                                 <div class="form-group col-sm-10">
@@ -317,25 +232,19 @@ $session_id = $_SESSION['user_id'];
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h5>
+                    <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Adiciona uma atividade!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="novaAtividade" method="POST" action="insert_activities.php">
+                    <form id="novaAtividade" method="POST" action="insert_activities.php" autocomplete="off">
                         <div class="form-row">
                             <div class="form-group col-sm-10">
 
-                                <label>Tipo de Atividade:</label>
+                                <label>Título da Atividade:</label>
+                                <input type="text" class="form-control" name="title" id="title">
 
-                                <select name="categoria" class="form-control">
-                                    <?php foreach ($categorias as $categoria) : ?>
-                                        <option value="<?php echo $categoria['ID_CATEGORIA'] ?>">
-                                            <?php echo $categoria['CATEGORIA'] ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
                             </div>
 
                             <?php
@@ -371,12 +280,12 @@ $session_id = $_SESSION['user_id'];
 
                             <div class="form-group col-sm-10">
                                 <label>Data de início:</label>
-                                <input type="text" class="form-control" name="start" id="start" onKeyPress="DataHora(event, this)">
+                                <input id="start" name="start" class="form-control datetimepicker" type="text"></input>
                             </div>
 
                             <div class="form-group col-sm-10">
                                 <label>Data de fim:</label>
-                                <input type="text" class="form-control" name="end" id="end" onKeyPress="DataHora(event, this)">
+                                <input type="text" class="form-control datetimepicker" name="end" id="end"></input>
                             </div>
 
                             <div class="form-group col-sm-10">

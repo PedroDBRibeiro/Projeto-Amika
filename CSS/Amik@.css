@@ -1,69 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
-
-body{
-    background-color: #aecad6;
-background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
-padding-top:70px;
-
+body {
+  background-color: #aecad6;
+  background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
+  padding-top: 70px;
 }
 
-.navbar{
-
-    background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%)
-    
-    }
-
-.tabelaHeader{
-    width: 100%;
-    text-align: center;
+.navbar {
+  background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
 }
 
-
-.tabelaBody{
-    width: 100%;
-    text-align: center;
+.tabelaHeader {
+  width: 100%;
+  text-align: center;
 }
 
+.tabelaBody {
+  width: 100%;
+  text-align: center;
+}
 
 .logoAmika {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
 
-.IconHeader{
-    width: 18%;
-    margin-top: 20px;
-   
+.IconHeader {
+  width: 18%;
+  margin-top: 20px;
 }
 
 .IconHeader:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
-.perfil{
-    margin-left: 19px;
-    text-align: center;
+.perfil {
+  margin-left: 19px;
+  text-align: center;
 }
 
-.hyperlink{
-    color: black;
+.hyperlink {
+  color: black;
 }
 
-.Icon{
-    margin-top: 50px;
-    width: 55%;
+.Icon {
+  margin-top: 50px;
+  width: 55%;
 }
 
-.Icon:hover{
-    opacity: 0.8;
+.Icon:hover {
+  opacity: 0.8;
 }
-
 
 /*informações */
-@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
 
 .center {
   display: block;
@@ -71,93 +63,92 @@ padding-top:70px;
   margin-right: auto;
   width: 50%;
 }
-  *{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
- 
-.header  {
-margin: 0;
-overflow: hidden;
-background-color: #ffff00;
-padding: 15px 20px;
-background: linear-gradient(#ffff00,#ffd769);
 
+.header {
+  margin: 0;
+  overflow: hidden;
+  background-color: #ffff00;
+  padding: 15px 20px;
+  background: linear-gradient(#ffff00, #ffd769);
 }
 
 /*CARTAO DO TEMPO*/
 
 .flex {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-@media (max-width:991.98px) {
-    .padding {
-        padding: 1.5rem
-    }
+@media (max-width: 991.98px) {
+  .padding {
+    padding: 1.5rem;
+  }
 }
 
-@media (max-width:767.98px) {
-    .padding {
-        padding: 1rem
-    }
+@media (max-width: 767.98px) {
+  .padding {
+    padding: 1rem;
+  }
 }
-
-
 
 .padding {
-    padding-top: 1rem;
-    margin-left: 0.01rem;
+  padding-top: 1rem;
+  margin-left: 0.01rem;
 }
 
-
 .card {
-    border: 0;
-    border-radius: 2px;
+  border: 0;
+  border-radius: 2px;
 }
 
 .card-weather {
-    background: #e1ecff;
-    background-image: linear-gradient(to left bottom, #d6eef6, #dff0fa, #e7f3fc, #eff6fe, #f6f9ff)
+  background: #e1ecff;
+  background-image: linear-gradient(
+    to left bottom,
+    #d6eef6,
+    #dff0fa,
+    #e7f3fc,
+    #eff6fe,
+    #f6f9ff
+  );
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .card-weather .card-body:first-child {
-    background: url(https://res.cloudinary.com/dxfq3iotg/image/upload/v1557323760/weather.svg) no-repeat center;
-    background-size: cover;
-    height: 300px;
-    
+  background: url(https://res.cloudinary.com/dxfq3iotg/image/upload/v1557323760/weather.svg)
+    no-repeat center;
+  background-size: cover;
+  height: 300px;
 }
 
 .card .card-body {
-    padding: 1.88rem 1.81rem
+  padding: 1.88rem 1.81rem;
 }
 
 .card-body {
-    flex: 1 1 auto;
-    padding: 1.25rem;
- 
+  flex: 1 1 auto;
+  padding: 1.25rem;
 }
-
-
 
 .h3,
 h3 {
-    font-size: 1.56rem
+  font-size: 1.56rem;
 }
 
 .h1,
@@ -172,88 +163,80 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 .text-gray,
 .card-subtitle,
 .new-accounts ul.chats li.chat-persons a p.joined-date {
-    color: #969696
+  color: #969696;
 }
 
 p {
-    font-size: 13px
+  font-size: 13px;
 }
 
 .text-gray,
 .card-subtitle,
 .new-accounts ul.chats li.chat-persons a p.joined-date {
-    color: #969696
+  color: #969696;
 }
 
 .card-weather .weather-data {
-    padding: 0 0 4.75rem
+  padding: 0 0 4.75rem;
 }
 
 .mr-auto,
 .mx-auto {
-    margin-right: auto !important
+  margin-right: auto !important;
 }
 
 .display-3 {
-    font-size: 2.5rem
+  font-size: 2.5rem;
 }
 
 .card-weather .card-body {
-    background: #ffffff
+  background: #ffffff;
 }
 
 .card-weather .weakly-weather {
-    background: #ffffff;
-    overflow-x: auto
+  background: #ffffff;
+  overflow-x: auto;
 }
 
 .card-weather .weakly-weather .weakly-weather-item {
-    border-right: 1px solid #f2f2f2;
-    padding: 1rem;
-    text-align: center;
-    width:100%;
+  border-right: 1px solid #f2f2f2;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 .mb-0,
 .my-0 {
-    margin-bottom: 0 !important
+  margin-bottom: 0 !important;
 }
 
 .card-weather .weakly-weather .weakly-weather-item i {
-    font-size: 1.2rem;
-    
-}
- 
-.title-back{
-
-    background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
-    display: inline-block;
-    border-radius: 25px; 
-    padding: 15px;
-
+  font-size: 1.2rem;
 }
 
-.title{
-
-    font-family: 'Chewy'; 
-    text-align: center; 
-    color: #03036B; 
-    font-size: 48px;
-}
-  
-.col-sm-2{
- background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
- margin:10px;
- border-radius: 15px;
-
+.title-back {
+  background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);
+  display: inline-block;
+  border-radius: 25px;
+  padding: 15px;
 }
 
+.title {
+  font-family: "Chewy";
+  text-align: center;
+  color: #03036b;
+  font-size: 48px;
+}
 
-
+.col-sm-2 {
+  background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+  margin: 10px;
+  border-radius: 15px;
+}

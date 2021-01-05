@@ -7,12 +7,12 @@ include "config.php";
 if (isset($_POST['submit'])) {
 
   $id = $_POST['id'];
-  $categoria_id = $_POST["categoria"];
+  $title = $_POST["title"];
   $start = $_POST["start"];
   $end = $_POST["end"];
   $desc = $_POST["desc"];
 
-  if (!empty($id) && !empty($categoria_id) && !empty($start) && !empty($end)) {
+  if (!empty($id) && !empty($title) && !empty($start) && !empty($end)) {
     //Converte data e hora no formato da BD
     $data = explode(' ', $start);
     list($data, $hora) = $data;
@@ -29,11 +29,11 @@ if (isset($_POST['submit'])) {
 
     if (empty($desc)) {
       $query = "UPDATE atividades 
-            SET ID_CATEGORIA='$categoria_id', DATA_INICIO='$datainicio', DATA_FIM='$datafim'
+            SET TITULO='$title', DATA_INICIO='$datainicio', DATA_FIM='$datafim'
             WHERE ID_ATIVIDADE='$id';";
     } else {
       $query = "UPDATE atividades 
-            SET ID_CATEGORIA='$categoria_id', DATA_INICIO='$datainicio', DATA_FIM='$datafim', DESCRICAO='$desc'
+            SET TITULO='$title', DATA_INICIO='$datainicio', DATA_FIM='$datafim', DESCRICAO='$desc'
             WHERE ID_ATIVIDADE='$id';";
     }
 

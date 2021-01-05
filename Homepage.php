@@ -29,16 +29,14 @@ if (isset($_SESSION['loggedin'])) {
 
     $session_id = $_SESSION['user_id'];
 
-    $query_lemb = "SELECT users_act.* , u.nome as NOME, c.CATEGORIA from (
-        select ID_ATIVIDADE, ID_CATEGORIA, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+    $query_lemb = "SELECT users_act.* , u.nome as NOME from (
+        select ID_ATIVIDADE, TITULO, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id
         union
-        select ID_ATIVIDADE, ID_CATEGORIA, id_user1 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+        select ID_ATIVIDADE, TITULO, id_user1 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id) as users_act
         join utilizadores as u 
         on users_act.id=u.user_id
-        join categoria as c
-        on users_act.ID_CATEGORIA = c.ID_CATEGORIA
     where users_act.id <> $session_id 
     AND users_act.DATA_INICIO <= DATE_ADD(NOW(), INTERVAL 24 HOUR)
     AND users_act.DATA_INICIO >= NOW()
@@ -50,17 +48,16 @@ if (isset($_SESSION['loggedin'])) {
         $prox_atividades[] = $found;
     }
 
-    $query_lemb2 = "SELECT users_act.* , u.nome as NOME, c.CATEGORIA from (
-        select ID_ATIVIDADE, ID_CATEGORIA, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+    $query_lemb2 = "SELECT users_act.* , u.nome as NOME from (
+        select ID_ATIVIDADE, TITULO, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id
         union
-        select ID_ATIVIDADE, ID_CATEGORIA, id_user1 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
+        select ID_ATIVIDADE, TITULO, id_user1 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id) as users_act
         join utilizadores as u 
         on users_act.id=u.user_id
-        join categoria as c
-        on users_act.ID_CATEGORIA = c.ID_CATEGORIA
     where users_act.id <> $session_id 
+    AND users_act.DATA_INICIO >= NOW()
     ORDER BY users_act.DATA_INICIO ASC
     LIMIT 4;";
 
@@ -181,12 +178,12 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         </div>
 
         <!-- PRÓXIMOS 3 EVENTOS -->
-        <div class="float-right" class="container d-flex" style="width:430px;margin-left:30px;margin-top:10px;">
+        <div class="float-right" class="container d-flex" style="width:450px;margin-left:30px;margin-top:10px;">
             <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
             <?php if (isset($_SESSION['loggedin']) && !empty($prox_atividades2)) foreach ($prox_atividades2 as $prox_atividade2) : ?>
                 <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:18px;padding:18px;">
                     <i class="fas fa-exclamation-circle"></i>&nbsp;
-                    <?php echo $prox_atividade2['CATEGORIA'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
+                    <?php echo $prox_atividade2['TITULO'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
                                                                                                                                 date_default_timezone_set('Europe/Lisbon');
                                                                                                                                 $data = utf8_encode(strftime('%d de %B', strtotime($prox_atividade2['DATA_INICIO'])));
                                                                                                                                 echo $data; ?> às <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
@@ -197,7 +194,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             <?php endforeach;
             if (!isset($_SESSION['loggedin']))
                 echo "<div class='row justify-content-md-center'>Entra na tua conta para veres as próximas atividades!</div>";
-            if (empty($prox_atividades2))
+            if (isset($_SESSION['loggedin']) && empty($prox_atividades2))
                 echo "<div class='row justify-content-md-center'>Ainda não tens atividades marcadas :(</div>";
             ?>
 
@@ -296,7 +293,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                 <div class="modal-body">
                     <?php foreach ($prox_atividades as $prox_atividade) : ?>
                         <i class="fas fa-exclamation-circle"></i>&nbsp;
-                        <?php echo $prox_atividade['CATEGORIA'] ?> com o utilizador <?php echo $prox_atividade['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
+                        <?php echo $prox_atividade['TITULO'] ?> com o utilizador <?php echo $prox_atividade['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
                                                                                                                                     date_default_timezone_set('Europe/Lisbon');
                                                                                                                                     $data = utf8_encode(strftime('%d de %B', strtotime($prox_atividade['DATA_INICIO'])));
                                                                                                                                     echo $data; ?> às <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
