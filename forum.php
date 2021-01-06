@@ -23,7 +23,7 @@ if ($resultCheck > 0) {
   }
   //if not, show a message saying that no results were found
 } else {
-  echo "No results were found :(";
+  $noresults = "No results were found :(";
 }
 
 ?>
@@ -83,6 +83,7 @@ padding-top:95px;
     <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
   </div>
 
+<p style="text-align:center;"><?php if(isset($noresults)) echo $noresults; ?></p>
 
   <div class="blog-feed">
     <?php foreach ($posts as $post) : ?>
@@ -114,7 +115,7 @@ padding-top:95px;
 
             <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
 
-            <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post">
+            <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post" autocomplete="off">
               <div class="comment_form_wrapper" style="display: none;">
                 <input type="text" name="comentario" class="form-control rounded-corner" style="font-size:17px;" placeholder="Escreve um comentário...">
                 <input type="hidden" name="data_com" value="<?php echo date("Y-m-d H:i:s"); ?>">

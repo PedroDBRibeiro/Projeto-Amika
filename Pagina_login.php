@@ -40,7 +40,7 @@
 				
 			</div>
 			<div class="card-body">
-				<form action= "chat/login.php" method="POST">
+				<form action= "chat/login.php" method="POST" autocomplete="off">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-envelope"></i></span>

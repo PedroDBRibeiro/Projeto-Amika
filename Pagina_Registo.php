@@ -110,6 +110,8 @@
                             <option style="font-family: 'Numans', sans-serif;" value="Cozinhar">Cozinhar</option>
                             <option style="font-family: 'Numans', sans-serif;" value="Compras">Compras</option>
                             <option style="font-family: 'Numans', sans-serif;" value="Puzzles">Puzzles</option>
+                            <option style="font-family: 'Numans', sans-serif;" value="Ouvir Música">Ouvir música</option>
+                            <option style="font-family: 'Numans', sans-serif;" value="Tocar guitarra">Tocar guitarra</option>
                         </select>
 
 
