@@ -1,9 +1,11 @@
 <?php
 
+//ESTA PÁGINA É USADA PARA MOSTRAR O PERFIL DO UTILIZADOR E DE OUTROS UTILIZADORES
+
 session_start();
 include('config.php');
 
-
+//Obter dados do utilizador do perfil em questão
 if (isset($_GET['search_result'])) {
     $user_id = $_GET['search_result'];
 
@@ -13,8 +15,6 @@ if (isset($_GET['search_result'])) {
     header("location:search.php");
 }
 
-
-//print_r $hobbies;
 
 while ($row = mysqli_fetch_assoc($result)) {
 
@@ -27,8 +27,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     $email = $row['email'];
 }
 
+//nota: $jadi = 1 significa que é jadi, $jadi = 0 é voluntário
+
+
 $message = '';
 $amigos = '';
+
+//nota: $amigos = 1 --> já é amigo do utilizador, $amigos = 0 --> não é amigo do utilizador
 
 include('make_friendship.php');
 include('removeFriend.php');
@@ -80,7 +85,7 @@ include('removeFriend.php');
 
   <br>
   <br>
-  
+        <!-- Display do dos dados do perfil-->
         <div class="row container d-flex justify-content-center" style="margin:auto;height:425px;">
             <div style="margin:auto;" >
             <div class="col-xl-6 col-md-12">
