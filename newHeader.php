@@ -2,14 +2,17 @@
 <a class="navbar-brand" href="Homepage.php">
 <img src="Imagens\Logo.png" alt="Logo Amik@"  width="170" height="80"></img>
 </a>
+<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
       <?php 
         if(isset($_SESSION['loggedin'])){
                 ?> 
-        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;padding-left:50px;"> 
+        <a  class="nav-link" href="profile.php?search_result=<?php echo $_SESSION['user_id']; ?>" style="text-decoration:none;"> 
         <img src="imagens\profile.png" alt="Profile Icon" width="50" height="50" ></img>
         PERFIL
         </a>

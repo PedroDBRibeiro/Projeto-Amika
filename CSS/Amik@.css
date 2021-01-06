@@ -240,3 +240,16 @@ p {
   margin: 10px;
   border-radius: 15px;
 }
+
+
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  .foda { width:67%; }
+    
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  .foda { width:100%; }
+  
+}

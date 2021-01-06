@@ -76,7 +76,10 @@ if (isset($_SESSION['loggedin'])) {
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
     <title>Projeto Amik@</title>
     <meta name="description" content="" <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -131,11 +134,11 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
     <!--CARTÃO TEMPO-->
-    <div class="container d-flex" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
+    <div class="container d-flex" class="upper-home" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
         <div class="padding" style="float:left;">
             <div class="col-lg-8 grid-margin stretch-card">
-                <div class="card card-weather" style="width:600px;border-radius:20px;opacity:0.9;">
-                    <div class="card-body" style="height:250px;">
+                <div class="card card-weather" class="foda" style="width:600px;border-radius:20px;opacity:0.9;">
+                    <div class="card-body"  style="height:250px;">
                         <div class="weather-date-location">
                             <h3 id="hoje" style="font-family: 'Chewy'; ">
                             </h3>
@@ -253,7 +256,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
             <div class="col-sm-2">
-                <a href="" style="text-decoration:none;">
+                <a href="exercicios.php" style="text-decoration:none;">
                     <img style="margin-top:30px;" src="imagens\Exercicios.png" alt="Exercicios Icon" class="Icon"></img>
                     <br><br><b class="hyperlink">EXERCÍCIOS</b> <br><br>
                 </a>
