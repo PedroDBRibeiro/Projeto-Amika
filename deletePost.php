@@ -1,5 +1,7 @@
 <?php
 
+// APAGAR PUBLICAÇÃO DO FÓRUM
+
 session_start();
 include "config.php";
 

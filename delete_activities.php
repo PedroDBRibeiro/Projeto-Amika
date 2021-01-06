@@ -1,5 +1,6 @@
 <?php
 
+// APAGAR ATIVIDADES
 
 session_start();
 
@@ -10,6 +11,8 @@ if (isset($_POST['submit'])) {
   if (isset($_POST["id"])) {
 
     $id = $_POST['id'];
+
+    //query para apagar a atividade clicada com o id passado pelo form
     $query = "DELETE from atividades WHERE ID_ATIVIDADE='$id';";
     mysqli_query($mysqli, $query);
 
