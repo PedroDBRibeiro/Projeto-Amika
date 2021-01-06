@@ -81,15 +81,6 @@ $session_id = $_SESSION['user_id'];
 
             });
 
-            /*$('#start').datetimepicker({
-                format: 'D/MM/YYYY HH:mm',
-                locale: 'pt',
-                icons: {
-                    time: 'fas fa-clock',
-                    date: 'fas fa-calendar'
-                }
-            });*/
-
             $('.datetimepicker').datetimepicker({
                 format: 'D/MM/YYYY HH:mm',
                 locale: 'pt',
