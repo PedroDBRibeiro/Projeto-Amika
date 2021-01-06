@@ -241,15 +241,16 @@ p {
   border-radius: 15px;
 }
 
-
 /* Media Queries: Tablet Landscape */
 @media screen and (max-width: 1060px) {
-  .test { width:67%; }
-    
+  .test {
+    width: 67%;
+  }
 }
 
 /* Media Queries: Tabled Portrait */
 @media screen and (max-width: 768px) {
-  .test { width:100%; }
-  
+  .test {
+    width: 100%;
+  }
 }
