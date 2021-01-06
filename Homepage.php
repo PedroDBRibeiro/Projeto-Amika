@@ -1,27 +1,18 @@
 <?php
 
+// HOMEPAGE da amik@
+
 include('config.php');
 session_start();
 include('newHeader.php');
 
-
-if (isset($_GET["msg"]) && $_GET["msg"] == 'failedPass') {
-    echo '<script language="javascript">';
-    echo 'alert("Wrong Password")';
-    echo '</script>';
-}
-
-if (isset($_GET["msg"]) && $_GET["msg"] == 'failedEmail') {
-    echo '<script language="javascript">';
-    echo 'alert("Wrong Email")';
-    echo '</script>';
-}
 
 
 if (isset($_SESSION['loggedin'])) {
 
     $session_id = $_SESSION['user_id'];
 
+    //vai buscar eventos deste utilizador nas próximas 24h
     $query_lemb = "SELECT users_act.* , u.nome as NOME from (
         select ID_ATIVIDADE, TITULO, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id
@@ -41,6 +32,7 @@ if (isset($_SESSION['loggedin'])) {
         $prox_atividades[] = $found;
     }
 
+    //vai buscar os próximos 4 eventos do utilizador
     $query_lemb2 = "SELECT users_act.* , u.nome as NOME from (
         select ID_ATIVIDADE, TITULO, id_user2 as id, DATA_INICIO, DATA_FIM, DESCRICAO from atividades as a
         where a.id_user1 = $session_id OR a.id_user2 = $session_id
@@ -69,22 +61,26 @@ if (isset($_SESSION['loggedin'])) {
 
 <head>
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
     <title>Projeto Amik@</title>
     <meta name="description" content="" <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <!-- Amik@ Custom CSS -->
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
 
+    <!-- Bootstrap, JQuery JS and CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="JS/tempo.js"></script>
 
+    <!-- Se o utilizador estiver logged in, mostrar lembres (se existirem) ao carregar a página -->
     <?php if (isset($_SESSION['loggedin'])) : ?>
         <?php if (!empty($prox_atividades) && $_SESSION['lembretes'] == 0) : ?>
             <script type="text/javascript">
@@ -106,7 +102,6 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 ">
 
     <!-- API TEMPO -->
-
     <?php
 
     $weatherData = json_decode(file_get_contents("http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1080500.json"), true);
@@ -127,7 +122,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
     <!--CARTÃO TEMPO-->
-    <div class="container d-flex"  style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
+    <div class="container d-flex" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
         <div class="test" class="padding" style="float:left;">
             <div class="test" class="col-lg-8 grid-margin stretch-card">
                 <div class="card card-weather" class="test" style="width:600px;border-radius:20px;opacity:0.9;">
@@ -173,7 +168,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
             </div>
         </div>
 
-        <!-- PRÓXIMOS 3 EVENTOS -->
+        <!-- MOSTRAR PRÓXIMOS 4 EVENTOS AO LADO DO TEMPO-->
         <div class="float-right" class="container d-flex" style="width:450px;margin-left:30px;margin-top:10px;">
             <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
             <?php if (isset($_SESSION['loggedin']) && !empty($prox_atividades2)) foreach ($prox_atividades2 as $prox_atividade2) : ?>
@@ -196,11 +191,11 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
         </div>
     </div>
-    <!--FIM CARTÃO TEMPO-->
+  
 
     <!-- ÍCONES -->
     <div class="container" align="center" style="font-family: 'Chewy'; opacity:0.9;">
-        <div class="row justify-content-md-center" >
+        <div class="row justify-content-md-center">
             <?php if (isset($_SESSION['loggedin'])) {
             ?>
                 <div class="col-sm-2 ">
@@ -290,12 +285,12 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
                     <?php foreach ($prox_atividades as $prox_atividade) : ?>
                         <i class="fas fa-exclamation-circle"></i>&nbsp;
                         <?php echo $prox_atividade['TITULO'] ?> com o utilizador <?php echo $prox_atividade['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
-                                                                                                                                    date_default_timezone_set('Europe/Lisbon');
-                                                                                                                                    $data = utf8_encode(strftime('%d de %B', strtotime($prox_atividade['DATA_INICIO'])));
-                                                                                                                                    echo $data; ?> às <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
-                                                                                                                                                        date_default_timezone_set('Europe/Lisbon');
-                                                                                                                                                        $horas = utf8_encode(strftime('%R', strtotime($prox_atividade['DATA_INICIO'])));
-                                                                                                                                                        echo $horas; ?>
+                                                                                                                                date_default_timezone_set('Europe/Lisbon');
+                                                                                                                                $data = utf8_encode(strftime('%d de %B', strtotime($prox_atividade['DATA_INICIO'])));
+                                                                                                                                echo $data; ?> às <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
+                                                                                                                                                    date_default_timezone_set('Europe/Lisbon');
+                                                                                                                                                    $horas = utf8_encode(strftime('%R', strtotime($prox_atividade['DATA_INICIO'])));
+                                                                                                                                                    echo $horas; ?>
                         <hr>
                     <?php endforeach; ?>
                 </div>

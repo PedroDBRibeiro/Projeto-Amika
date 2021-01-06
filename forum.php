@@ -153,14 +153,14 @@ if ($resultCheck > 0) {
               <div style="float:right;">
                 <form id="apagarPost" method="POST" action="deletePost.php?postId=<?php echo $post['POST_ID'] ?>">
                   <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?>
-                    <!-- Botão de apagar o post (para o utilizador que o publicou) --> 
+                    <!-- Botão de apagar o post (para o utilizador que o publicou) -->
                     <button class="blog-post__remove" type="submit" name="submit">Remover post</button>
                   <?php } ?>
                 </form>
               </div>
             </div>
 
-            <!-- Quando um utilizador clica em comentar, aparece um campo para o comentário e toda a info incluindo data e id do post é enviada para a pag comentario.php --> 
+            <!-- Quando um utilizador clica em comentar, aparece um campo para o comentário e toda a info incluindo data e id do post é enviada para a pag comentario.php -->
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post" autocomplete="off">
               <div class="comment_form_wrapper" style="display: none;"><br>
                 <input type="text" name="comentario" class="form-control rounded-corner" style="font-size:17px;" placeholder="Escreve um comentário..."><br>
@@ -205,9 +205,11 @@ if ($resultCheck > 0) {
 
           <p class="blog-post__text">
 
+            <!-- Se houver comentários... -->
             <?php if ($nocomments == 0) foreach ($comentarios as $comentario) :
               $user_com = $comentario['ID_USER'];
 
+              //vai buscar o nome do utilizador que comentou, a partir do id
               $user_query = "SELECT nome FROM utilizadores WHERE user_id='$user_com'";
 
               $user_result = mysqli_query($mysqli, $user_query) or die(mysqli_error($mysqli));
@@ -217,10 +219,12 @@ if ($resultCheck > 0) {
               } ?>
 
 
+              <!-- Imprime comentário -->
           <p> <?php echo $comentario['COMENTARIO']; ?> </p>
 
           <div style="float:right;">
             <form id="apagarComentario" method="POST" action="deleteComment.php?commentId=<?php echo $comentario['ID_COMENTARIO'] ?>">
+              <!-- Botão para apagar o comentário (só para quem o criou) -->
               <?php if (isset($_SESSION['loggedin']) && $user_com == $_SESSION['user_id']) { ?>
                 <button type="submit" name="submit" style="margin-left:5px; padding:12px;" class=" blog-post__remove">
                   <i class="fas fa-trash"></i>
@@ -237,6 +241,7 @@ if ($resultCheck > 0) {
 
         <?php endforeach; ?>
 
+        <!-- Mensagem para quando ninguém comentou a publicação ainda -->
         <?php if ($nocomments == 1) : ?>
           Ainda ninguém comentou esta publicação :(
         <?php endif; ?>
@@ -250,7 +255,6 @@ if ($resultCheck > 0) {
 
 
   <!-- POPUP ADICIONAR POST -->
-
   <div class="modal fade" id="adicionarPost" tabindex="-1" role="dialog" style="font-size:17px;" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="font-size:17px;">
@@ -300,10 +304,12 @@ if ($resultCheck > 0) {
 
 
   <script>
+    // mostra o popup de adicionar publicação quando o botão "+" é clicado
     $('#addpost').on('click', function() {
       $('#adicionarPost').modal('show');
     });
 
+    // mostra o campo de escrever comentário, quando o botão "comentar" é clicado
     $(document).ready(function() {
       $('.comentar').click(function() {
         $('.comment_form_wrapper').toggle();
