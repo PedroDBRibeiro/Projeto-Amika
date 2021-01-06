@@ -5,13 +5,6 @@ session_start();
 include('newHeader.php');
 
 
-/*if(isset($_GET['erro'])) {
-if ('true' === $_GET['erro']) {
-            echo '<script>alert("Login Incorreto")</script>'; 
-            }
-        }
-    */
-
 if (isset($_GET["msg"]) && $_GET["msg"] == 'failedPass') {
     echo '<script language="javascript">';
     echo 'alert("Wrong Password")';
@@ -248,7 +241,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         <br>
         <div class="row justify-content-md-center">
             <div class="col-sm-2">
-                <a href="" style="text-decoration:none;">
+                <a href="dicas_emergencia.php" style="text-decoration:none;">
                     <img style="margin-top:30px;" src="imagens\Emergencia.png" alt="Emergencia Icon" class="Icon"></img>
                     <br><br><b class="hyperlink">DICAS EMERGÊNCIA</b> <br><br>
                 </a>
