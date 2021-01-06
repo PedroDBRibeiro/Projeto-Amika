@@ -242,8 +242,14 @@ p {
 }
 
 
-@media screen and (max-width: 1068px) {
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  .foda { width:67%; }
+    
+}
 
-.upper-home {max-width: 680px;}
-
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  .foda { width:100%; }
+  
 }
