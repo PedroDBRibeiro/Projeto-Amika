@@ -142,10 +142,11 @@ include('removeFriend.php');
                                         <?php if($amigos == 0) echo 'Fazer amizade'; else echo 'Amigos';?> <img src="imagens/friendship.png"></button>
                                         <?php if($amigos == 1) { ?> <button style="margin-top:10px;font-size:12px;margin-left:10px;" type="submit" class="btn btn-danger" name="removeFriend"> Remover amizade</button> <?php } ?>
                                         
-                                        <?php if (isset($_POST['makeFriend'])){ ?>                                                                                                                       
+                                        <?php if (isset($_POST['makeFriend']) || (isset($_POST['removeFriend']) && ($amigos == 1) )){ ?>                                                                                                                       
                                         </form>
                                     </div>
                                     </div>
+                                    
                                     <p style="margin-left:335px;"> <?php echo $message; }?></p>
                                     <?php } ?>
                                 </div>
