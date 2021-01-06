@@ -181,7 +181,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
         <div class="float-right" class="container d-flex" style="width:450px;margin-left:30px;margin-top:10px;">
             <div class="row justify-content-md-center" style="font-size:25px;"> PRÓXIMOS EVENTOS: </div>
             <?php if (isset($_SESSION['loggedin']) && !empty($prox_atividades2)) foreach ($prox_atividades2 as $prox_atividade2) : ?>
-                <div class="row justify-content-md-center" style="background:white;height:60px;border-radius:20px;margin-top:18px;padding:18px;">
+                <div class="row justify-content-md-center" style="background:white;height:70px;border-radius:20px;margin-top:18px;padding:18px;display:inline-block;">
                     <i class="fas fa-exclamation-circle"></i>&nbsp;
                     <?php echo $prox_atividade2['TITULO'] ?> com o utilizador <?php echo $prox_atividade2['NOME']; ?> no dia <?php setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
                                                                                                                                 date_default_timezone_set('Europe/Lisbon');
