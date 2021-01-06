@@ -1,5 +1,7 @@
 <?php
 
+// APAGAR PUBLICAÇÃO DO FÓRUM
+
 session_start();
 include "config.php";
 
@@ -8,10 +10,10 @@ $post_id = $_GET["postId"];
 
 if (isset($_POST['submit'])) {
 
+//query que apaga o post da base de dados
 $sql = "DELETE FROM posts where post_id = $post_id";
 
 mysqli_query($mysqli, $sql);
-//header("Location: forum.php");
 
 if (mysqli_affected_rows($mysqli)) {
 
@@ -22,4 +24,3 @@ if (mysqli_affected_rows($mysqli)) {
   }
 
 }
-?>

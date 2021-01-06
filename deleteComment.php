@@ -1,12 +1,16 @@
 <?php
 
+// APAGAR COMENTÁRIO 
+
 session_start();
 include "config.php";
 
+//id do comentário a ser apagado
 $comment_id = $_GET["commentId"];
 
 if (isset($_POST['submit'])) {
 
+//query para apagar o comentário da bd
 $sql = "DELETE FROM comentarios where ID_COMENTARIO = $comment_id";
 
 mysqli_query($mysqli, $sql);

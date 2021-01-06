@@ -6,6 +6,7 @@ include "config.php";
 
 $user_id = $_SESSION['user_id'];
 
+//vai buscar o registo do utilizador que está logged in
 $user_query = "SELECT password FROM utilizadores WHERE user_id = '$user_id';";
 $result = mysqli_query($mysqli, $user_query);
 $resultCheck = mysqli_num_rows($result);
@@ -19,15 +20,21 @@ if (isset($_POST['submit'])) {
   $pass_antiga = $_POST['pass_antiga'];
   $pass_nova = $_POST['pass_nova'];
 
+  //confirma se a pass antiga é a que está na base de dados
   if (password_verify($pass_antiga, $user['password'])) {
 
+    //confirma se a pass nova tem um número de caracteres válido
     if (strlen($pass_nova) < 20 && strlen($pass_nova) > 5) {
 
+      //confirma se a pass nova é diferente da antiga
       if ($pass_nova !== $pass_antiga) {
 
         //success!!!
+        
+        //encripta a pass nova
         $pass_hashed = password_hash($pass_nova, PASSWORD_DEFAULT);
 
+        //query para atualizar a password na base de dados
         $sql = "UPDATE utilizadores
                 SET `password` = '$pass_hashed'
                 WHERE `user_id` = '$user_id';";

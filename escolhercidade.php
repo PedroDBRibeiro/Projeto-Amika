@@ -1,9 +1,9 @@
 <?php
 
+// MOSTRA OS PONTOS DE INTERESSE DA CIDADE ESCOLHIDA
+
 include "config.php";
-
 session_start();
-
 include('newHeader.php');
 
 
@@ -34,11 +34,11 @@ include('newHeader.php');
 
         $myvalue=$_POST['myvalue'];
                   
-
+        // query que vai buscar à bd os pontos de interesse onde a cidade é = à selecionada na pagina pontosinteresse.php
         $query = "SELECT * from pontos_interesse where cidade = '".$_POST['myvalue']."'";
         $result = mysqli_query($mysqli, $query);
                     
-                    
+        //os pontos são guardados no array $id_pontos
         while ($id_ponto = mysqli_fetch_assoc($result)) {
         $id_pontos[] = $id_ponto;
         }                               
@@ -54,11 +54,13 @@ include('newHeader.php');
         <div class="container">
 	    <div class="row mt-5 justify-content-center">
         
+        <!-- para cada ponto de interesse, mostra um cartão com foto e o nome do local -->
         <?php foreach ($id_pontos as $id_ponto): ?>
                     
             <div class="col-sm-6 col-md-4 col-xs-12 py-2">
                 <div class="card card-body mx-2 mb-3" style="width: 18rem;">
                         
+                    <!-- base64 encoding para mostrar a imagem que vem da BD -->
                     <img class="card-img-top" <?php echo 'src="data:image/jpg;base64,'.base64_encode($id_ponto['imagem_path']).'"' ?>>
                         <div class="card-body">
                             <h5 class="card-title" style=" font-family: Arial, Helvetica, sans-serif;"><?php echo $id_ponto['ponto']; ?></h5>
