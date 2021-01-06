@@ -2,6 +2,8 @@
 
 <?php
 
+//FORMULÁRIO DE APOIO A VOLUNTÁRIOS
+
 session_start();
 include('newHeader.php');
 
@@ -24,6 +26,8 @@ include('newHeader.php');
   <link rel="stylesheet" type="text/css" href="CSS/apoiovoluntarios.css">
 
   <style>
+
+  /* CSS */
     body {
 
       background-image: url("images/bg-login.jpeg");
@@ -42,12 +46,16 @@ include('newHeader.php');
 <body>
   <br>
   <?php
+
+  //IMPRIMIR MENSAGENS DE ERRO
+
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
   }
   ?>
 
+  <!-- FORMULÁRIO -->
   <form id="enviarFormulario" action="insert_form.php" enctype="multipart/form-data" method="post" autocomplete="off">
     <div class="container" style="position:relative; top: 80px;">
 
