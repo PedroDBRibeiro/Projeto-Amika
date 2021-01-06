@@ -40,21 +40,36 @@ if ($resultCheck > 0) {
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
   <link rel="stylesheet" type="text/css" href="CSS/forum.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.pt-br.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    $(document).ready(function() {
+      $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4',
+        locale: 'pt-br',
+        format: 'dd-mm-yyyy'
+        
+      });
+    });
+  </script>
 
 </head>
 
 <style>
-body {
-padding-top:95px;
-}
+  body {
+    padding-top: 95px;
+  }
 </style>
 
 <body>
@@ -67,13 +82,13 @@ padding-top:95px;
   }
   ?>
 
-<div align ="center" style="margin-top:50px;">
-        <div class="title-back" >
-            <h1 class = "title ">
-                Fórum
-            </h1>
-        </div>
+  <div align="center" style="margin-top:50px;">
+    <div class="title-back">
+      <h1 class="title ">
+        Fórum
+      </h1>
     </div>
+  </div>
   </div>
 
   <br>
@@ -83,7 +98,7 @@ padding-top:95px;
     <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
   </div>
 
-<p style="text-align:center;"><?php if(isset($noresults)) echo $noresults; ?></p>
+  <p style="text-align:center;"><?php if (isset($noresults)) echo $noresults; ?></p>
 
   <div class="blog-feed">
     <?php foreach ($posts as $post) : ?>
@@ -115,7 +130,7 @@ padding-top:95px;
 
             <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
 
-            <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><button href="" style="margin-left:5px;" id="removePost" class=" blog-post__remove">Remover post</button> <?php } ?>
+            <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><button style="margin-left:5px;" id="removePost" class=" blog-post__remove">Remover post</button> <?php } ?>
             
             <!-- POPUP REMOVER POST -->
       
@@ -192,7 +207,7 @@ padding-top:95px;
               } ?>
 
 
-              <p> <?php echo $comentario['COMENTARIO']; ?> </p>
+          <p> <?php echo $comentario['COMENTARIO']; ?> </p>
 
               <div style="float:right;">
               <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><a href="" style="margin-left:5px;" class=" blog-post__remove">Apagar comentário</a> <?php } ?>
@@ -204,13 +219,13 @@ padding-top:95px;
               <?php echo $comentario['DATA']; ?>
               <hr>
 
-            <?php endforeach; ?>
+        <?php endforeach; ?>
 
-            <?php if ($nocomments == 1) : ?>
-              Ainda ninguém comentou esta publicação :(
-            <?php endif; ?>
+        <?php if ($nocomments == 1) : ?>
+          Ainda ninguém comentou esta publicação :(
+        <?php endif; ?>
 
-          </p>
+        </p>
         </div>
       </div>
     <?php endforeach; ?>
@@ -239,12 +254,7 @@ padding-top:95px;
 
             <div class="form-group col-sm-10">
               <label><b>Data:</b></label>
-              <div class="input-group input-group-lg">
-                <input type="text" class="form-control" style="font-size:17px;" id="datepicker1" name="date">
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                </div>
-              </div>
+              <input id="datepicker" name="date" class="form-control" type="text" style="font-size:17px;"></input>
             </div>
 
 

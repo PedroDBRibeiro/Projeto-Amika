@@ -6,15 +6,6 @@ include "config.php";
 
 $user_id = $_SESSION['user_id'];
 
-/*
-$user_query = "SELECT * FROM utilizadores WHERE user_id = '$user_id';";
-$result = mysqli_query($mysqli, $user_query);
-$resultCheck = mysqli_num_rows($result);
-
-if ($resultCheck == 1) {
-  $user = mysqli_fetch_assoc($result);
-}
-*/
 
 if (isset($_POST['submit'])) {
 
