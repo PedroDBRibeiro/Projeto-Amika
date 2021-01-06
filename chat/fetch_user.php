@@ -1,6 +1,6 @@
 <?php
 
-//fetch_user.php
+//PÁGINA PARA BUSCAR OS AMIGOS DO UTILIZADOR 
 
 include('database_connection.php');
 
@@ -10,6 +10,7 @@ session_start();
 
 $_SESSION['available'] = 0;
 
+//Query para obter os amigos do utilizador
 $query = "
 SELECT u.user_id, u.nome FROM utilizadores u, matches m
 WHERE (m.id_user1 = '".$_SESSION['user_id']."' and m.id_user2 = u.user_id ) or 
@@ -22,7 +23,7 @@ $statement->execute();
 
 $result = $statement->fetchAll();
 
-
+//Tabela para fazer display dos dados (Nome, Estado- online/offline, Ação- enviar mensagem)
 $output = '
 <table class="table table-bordered table-striped" style="background:white;">
  <tr align="center">
@@ -66,7 +67,7 @@ $_SESSION['available'] = 1;
 
 }
 else {
-
+    //mensagem se o utilizador não tiver amigos
     echo '<h5 align="center">Oops..Ainda não tens amigos :(</h5>';
 
 }
