@@ -1,5 +1,7 @@
 <?php
 
+// REGISTA O UTILIZADOR NA BASE DE DADOS
+
 session_start();
 include "config.php";
 
@@ -7,12 +9,14 @@ $tipoUser;
 $value = 0;
 $textoDescritivo;
 
+// se tiver deficiencia, insere, se não insere variavel vazia
 if (is_null($_POST['deficiencia'])) {
     $textoDescritivo = '';
 } else {
     $textoDescritivo = $_POST['deficiencia'];
 }
 
+// flag para se for voluntário ou jadi
 if ($_POST['tipoUser'] == 'Voluntario') {
     $tipoUser = 0;
 } else {
@@ -46,69 +50,72 @@ if (!empty($_FILES["avatar"]["tmp_name"])) {
 
 
 
-
+//vê se já existe alguem na BD com este email
 if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE email = ?')) {
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();
     $stmt->store_result();
 
+    //imprime mensagem de erro se já existir alguem registado com esse mail
     if ($stmt->num_rows > 0) {
         echo 'O email que forneceu já está registado!';
     } else {
 
-        if(
-            (!isset($_POST['nome'], $_POST['psw'], $_POST['email'], $_POST['pswConfirm'])) || 
+        if (
+            //verificações de password e email para ver se são válidos
+            (!isset($_POST['nome'], $_POST['psw'], $_POST['email'], $_POST['pswConfirm'])) ||
             (empty($_POST['nome']) || empty($_POST['psw']) || empty($_POST['email'])) ||
             ($_POST['psw'] !== $_POST['pswConfirm']) ||
             (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) ||
             (preg_match('/[A-Za-z0-9]+/', $_POST['nome']) == 0) ||
             (strlen($_POST['psw']) > 20 || strlen($_POST['psw']) < 5) ||
             ($uploadOk == 0)
-            
-            ){
 
-                if (!isset($_POST['nome'], $_POST['psw'], $_POST['email'], $_POST['pswConfirm'])) {
-                    
-                    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Por Favor Complete o Registo!
+        ) {
+
+            //mensagens de erro
+
+            if (!isset($_POST['nome'], $_POST['psw'], $_POST['email'], $_POST['pswConfirm'])) {
+
+                $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Por Favor Complete o Registo!
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
-                }
-                
-                if (empty($_POST['nome']) || empty($_POST['psw']) || empty($_POST['email'])) {
-                    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Por Favor Complete o Registo!
+                header("Location: Pagina_Registo.php");
+            }
+
+            if (empty($_POST['nome']) || empty($_POST['psw']) || empty($_POST['email'])) {
+                $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Por Favor Complete o Registo!
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
-                }
-                
-                
-                if ($_POST['psw'] !== $_POST['pswConfirm']) {
-                    $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Passwords não correspondem!
+                header("Location: Pagina_Registo.php");
+            }
+
+
+            if ($_POST['psw'] !== $_POST['pswConfirm']) {
+                $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Passwords não correspondem!
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
-                }
-            
+                header("Location: Pagina_Registo.php");
+            }
+
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Email inválido
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
+                header("Location: Pagina_Registo.php");
             }
             if (preg_match('/[A-Za-z0-9]+/', $_POST['nome']) == 0) {
                 $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Nome inválido
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
+                header("Location: Pagina_Registo.php");
             }
 
             if (strlen($_POST['psw']) > 20 || strlen($_POST['psw']) < 5) {
                 $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Password tem de ter entre 5 e 20 caracteres
                     <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span></button></div>";
-                    header("Location: Pagina_Registo.php");
-                
+                header("Location: Pagina_Registo.php");
             }
 
             if ($uploadOk == 0) {
@@ -117,41 +124,39 @@ if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE e
                 <span aria-hidden='true'>&times;</span></button></div>";
                 header("Location: Pagina_Registo.php");
             }
-
-           
         } else {
-            
 
-        if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (nome, password, email, idade, regiao, deficiencia, jadi, status, avatar) VALUES (?,?,?,?,?,?,?,?,?)')) {
-            $password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
-            $stmt->bind_param('sssssssss', $_POST['nome'], $password, $_POST['email'], $_POST['idade'], $_POST['regiao'], $textoDescritivo, $tipoUser, $value, $image);
-            $stmt->execute();  
-     
-            
 
-            if (!empty($_POST['hob'])) {
-                $hobbies = $_POST['hob'];
-            }
+            //prepara a query para inserir novo utilizador na BD
+            if ($stmt = $mysqli->prepare('INSERT INTO utilizadores (nome, password, email, idade, regiao, deficiencia, jadi, status, avatar) VALUES (?,?,?,?,?,?,?,?,?)')) {
+                $password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
+                $stmt->bind_param('sssssssss', $_POST['nome'], $password, $_POST['email'], $_POST['idade'], $_POST['regiao'], $textoDescritivo, $tipoUser, $value, $image);
+                $stmt->execute();
 
-            $last_user_id = mysqli_insert_id($mysqli);
 
-            foreach ($hobbies as $hob) {
+                if (!empty($_POST['hob'])) {
+                    $hobbies = $_POST['hob'];
+                }
 
-                $query_hob = "INSERT INTO hobbies (user_id, hobbie)
+                $last_user_id = mysqli_insert_id($mysqli);
+
+                foreach ($hobbies as $hob) {
+
+                    //insere os hobbies selecionados pelo utilizador na tabela "hobbies" da BD 
+                    $query_hob = "INSERT INTO hobbies (user_id, hobbie)
                 VALUES ($last_user_id, '$hob');";
 
-                mysqli_query($mysqli, $query_hob) or die(mysqli_error($mysqli));
-            }
-            
-            echo 'Registo Bem Sucedido.';
-            header('Location: Pagina_login.php');
-      
-        }
-    }       
+                    mysqli_query($mysqli, $query_hob) or die(mysqli_error($mysqli));
+                }
 
+                echo 'Registo Bem Sucedido.';
+                header('Location: Pagina_login.php');
+            }
+        }
     }
 
     $stmt->close();
-} 
+}
+
 
 $mysqli->close();

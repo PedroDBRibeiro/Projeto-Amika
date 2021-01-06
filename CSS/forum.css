@@ -8,11 +8,9 @@
   box-sizing: border-box;
 }
 
-.navbar{
-  
+.navbar {
   font-size: 16px;
-  
-  }
+}
 
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -188,13 +186,11 @@ html {
   text-decoration: none;
 }
 
-
 .blog-post__cta:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
-
 
 /*media queries*/
 @media screen and (max-width: 1068px) {

@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
         header("Location: myprofile.php");
       }
     } else {
-      $_SESSION['msg_pass'] = "<div class='alert alert-danger' role='alert'>A password nova tem de ter entre 5 e 20 caracteres!
+      $_SESSION['msg_pass'] = "<div class='alert alert-danger' role='alert'>A password nova tem de ter entre 6 e 19 caracteres!
       <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>&times;</span></button></div>";
       header("Location: myprofile.php");

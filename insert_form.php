@@ -1,5 +1,7 @@
 <?php
 
+// INSERE O FORMULÁRIO DE APOIO A VOLUNTÁRIOS NA BASE DE DADOS
+
 session_start();
 include "config.php";
 

@@ -1,5 +1,6 @@
-
 <?php
+
+// PÁGINA DE REGISTO NO SITE
 
 session_start();
 
@@ -45,27 +46,26 @@ session_start();
     }
 
     select {
-  font-size: 50px !important;
-}
+        font-size: 50px !important;
+    }
 </style>
 
 
 <body style="padding-top:150px;">
 
-<?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'] ;
-            unset($_SESSION['msg'] );
-            
-        }
-        session_destroy();
-        ?>
+    <?php
+    // IMPRIME MENSAGENS DE ERRO 
+    if (isset($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
+    session_destroy();
+    ?>
 
 
     <div class="main" style="margin-top:100px;">
 
         <section class="signup">
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content" style=" background: #03036B;">
                     <form action="register.php" method="POST" autocomplete="off" id="signup-form" class="signup-form" enctype="multipart/form-data">

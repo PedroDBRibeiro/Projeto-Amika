@@ -1,11 +1,14 @@
 <?php
+
+// PÁGINA PARA SELECIONAR CIDADES E VER OS PONTOS DE INTERESSE NESSA CIDADE
+
 include "config.php";
 
 session_start();
 
 include('newHeader.php');
 
-
+//vai buscar as cidades que existem de momento na BD para aparecerem no dropdown menu
 $qcidades = "SELECT DISTINCT cidade FROM pontos_interesse;";
 
 $result = mysqli_query($mysqli, $qcidades);
@@ -39,6 +42,7 @@ while ($found = mysqli_fetch_assoc($result)) {
 </head>
 
 <style>
+    /* CSS */
     button {
 
         color: white;
@@ -56,7 +60,7 @@ while ($found = mysqli_fetch_assoc($result)) {
 
 <body>
 
-
+    <!-- TÍTULO -->
     <div align="center" style="margin-top:80px;">
         <div class="title-back">
             <h1 class="title ">
@@ -77,6 +81,7 @@ while ($found = mysqli_fetch_assoc($result)) {
             <form action='escolhercidade.php' method=post>
                 <select name="myvalue">
                     <div id="myDropdown" class="dropdown-content">
+                        <!-- Mostra as cidades existentes na BD -->
                         <?php foreach ($cidades as $cidade) : ?>
                             <option type="button" value="<?php echo $cidade['cidade']; ?>"><?php echo $cidade['cidade']; ?></option>
                         <?php endforeach; ?>
@@ -92,6 +97,7 @@ while ($found = mysqli_fetch_assoc($result)) {
 
 
     <style>
+        /* CSS */
         .dropdown {
             display: block;
             margin-left: auto;
@@ -129,13 +135,12 @@ while ($found = mysqli_fetch_assoc($result)) {
     </style>
 
     <script>
-        /* When the user clicks on the button, 
-            toggle between hiding and showing the dropdown content */
+        /* Quando o user clica no botão, alterna entre mostrar os conteúdos do dropdown e esconder */
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
-        // Close the dropdown if the user clicks outside of it
+        // Se o utilizador clicar fora do dropdown, ele fecha
         window.onclick = function(event) {
             if (!event.target.matches('.dropbtn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
