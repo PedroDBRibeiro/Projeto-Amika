@@ -1,5 +1,7 @@
 <?php
 
+// AGENDA
+
 session_start();
 include('newHeader.php');
 include "config.php";
@@ -15,17 +17,35 @@ $session_id = $_SESSION['user_id'];
     <title>Agenda</title>
     <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
 
+    <!-- Jquery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    <!-- Moment JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- Jquery UI -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Date Time Picker JS -->
     <script src="JS/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Calendar Plugin JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js" integrity="sha512-o0rWIsZigOfRAgBxl4puyd0t6YKzeAw9em/29Ag7lhCQfaaua/mDwnpE2PVzwqJ08N7/wqrgdjc2E0mwdSY2Tg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale-all.min.js" integrity="sha512-L0BJbEKoy0y4//RCPsfL3t/5Q/Ej5GJo8sx1sDr56XdI7UQMkpnXGYZ/CCmPTF+5YEJID78mRgdqRCo1GrdVKw==" crossorigin="anonymous"></script>
 
+    <!-- Calendar Plugin CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" integrity="sha512-KXkS7cFeWpYwcoXxyfOumLyRGXMp7BTMTjwrgjMg0+hls4thG2JGzRgQtRfnAuKTn2KWTDZX4UdPg+xTs8k80Q==" crossorigin="anonymous" />
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Date Time Picker CSS -->
     <link rel="stylesheet" href="CSS/bootstrap-datetimepicker.min.css">
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 
@@ -33,6 +53,7 @@ $session_id = $_SESSION['user_id'];
         $(document).ready(function() {
             var calendar = $('#calendar').fullCalendar({
 
+                //idioma do calendário
                 locale: 'pt',
                 editable: true,
                 header: {
@@ -45,13 +66,17 @@ $session_id = $_SESSION['user_id'];
                 events: 'load_activities.php',
 
 
+                //deixa adicionar eventos ao clicar no dia
                 selectable: true,
+                //deixa adicionar eventos ao arrastar de uma hora a outra
                 selectHelper: true,
                 defaultDate: Date(),
                 editable: true,
                 navLinks: true,
                 eventLimit: true,
 
+                //quando se clica num evento já inserido no calendário
+                //mostra os detalhes da atividade e permite depois editar os campos
                 eventClick: function(event) {
 
                     $('#verAtividade #id').text(event.id);
@@ -69,8 +94,8 @@ $session_id = $_SESSION['user_id'];
                 },
 
 
-                //Utilizador carrega num dia do calendário
-                //Abre um popup para introduzir os detalhes da atividade
+                //utilizador carrega num dia do calendário
+                //abre um popup para introduzir os detalhes da atividade
                 select: function(start, end) {
 
                     $('#inserirAtividade #start').val(moment(start).format('DD/MM/YYYY HH:mm:ss'));
@@ -81,6 +106,7 @@ $session_id = $_SESSION['user_id'];
 
             });
 
+            //date time picker - mini calendário para escolher as datas
             $('.datetimepicker').datetimepicker({
                 format: 'D/MM/YYYY HH:mm',
                 locale: 'pt',
@@ -101,9 +127,9 @@ $session_id = $_SESSION['user_id'];
 
 <body>
 
-    <!-- CALENDÁRIO-->
     <br />
 
+    <!-- TÍTULO -->
     <div class="container">
         <div align="center" style="margin-top:80px;">
             <div class="title-back">
@@ -115,12 +141,15 @@ $session_id = $_SESSION['user_id'];
         <br />
 
         <?php
+
+        //IMPRIME MENSAGEM DE ERRO
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             unset($_SESSION['msg']);
         }
         ?>
 
+        <!-- CALENDÁRIO -->
         <div id="calendar" style="background:white;padding:10px;border-radius:15px;margin-bottom:100px;"></div>
     </div>
 
@@ -240,6 +269,7 @@ $session_id = $_SESSION['user_id'];
 
                             <?php
 
+                            //vai buscar apenas os utilizadores que são "matches"/amigos do user
                             $query = "SELECT u.nome, m.id
                                     FROM (SELECT id_user1 as id
                                         FROM matches WHERE id_user2=$session_id
@@ -250,6 +280,7 @@ $session_id = $_SESSION['user_id'];
 
                             $result = mysqli_query($mysqli, $query);
 
+                            //guarda os amigos encontrados num array
                             while ($found = mysqli_fetch_assoc($result)) {
                                 $amigos[] = $found;
                             }
@@ -295,6 +326,8 @@ $session_id = $_SESSION['user_id'];
     </div>
 
     <script>
+
+    /* alternar entre mostrar detalhes e editar atividade*/
         $('.btn-canc-vis').on("click", function() {
             $('.form').slideToggle();
             $('.visualizar').slideToggle();
