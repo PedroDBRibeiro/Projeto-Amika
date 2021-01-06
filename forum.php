@@ -59,7 +59,7 @@ if ($resultCheck > 0) {
         uiLibrary: 'bootstrap4',
         locale: 'pt-br',
         format: 'dd-mm-yyyy'
-        
+
       });
     });
   </script>
@@ -128,31 +128,19 @@ if ($resultCheck > 0) {
               <?php echo $post['nome']; ?>
             </p>
 
-            <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
-
-            <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><button style="margin-left:5px;" id="removePost" class=" blog-post__remove">Remover post</button> <?php } ?>
-            
-            <!-- POPUP REMOVER POST -->
-      
-   <div class="modal fade" id="removerPost" tabindex="-1" role="dialog" style="font-size:17px;" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style="font-size:17px;">
-        <div class="modal-header">
-          <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Desejas apagar o teu post?</h5>
-          <button type="button" class="close" data-dismiss="modal" style="font-size:22px;" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-          <form id="apagarPost" method="POST" action="deletePost.php?postId=<?php echo $post['POST_ID'] ?>" enctype="multipart/form-data" autocomplete="off">
-            <div class="modal-footer">
-              <button type="submit" id="submit" style="margin: 10px;padding: 5px 22px;font-size:15px; border-radius: 50px; text-transform:uppercase;" class="btn btn-danger" name="submit" form="apagarPost" class="btn-grad" style="font-size:15px;">Apagar</button>
-              <button type="button" class="btn-grad" style="font-size:14px; border-radius: 50px; text-transform:uppercase;" data-dismiss="modal">Cancelar</button>
+            <div>
+              <div style="float:left;margin-right:12px;">
+                <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
+              </div>
+              <div style="float:right;">
+                <form id="apagarPost" method="POST" action="deletePost.php?postId=<?php echo $post['POST_ID'] ?>">
+                  <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?>
+                    <button class="blog-post__remove" type="submit" name="submit">Remover post</button>
+                  <?php } ?>
+                </form>
+              </div>
             </div>
-          </form>
-      </div>
-    </div>
-  </div>
+
 
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post" autocomplete="off">
               <div class="comment_form_wrapper" style="display: none;"><br>
@@ -163,6 +151,7 @@ if ($resultCheck > 0) {
                 </span>
               </div>
             </form>
+
           </div>
 
         </div>
@@ -209,15 +198,21 @@ if ($resultCheck > 0) {
 
           <p> <?php echo $comentario['COMENTARIO']; ?> </p>
 
-              <div style="float:right;">
-              <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><a href="" style="margin-left:5px;" class=" blog-post__remove">Apagar comentário</a> <?php } ?>
-              </div>
-              <div style="font-size:13px;">
-                <b>Publicado por:</b>
-                <?php echo $username_com['nome']; ?>
-              </div>
-              <?php echo $comentario['DATA']; ?>
-              <hr>
+          <div style="float:right;">
+            <form id="apagarComentario" method="POST" action="deleteComment.php?commentId=<?php echo $comentario['ID_COMENTARIO'] ?>">
+              <?php if (isset($_SESSION['loggedin']) && $user_com == $_SESSION['user_id']) { ?>
+                <button type="submit" name="submit" style="margin-left:5px; padding:12px;" class=" blog-post__remove">
+                  <i class="fas fa-trash"></i>
+                </button>
+              <?php } ?>
+            </form>
+          </div>
+          <div style="font-size:13px;">
+            <b>Publicado por:</b>
+            <?php echo $username_com['nome']; ?>
+          </div>
+          <?php echo $comentario['DATA']; ?>
+          <hr>
 
         <?php endforeach; ?>
 
@@ -279,7 +274,7 @@ if ($resultCheck > 0) {
     </div>
   </div>
 
-   
+
 
 
 
@@ -288,18 +283,7 @@ if ($resultCheck > 0) {
       $('#adicionarPost').modal('show');
     });
 
-    $('#removePost').on('click', function() {
-      $('#removerPost').modal('show');
-    });
-
-
     $(document).ready(function() {
-      $('#datepicker1').datepicker({
-        format: "dd-mm-yyyy",
-        language: "pt_BR",
-        autoclose: true
-      });
-
       $('.comentar').click(function() {
         $('.comment_form_wrapper').toggle();
       });

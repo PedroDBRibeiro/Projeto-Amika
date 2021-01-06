@@ -3,23 +3,20 @@
 session_start();
 include "config.php";
 
-$user_id = $_SESSION['user_id'];
-$post_id = $_GET["postId"];
+$comment_id = $_GET["commentId"];
 
 if (isset($_POST['submit'])) {
 
-$sql = "DELETE FROM posts where post_id = $post_id";
+$sql = "DELETE FROM comentarios where ID_COMENTARIO = $comment_id";
 
 mysqli_query($mysqli, $sql);
-//header("Location: forum.php");
 
 if (mysqli_affected_rows($mysqli)) {
 
-    $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>A publicação foi apagada com sucesso.
+    $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>O comentário foi apagado com sucesso.
    <button type'button' class='close' data-dismiss='alert' aria-label='Close'>
    <span aria-hidden='true'>&times;</span></button></div>";
     header("Location: forum.php");
   }
 
 }
-?>
