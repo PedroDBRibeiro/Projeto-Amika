@@ -115,9 +115,33 @@ padding-top:95px;
 
             <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
 
+            <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><button href="" style="margin-left:5px;" id="removePost" class=" blog-post__remove">Remover post</button> <?php } ?>
+            
+            <!-- POPUP REMOVER POST -->
+      
+   <div class="modal fade" id="removerPost" tabindex="-1" role="dialog" style="font-size:17px;" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="font-size:17px;">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-size:27px; font-family: 'Chewy'; color: #03036B;">Desejas apagar o teu post?</h5>
+          <button type="button" class="close" data-dismiss="modal" style="font-size:22px;" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+          <form id="apagarPost" method="POST" action="deletePost.php?postId=<?php echo $post['POST_ID'] ?>" enctype="multipart/form-data" autocomplete="off">
+            <div class="modal-footer">
+              <button type="submit" id="submit" style="margin: 10px;padding: 5px 22px;font-size:15px; border-radius: 50px; text-transform:uppercase;" class="btn btn-danger" name="submit" form="apagarPost" class="btn-grad" style="font-size:15px;">Apagar</button>
+              <button type="button" class="btn-grad" style="font-size:14px; border-radius: 50px; text-transform:uppercase;" data-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post" autocomplete="off">
-              <div class="comment_form_wrapper" style="display: none;">
-                <input type="text" name="comentario" class="form-control rounded-corner" style="font-size:17px;" placeholder="Escreve um comentário...">
+              <div class="comment_form_wrapper" style="display: none;"><br>
+                <input type="text" name="comentario" class="form-control rounded-corner" style="font-size:17px;" placeholder="Escreve um comentário..."><br>
                 <input type="hidden" name="data_com" value="<?php echo date("Y-m-d H:i:s"); ?>">
                 <span class="input-group-btn p-l-10">
                   <input class="btn btn-primary" style="font-size:15px;" value="Submeter" id="submit" type="submit" onclick="javascript:window.location.reload(true)">
@@ -170,6 +194,9 @@ padding-top:95px;
 
               <p> <?php echo $comentario['COMENTARIO']; ?> </p>
 
+              <div style="float:right;">
+              <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?><a href="" style="margin-left:5px;" class=" blog-post__remove">Apagar comentário</a> <?php } ?>
+              </div>
               <div style="font-size:13px;">
                 <b>Publicado por:</b>
                 <?php echo $username_com['nome']; ?>
@@ -242,10 +269,17 @@ padding-top:95px;
     </div>
   </div>
 
+   
+
+
 
   <script>
     $('#addpost').on('click', function() {
       $('#adicionarPost').modal('show');
+    });
+
+    $('#removePost').on('click', function() {
+      $('#removerPost').modal('show');
     });
 
 

@@ -152,9 +152,9 @@ if ($stmt = $mysqli->prepare('SELECT user_id, password FROM utilizadores WHERE e
     }
 
     $stmt->close();
-} else {
-    echo 'Could not prepare statement!';
-}
+} //else {
+    //echo 'Could not prepare statement!';
+//}
 
 
 $mysqli->close();

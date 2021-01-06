@@ -134,11 +134,11 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
     <!--CARTÃO TEMPO-->
-    <div class="container d-flex" class="upper-home" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
-        <div class="padding" style="float:left;">
-            <div class="col-lg-8 grid-margin stretch-card">
-                <div class="card card-weather" class="foda" style="width:600px;border-radius:20px;opacity:0.9;">
-                    <div class="card-body"  style="height:250px;">
+    <div class="container d-flex"  style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
+        <div class="test" class="padding" style="float:left;">
+            <div class="test" class="col-lg-8 grid-margin stretch-card">
+                <div class="card card-weather" class="test" style="width:600px;border-radius:20px;opacity:0.9;">
+                    <div class="card-body" class="test" style="height:250px;">
                         <div class="weather-date-location">
                             <h3 id="hoje" style="font-family: 'Chewy'; ">
                             </h3>
