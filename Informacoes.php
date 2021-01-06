@@ -1,4 +1,8 @@
+
+
 <?php
+
+//ESTA PÁGINA TEM LINKS PARA PÁGINAS QUE PODEM TER INFORMAÇÕES ÚTEIS PARA OS UTILIZADORES 
 
 session_start();
 
@@ -33,7 +37,7 @@ include('newHeader.php');
 
   <div class="container">
     <div class="row mt-5 justify-content-center">
-
+    <!--LINK PARA PÁGINA DO INR-->
       <div class="col-sm-6 col-md-4 col-xs-12 py-2">
         <div class="card card-body mx-2 mb-3" style="width: 18rem;">
           <img class="card-img-top" src="imagens/INR.png" alt="Card image cap">
@@ -44,7 +48,7 @@ include('newHeader.php');
           </div>
         </div>
       </div>
-
+    <!--LINK PARA PÁGINA DO AAPACDM-->
       <div class="col-sm-6 col-md-4 col-xs-12 py-2">
         <div class="card card-body mx-2 mb-3" style="width: 18rem;">
           <img class="card-img-top" src="imagens/AAPACDM.png" alt="Card image cap">
@@ -55,7 +59,7 @@ include('newHeader.php');
           </div>
         </div>
       </div>
-
+    <!--LINK PARA PÁGINA DO PNAR-->
       <div class="col-sm-6 col-md-4 col-xs-12 py-2">
         <div class="card card-body mx-2 mb-3" style="width: 18rem;">
           <img class="card-img-top" src="imagens/PNR.png" alt="Card image cap">
