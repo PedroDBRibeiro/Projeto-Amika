@@ -1,6 +1,6 @@
 <?php
 
-//fetch_user_chat_history.php
+//PÁGINA PARA OBTER O HISTÓRICO DE CHAT COM OUTRO UTILIZADOR
 
 include('database_connection.php');
 

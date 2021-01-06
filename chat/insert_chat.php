@@ -1,6 +1,6 @@
 <?php
 
-//insert_chat.php
+//PÁGINA PARA INSERIR AS MENSAGENS NA BASE DE DADOS
 
 include('database_connection.php');
 

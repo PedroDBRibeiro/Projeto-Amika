@@ -1,5 +1,7 @@
 <?php
 
+//PÁGINA PARA PESQUISAR OUTROS UTILIZADORES CONSOANTE A LOCALIZAÇÃO E HOBBIES EM COMUM
+
 session_start();
 include "config.php";
 include('newHeader.php');
@@ -28,6 +30,7 @@ include('newHeader.php');
 
 </head>
 
+<!-- CSS -->
 <style>
 
 button {
@@ -43,23 +46,21 @@ button:hover {
 opacity: 0.8;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 50px;
+
+}
+
 </style>
 
 <body >
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
-
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 45%;
-            margin-top: 50px;
-
-        }
-    </style>
-
-
+    
     <div align ="center" style="margin-top:80px;">
         <div class="title-back" >
             <h1 class = "title ">
@@ -76,11 +77,11 @@ opacity: 0.8;
 
     </div>
 
-
+    <!-- Selects para escolher localização e hobbies -->
     <div class="center" class="bg-primary" style="height:225px; border-radius:10px;background: linear-gradient(#e8e6e6,#dbd9d9)">
         <form id="search" method="post" action="search.php">
             <div style="float:right;padding:10px;padding-right:80px;margin-top:40px;">
-
+                <!-- Obter todos os hobbies que existem na BD -->
                 <?php
                 $query = "SELECT DISTINCT hobbie FROM hobbies;";
                 $result = mysqli_query($mysqli, $query);
@@ -90,7 +91,7 @@ opacity: 0.8;
                 }
 
                 ?>
-
+                <!-- Select hobbies -->
                 <label class="text-primary">Hobbies</label><br>
                 <select name="hob[]" class="selectpicker" multiple="multiple" title="Escolhe 1 ou mais opções">
                     <?php foreach ($hobbies_selected as $hobbie) : ?>
@@ -104,7 +105,7 @@ opacity: 0.8;
 
 
             <div style="float:left;padding:10px;padding-left:80px;margin-top:40px;">
-
+                   <!-- Select localização -->         
                 <label class="text-primary">Localização</label><br>
                 <select name="local" class="selectpicker">
                     <option disabled selected value>Escolhe uma opção</option>
@@ -136,13 +137,14 @@ opacity: 0.8;
                 Resultados
             </h3>
         </div>
-
+        <!-- mensagem de erro se não houver resultados -->
         <p style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 20px;font-size: 20px;">
             <?php if(isset($no_results)) echo $no_results; ?>
         </p>
 
     <?php }  ?>
     <br><br>
+    <!-- Display dos resultados -->
     <table style=" margin:auto;">
         <tr>
             <div>

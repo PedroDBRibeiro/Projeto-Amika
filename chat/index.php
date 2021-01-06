@@ -1,5 +1,7 @@
 <?php
 
+//PÁGINA PRINCIPAL DO CHAT
+
 include('database_connection.php');
 
 session_start();
@@ -58,7 +60,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </a>
                         <?php }
 
-                        else{ ?> <!-- data-toggle="modal" data-target="#myModal"-->
+                        else{ ?> 
                         <a   class="nav-link" data-toggle="modal" data-target="#myModal"  style="width:auto;" style="text-decoration:none;">
                             <img src="../imagens\login.png" alt="Login Icon" width="30" height="30" class="d-inline-block align-top"></img>
                             Entrar
@@ -86,7 +88,6 @@ if (!isset($_SESSION['user_id'])) {
         <br/>
         <div class="table-responsive"><br>
             <h3   align="center" style="font-family: 'Chewy';" ><?php  echo 'Olá '.$_SESSION['nome'].'!'; ?> Aqui poderás falar com as pessoas com quem fizeste amizade!</h3><br>
-            <!--<p align="right"><?php //if ($_SESSION['available'] == 1){ echo 'Olá - '.$_SESSION['nome'].'!'; }  ?>  </p> -->
             <div id="user_details"  ></div>
             <div id="user_model_details" style="padding-top:200px;"></div>
         </div>
@@ -98,7 +99,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-
+<!-- JavaScript -->
 <script>
     $(document).ready(function() {
 

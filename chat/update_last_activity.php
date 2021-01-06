@@ -1,6 +1,6 @@
 <?php
 
-//update_last_activity.php
+//PÁGINA PARA OBTER O STATUS DOS UTILIZADORES (ONLINE/OFFLINE)
 
 include('database_connection.php');
 

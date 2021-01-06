@@ -1,12 +1,13 @@
 <?php
 
+//PÁGINA COM O ALGORITMO DE PESQUISA COM BASE NOS HOBBIES E LOCALIZAÇÃO ESCOLHIDA
+
 include "config.php";
 $jadi = $_SESSION['jadi'];   
 
 $search_results = [];
 
 if (isset($_POST['submit'])) {
-  //only get names of checked boxes on the dropdown menus that actually have checked boxes
   if (!empty($_POST['local'])) {
     $localizacao = $_POST['local'];
   }
@@ -21,7 +22,7 @@ if (isset($_POST['submit'])) {
   } 
 
   
-
+  //algoritmo
   if (isset($localizacao)) {
     if (isset($hobbies)) {
       $sql = "SELECT u.user_id, u.nome, u.avatar, u.jadi, GROUP_CONCAT(h.hobbie SEPARATOR ' ') as allhobbies, u.REGIAO
@@ -56,16 +57,16 @@ if (isset($_POST['submit'])) {
   } 
 
 
-  //get query results
+  //obter resultados das queries
   $result = mysqli_query($mysqli, $sql);
   $resultCheck = mysqli_num_rows($result);
-
-  //if there is 1 or more results, save them in $posts
+  
+  //se houver mais que 1 resultado, guardar em $search_results
   if ($resultCheck > 0) {
     while ($found = mysqli_fetch_assoc($result)) {
       $search_results[] = $found;
   }
-    //if not, show a message saying that no results were found
+    //se não houver resultados, mostrar mensagem de erro
   } else {
     $no_results = 'Não há ninguém com esta localização e hobbies :(';
   }
