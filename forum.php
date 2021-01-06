@@ -4,9 +4,11 @@ session_start();
 include('newHeader.php');
 include "config.php";
 
+// FÓRUM DE PUBLICAÇÕES
 
 $posts = [];
 
+//buscar à bd os posts todos que existem, ordenados do mais recente para o mais antigo
 $post_query = "SELECT u.user_id, u.nome, p.POST_ID, p.title, DATE(p.data) as data, p.imagem, p.text
               FROM posts as p, utilizadores as u
               WHERE p.id_user = u.user_id
@@ -16,12 +18,12 @@ $result = mysqli_query($mysqli, $post_query);
 
 $resultCheck = mysqli_num_rows($result);
 
-//if there is 1 or more results, save them in $posts
+//se houver 1 ou mais posts na BD, são guardados no array $posts
 if ($resultCheck > 0) {
   while ($found = mysqli_fetch_assoc($result)) {
     $posts[] = $found;
   }
-  //if not, show a message saying that no results were found
+  //se não houver posts ainda, guarda esta mensagem numa variável
 } else {
   $noresults = "No results were found :(";
 }
@@ -39,21 +41,28 @@ if ($resultCheck > 0) {
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
+  <!-- JQuery, Moment, Bootstrap & JQuery UI Javascript files -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+  <!-- Custom Amik@ CSS -->
   <link rel="stylesheet" type="text/css" href="CSS/Amik@.css">
   <link rel="stylesheet" type="text/css" href="CSS/forum.css">
+
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
+  <!-- Date Picker JS, CSS e ficheiro de idioma PT -->
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <script src="https://unpkg.com/gijgo@1.9.13/js/messages/messages.pt-br.js" type="text/javascript"></script>
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
   <script>
+    /* faz o datepicker aparecer quando o campo da data é clicado*/
     $(document).ready(function() {
       $('#datepicker').datepicker({
         uiLibrary: 'bootstrap4',
@@ -76,12 +85,14 @@ if ($resultCheck > 0) {
 
   <br>
   <?php
+  // IMPRIME MENSAGENS DE ERRO
   if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
     unset($_SESSION['msg']);
   }
   ?>
 
+  <!-- TÍTULO -->
   <div align="center" style="margin-top:50px;">
     <div class="title-back">
       <h1 class="title ">
@@ -95,21 +106,26 @@ if ($resultCheck > 0) {
   <br>
   <br>
   <div class="container">
+    <!-- BOTÃO DE ADICIONAR PUBLICAÇÃO AO FÓRUM -->
     <?php if (isset($_SESSION['loggedin'])) { ?> <button id="addpost" class="btn-grad" style="margin:auto;">+</button> <?php } ?>
   </div>
 
+  <!-- IMPRIME MENSAGEM QUANDO NÃO HÁ NENHUM POST NA BD -->
   <p style="text-align:center;"><?php if (isset($noresults)) echo $noresults; ?></p>
 
   <div class="blog-feed">
+    <!-- para cada publicação, imprime informações e outros botões -->
     <?php foreach ($posts as $post) : ?>
       <div class="blog-post-comment">
 
         <div class="blog-post">
           <div class="blog-post__img">
+            <!-- Imagem com base64 encoding -->
             <img class="post-img" <?php echo 'src="data:image/jpeg;base64,' . base64_encode($post['imagem']) . '"' ?>>
           </div>
           <div class="blog-post__info">
             <div class="blog-post__date">
+              <!-- Data por extenso em português -->
               <span><?php
                     setlocale(LC_TIME, 'pt', 'pt.utf-8', 'pt.utf-8', 'portuguese');
                     date_default_timezone_set('Europe/Lisbon');
@@ -118,6 +134,7 @@ if ($resultCheck > 0) {
 
                     ?></span>
             </div>
+
 
             <h1 class="blog-post__title"><?php echo $post['title']; ?></h1>
 
@@ -130,18 +147,20 @@ if ($resultCheck > 0) {
 
             <div>
               <div style="float:left;margin-right:12px;">
+                <!-- Botão de comentar, que aciona classe "comentar" no javascript, para o user introduzir o comentário -->
                 <?php if (isset($_SESSION['loggedin'])) { ?><a href="javascript:;" class="comentar blog-post__cta">Comentar</a> <?php } ?>
               </div>
               <div style="float:right;">
                 <form id="apagarPost" method="POST" action="deletePost.php?postId=<?php echo $post['POST_ID'] ?>">
                   <?php if (isset($_SESSION['loggedin']) && $post['user_id'] == $_SESSION['user_id']) { ?>
+                    <!-- Botão de apagar o post (para o utilizador que o publicou) --> 
                     <button class="blog-post__remove" type="submit" name="submit">Remover post</button>
                   <?php } ?>
                 </form>
               </div>
             </div>
 
-
+            <!-- Quando um utilizador clica em comentar, aparece um campo para o comentário e toda a info incluindo data e id do post é enviada para a pag comentario.php --> 
             <form action="comentario.php?postId=<?php echo $post['POST_ID'] ?>" method="post" autocomplete="off">
               <div class="comment_form_wrapper" style="display: none;"><br>
                 <input type="text" name="comentario" class="form-control rounded-corner" style="font-size:17px;" placeholder="Escreve um comentário..."><br>
@@ -162,6 +181,7 @@ if ($resultCheck > 0) {
 
           $postid = $post['POST_ID'];
 
+          //vai buscar todos os comentários do post que está a ser imprimido
           $com_query = "SELECT * FROM comentarios WHERE POST_ID='$postid'";
           $com_result = mysqli_query($mysqli, $com_query) or die(mysqli_error($mysqli));
           $resultCheck = mysqli_num_rows($com_result);
@@ -174,6 +194,7 @@ if ($resultCheck > 0) {
               $nocomments = 0;
             }
           } else {
+            //flag para saber se há ou não comentários
             $nocomments = 1;
           }
 
