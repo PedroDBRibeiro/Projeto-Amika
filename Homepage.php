@@ -131,7 +131,7 @@ background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
 
 
     <!--CARTÃO TEMPO-->
-    <div class="container d-flex" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
+    <div class="container d-flex" class="upper-home" style="font-family: 'Chewy';margin-bottom:70px;margin-top:50px;">
         <div class="padding" style="float:left;">
             <div class="col-lg-8 grid-margin stretch-card">
                 <div class="card card-weather" style="width:600px;border-radius:20px;opacity:0.9;">

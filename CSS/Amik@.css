@@ -240,3 +240,10 @@ p {
   margin: 10px;
   border-radius: 15px;
 }
+
+
+@media screen and (max-width: 1068px) {
+
+.upper-home {max-width: 680px;}
+
+}
