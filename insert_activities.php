@@ -1,11 +1,13 @@
 <?php
 
-session_start();
+// PÁGINA QUE INSERE AS ATIVIDADES NA BD
 
+session_start();
 include "config.php";
 
 if (isset($_POST['submit'])) {
 
+        //campos que vêm do popup "adicionar atividade"
         $session_id = $_SESSION['user_id'];
         $title = $_POST["title"];
         $start = $_POST["start"];
@@ -14,15 +16,17 @@ if (isset($_POST['submit'])) {
         $descricao = $_POST["desc"];
 
 
+        //se os campos base estiverem preenchidos
         if (!empty($title) && !empty($start) && !empty($end)) {
 
-                //Converte data e hora no formato da BD
+                //Converte data e hora de inicio no formato da BD
                 $data = explode(' ', $start);
                 list($data, $hora) = $data;
                 $data_sem_barra = array_reverse(explode("/", $data));
                 $data_sem_barra = implode("-", $data_sem_barra);
                 $datainicio = $data_sem_barra . " " . $hora;
 
+                //Converte data e hora de fim no formato da BD
                 $data = explode(' ', $end);
                 list($data, $hora) = $data;
                 $data_sem_barra = array_reverse(explode("/", $data));
@@ -30,6 +34,7 @@ if (isset($_POST['submit'])) {
                 $datafim = $data_sem_barra . " " . $hora;
 
 
+                // query de inserção das atividades na bd
                 $query = "INSERT INTO atividades
                         (TITULO, DATA_INICIO, DATA_FIM, ID_USER1, ID_USER2, DESCRICAO)
                         VALUES ('$title', '$datainicio', '$datafim', '$session_id', '$amigo_id', '$descricao');";
