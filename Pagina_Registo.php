@@ -114,7 +114,7 @@ session_start();
                             <input style="background:white;" class="form-input" type="text" id="deficiencia" name="deficiencia" />
                         </div>
 
-                        <br><br> <select name="hob[]" class="selectpicker" multiple title="Escolhe 1 ou mais hobbies" style="font-family: 'Numans', sans-serif;">
+                        <br><br> <select name="hob[]" class="selectpicker" multiple title="Escolhe 1 ou mais hobbies" style="font-family: 'Numans', sans-serif;" required>
                             <option style="font-family: 'Numans', sans-serif;" value="Praia">Praia</option>
                             <option style="font-family: 'Numans', sans-serif;" value="Passear">Passear</option>
                             <option style="font-family: 'Numans', sans-serif;" value="Futebol">Futebol</option>
@@ -131,11 +131,6 @@ session_start();
                         </select>
 
 
-                        <!--
-                        <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                        </div>-->
                         <br><br>
                         <div class="form-group">
                             <input style="color:black;font-family: 'Numans', sans-serif;background-image: linear-gradient(to right, #fbb034 0%, #ffdd00 74%);" type="submit" name="submit" id="submit" class="form-submit" value="Registar-me" />
